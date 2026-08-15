@@ -68,6 +68,52 @@ p { color:var(--muted); }
 .shop-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }.product-card { padding:15px; }.product-visual { display:grid; min-height:250px; place-items:center; margin-bottom:20px; background:#e6e8e9; overflow:hidden; }.product-visual::before { color:rgba(17,18,22,.18); font-size:4rem; font-weight:950; letter-spacing:-.08em; content:"UG"; }.product-visual.jersey { background:linear-gradient(135deg,#17181d 0 55%,var(--red) 55%); }.product-visual.hoodie { background:linear-gradient(135deg,#c9d4dd,var(--blue)); }.product-visual.sticker { background:linear-gradient(135deg,#f3e6c2,var(--gold)); }.product-visual.jersey::before,.product-visual.hoodie::before { color:rgba(255,255,255,.75); }.product-meta { margin-top:16px; }.product-meta strong { font-size:1.1rem; }.product-meta button { min-height:38px; padding:0 12px; border:0; background:var(--ink); color:var(--white); cursor:pointer; font-size:.7rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }.product-meta button:hover { background:var(--red); }.cart-note { min-height:24px; margin:20px 0 0; color:#2f7b45; font-weight:800; }
 .contact-layout { display:grid; grid-template-columns:.82fr 1.18fr; gap:clamp(36px,8vw,110px); align-items:start; }.contact-list { display:grid; gap:18px; margin:30px 0; font-style:normal; }.contact-list div { display:grid; gap:3px; }.contact-list span { color:var(--muted); font-size:.72rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }.contact-list a,.contact-list strong { font-size:1.04rem; }.social-links { display:flex; flex-wrap:wrap; gap:9px; }.social-links a { padding:10px 12px; border:1px solid var(--line); background:var(--white); font-size:.75rem; font-weight:900; }.social-links a:hover { border-color:var(--red); color:var(--red-deep); }.contact-form { display:grid; gap:17px; padding:clamp(22px,4vw,36px); }.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }.contact-form label { display:grid; gap:7px; color:var(--ink-soft); font-size:.78rem; font-weight:900; letter-spacing:.06em; text-transform:uppercase; }.contact-form input,.contact-form select,.contact-form textarea { width:100%; border:1px solid var(--line); border-radius:0; background:#fafafa; color:var(--ink); outline:none; }.contact-form input,.contact-form select { min-height:48px; padding:0 13px; }.contact-form textarea { min-height:130px; padding:13px; resize:vertical; }.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(29,92,198,.14); }.form-note { min-height:23px; margin:0; color:#2f7b45; font-weight:800; }
 .site-footer { background:var(--ink); color:rgba(255,255,255,.66); }.footer-inner { display:flex; min-height:100px; align-items:center; justify-content:space-between; gap:24px; }.footer-inner p { margin:0; color:rgba(255,255,255,.55); font-size:.78rem; text-align:center; }.footer-inner>a { color:var(--white); font-size:.8rem; font-weight:900; }.footer-inner>a span { margin-left:6px; color:var(--red); }
+.is-hidden { display:none!important; }
+.promo-banner { display:flex; align-items:center; justify-content:center; gap:14px; min-height:44px; padding:8px 16px; background:var(--gold); color:var(--ink); text-align:center; }
+.promo-banner span { font-size:.8rem; font-weight:800; }
+.promo-banner button { border:0; background:transparent; color:var(--ink); cursor:pointer; font-size:1.1rem; font-weight:900; line-height:1; padding:0 4px; }
+.promo-banner[hidden] { display:none; }
+.schedule-heading .filter-row { margin:20px 0 -4px; }
+.tournament-actions { display:flex; flex-wrap:wrap; gap:10px; margin:24px 26px 26px; }
+.tournament-actions .table-action { margin:0; }
+.bookmark-btn { display:inline-flex; align-items:center; gap:6px; min-height:38px; padding:0 14px; border:1px solid var(--line); background:var(--white); color:var(--muted); cursor:pointer; font-size:.72rem; font-weight:900; letter-spacing:.06em; text-transform:uppercase; transition:background 160ms ease,border-color 160ms ease,color 160ms ease; }
+.bookmark-btn:hover { border-color:var(--gold); color:var(--ink); }
+.bookmark-btn.is-saved { border-color:var(--gold); background:var(--gold); color:var(--ink); }
+.simple-card { display:grid; gap:14px; align-content:start; }
+.simple-card .bookmark-btn { justify-self:start; }
+.pro-match-list { display:grid; gap:1px; margin:0; padding:0; list-style:none; border:1px solid var(--line); background:var(--line); }
+.pro-match-item,.pro-match-loading { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:16px 20px; background:var(--white); }
+.pro-match-loading { justify-content:center; color:var(--muted); font-size:.86rem; }
+.pro-match-league { color:var(--red-deep); font-size:.72rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+.pro-match-teams { font-weight:900; }
+.pro-match-winner { color:var(--muted); font-size:.85rem; }
+.social-follow { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; }
+.social-follow h2 { margin-bottom:8px; }
+
+/* --- Countdown --- */
+.countdown { display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:24px; }
+.countdown-label { color:var(--muted); font-size:.72rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+.countdown-grid { display:flex; gap:8px; }
+.countdown-grid div { display:grid; justify-items:center; gap:2px; min-width:50px; padding:9px 4px; border:1px solid var(--line); background:var(--white); }
+.countdown-grid strong { font-size:1.25rem; font-weight:900; font-variant-numeric:tabular-nums; }
+.countdown-grid span { color:var(--muted); font-size:.58rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.countdown.is-live .countdown-grid div { border-color:var(--red); }
+.countdown.is-live .countdown-label { color:var(--red-deep); }
+
+/* --- Next-up schedule highlight --- */
+.schedule-item.is-next { padding-left:14px; border-left:3px solid var(--gold); background:linear-gradient(90deg,rgba(232,175,63,.1),transparent 65%); }
+.next-badge { display:inline-block; margin-bottom:6px; padding:2px 8px; background:var(--gold); color:var(--ink); font-size:.6rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+
+/* --- Filter fade transition (schedule items + program cards) --- */
+.schedule-item,.program-card { transition:opacity 200ms ease, transform 200ms ease; }
+.schedule-item.is-fading,.program-card.is-fading { opacity:0; transform:translateY(-6px); pointer-events:none; }
+
+/* --- Bookmark-only filter toggle --- */
+.bookmark-toggle { display:inline-flex; align-items:center; gap:8px; margin-top:12px; color:var(--ink-soft); font-size:.8rem; font-weight:700; cursor:pointer; }
+.bookmark-toggle input { width:16px; height:16px; accent-color:var(--gold); cursor:pointer; }
+.archive-empty { padding:18px 20px; border:1px dashed var(--line); color:var(--muted); font-size:.88rem; }
+.archive-empty[hidden] { display:none; }
+.simple-card.is-hidden { display:none; }
 @media (max-width:980px) { .menu-toggle { display:block; }.site-nav { position:fixed; top:78px; right:0; bottom:0; left:0; display:grid; align-content:start; gap:4px; padding:22px 24px; background:rgba(17,18,22,.98); opacity:0; pointer-events:none; transform:translateY(-8px); transition:opacity 160ms ease,transform 160ms ease; }.menu-open .site-nav { opacity:1; pointer-events:auto; transform:none; }.site-nav>a,.nav-dropdown>summary { width:100%; min-height:52px; justify-content:space-between; padding:0 12px; border-bottom:1px solid rgba(255,255,255,.1); }.dropdown-menu { position:static; width:100%; padding:8px 0 10px 15px; border:0; box-shadow:none; background:transparent; }.dropdown-menu a { display:block; padding:10px 12px; }.nav-cta { width:max-content!important; margin-top:14px; border-bottom:1px solid var(--red)!important; }.content-grid,.events-layout,.contact-layout,.home-tournament-grid { grid-template-columns:1fr; }.feature-grid,.values-grid,.committee-grid,.program-grid,.news-grid,.shop-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.media-grid { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:230px 190px 190px; }.media-tile:first-child { grid-row:1 / 3; }.home-tournament-grid { gap:35px; } }
 @media (max-width:680px) { .site-shell { width:min(100% - 32px,var(--max-width)); }.header-inner { min-height:68px; }.brand img,.footer-brand img { width:42px; height:42px; }.brand strong { font-size:.85rem; }.brand small { font-size:.6rem; }.site-nav { top:68px; padding:18px 16px; } h1 { font-size:clamp(2.7rem,14vw,4.6rem); }.landing-hero,.landing-hero-content { min-height:calc(100svh - 68px); }.landing-hero-image { object-position:60% center; }.landing-hero-overlay { background:linear-gradient(90deg,rgba(17,18,22,.98),rgba(17,18,22,.67)),linear-gradient(0deg,rgba(17,18,22,.94),transparent 58%); }.landing-hero-content { padding:70px 0 42px; }.hero-numbers { gap:12px; margin-top:48px; }.hero-numbers strong { font-size:1.35rem; }.hero-numbers span { font-size:.62rem; }.button-row { width:100%; flex-direction:column; }.button { width:100%; }.intro-grid,.section-heading { grid-template-columns:1fr; gap:18px; }.section-heading { margin-bottom:26px; }.feature-grid,.values-grid,.committee-grid,.program-grid,.news-grid,.shop-grid,.media-grid { grid-template-columns:1fr; }.media-grid { grid-template-rows:repeat(5,210px); }.media-tile:first-child { grid-row:auto; }.join-panel { display:grid; padding:28px 22px; }.join-panel .button { width:100%; }.page-hero { padding:64px 0 58px; }.breadcrumb { margin-bottom:25px; }.content-grid { gap:35px; }.form-row { grid-template-columns:1fr; gap:17px; }.schedule-item { display:grid; grid-template-columns:1fr auto; }.schedule-copy { grid-column:1 / -1; grid-row:2; }.schedule-type { align-self:start; }.tournament-panel dl div,.footer-inner { display:grid; justify-content:stretch; }.tournament-panel dd { text-align:left; }.footer-inner { gap:18px; padding:28px 0; }.footer-inner p { text-align:left; }.footer-inner>a { justify-self:start; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; } }
