@@ -1,0 +1,16 @@
+const header = document.querySelector("[data-header]");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const siteNav = document.querySelector("[data-site-nav]");
+const closeMenu = () => { document.body.classList.remove("menu-open"); menuToggle?.setAttribute("aria-expanded", "false"); menuToggle?.querySelector("b")?.replaceChildren(document.createTextNode("Open menu")); };
+menuToggle?.addEventListener("click", () => { const isOpen = document.body.classList.toggle("menu-open"); menuToggle.setAttribute("aria-expanded", String(isOpen)); menuToggle.querySelector("b")?.replaceChildren(document.createTextNode(isOpen ? "Close menu" : "Open menu")); });
+siteNav?.addEventListener("click", (event) => { if (event.target.closest("a")) closeMenu(); });
+document.querySelectorAll(".nav-dropdown").forEach((dropdown) => dropdown.addEventListener("toggle", () => { if (dropdown.open) document.querySelectorAll(".nav-dropdown").forEach((other) => { if (other !== dropdown) other.removeAttribute("open"); }); }));
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll("[data-page-link]").forEach((link) => link.classList.toggle("active", link.dataset.pageLink === currentPage));
+const syncHeader = () => header?.classList.toggle("scrolled", window.scrollY > 12);
+syncHeader(); window.addEventListener("scroll", syncHeader, { passive:true });
+document.querySelectorAll("[data-filter]").forEach((button) => button.addEventListener("click", () => { const filter = button.dataset.filter; document.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("active", item === button)); document.querySelectorAll("[data-category]").forEach((card) => card.classList.toggle("is-hidden", filter !== "all" && card.dataset.category !== filter)); }));
+const cartNote = document.querySelector("[data-cart-note]");
+document.querySelectorAll("[data-cart]").forEach((button) => button.addEventListener("click", () => { if (cartNote) cartNote.textContent = `${button.dataset.cart} added to your sample preorder list.`; }));
+const form = document.querySelector("[data-contact-form]");
+form?.addEventListener("submit", (event) => { event.preventDefault(); const note = form.querySelector("[data-form-note]"); if (note) note.textContent = "Thanks. This template form is ready to connect to your backend."; form.reset(); });
