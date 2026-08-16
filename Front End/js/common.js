@@ -5,15 +5,17 @@ const closeSubmenus = () => document.querySelectorAll(".nav-dropdown").forEach((
 const closeMenu = () => { document.body.classList.remove("menu-open"); commonMenuToggle?.setAttribute("aria-expanded", "false"); commonMenuToggle?.querySelector("b")?.replaceChildren(document.createTextNode("Open menu")); closeSubmenus(); };
 commonMenuToggle?.addEventListener("click", () => { const isOpen = document.body.classList.toggle("menu-open"); commonMenuToggle.setAttribute("aria-expanded", String(isOpen)); commonMenuToggle.querySelector("b")?.replaceChildren(document.createTextNode(isOpen ? "Close menu" : "Open menu")); document.querySelectorAll(".nav-dropdown").forEach((dropdown) => dropdown.toggleAttribute("open", isOpen)); });
 commonSiteNav?.addEventListener("click", (event) => { if (event.target.closest("a")) closeMenu(); });
+const isProgramPage = window.location.pathname.split("/").some((part) => part.toLowerCase() === "program");
+const programPath = (page) => `${isProgramPage ? "" : "program/"}${page}`;
 const programLink = commonSiteNav?.querySelector('[data-page-link="programs.html"]');
 if (programLink) {
   const programDropdown = document.createElement("details");
   programDropdown.className = "nav-dropdown";
-  programDropdown.innerHTML = '<summary>Programs <span aria-hidden="true">+</span></summary><div class="dropdown-menu"><a data-page-link="pubg.html" href="pubg.html">PUBG</a><a data-page-link="mobile-legends.html" href="mobile-legends.html">Mobile Legends</a><a data-page-link="brawl-stars.html" href="brawl-stars.html">Brawl Stars</a><a data-page-link="clash-of-clans.html" href="clash-of-clans.html">Clash of Clans</a><a data-page-link="roblox.html" href="roblox.html">Roblox</a></div>';
+  programDropdown.innerHTML = `<summary>Programs <span aria-hidden="true">+</span></summary><div class="dropdown-menu"><a data-page-link="pubg.html" href="${programPath("pubg.html")}">PUBG</a><a data-page-link="mobile-legends.html" href="${programPath("mobile-legends.html")}">Mobile Legends</a><a data-page-link="brawl-stars.html" href="${programPath("brawl-stars.html")}">Brawl Stars</a><a data-page-link="clash-of-clans.html" href="${programPath("clash-of-clans.html")}">Clash of Clans</a><a data-page-link="roblox.html" href="${programPath("roblox.html")}">Roblox</a></div>`;
   programLink.replaceWith(programDropdown);
 }
 document.querySelectorAll('.dropdown-menu a[data-page-link="events.html"], .dropdown-menu a[data-page-link="media.html"]').forEach((link) => link.remove());
-const navTargets = { Programs: "programs.html", Events: "events.html", Media: "media.html" };
+const navTargets = { Programs: programPath("programs.html"), Events: isProgramPage ? "../events.html" : "events.html", Media: isProgramPage ? "../media.html" : "media.html" };
 document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
   const summary = dropdown.querySelector(":scope > summary");
   const label = summary?.textContent.replace("+", "").trim();
