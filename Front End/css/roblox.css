@@ -10,7 +10,7 @@ body.profile-modal-open { overflow:hidden; }
 .roster-card:hover::before,.roster-card:focus-visible::before { border-color:rgba(227,50,60,.8); }
 .roster-card:focus-visible { outline:3px solid rgba(227,50,60,.34); outline-offset:4px; }
 .roster-card-visual { position:absolute; inset:0; z-index:0; display:flex; align-items:flex-end; justify-content:center; background:#050506; }
-.roster-card-visual img { width:100%; height:100%; object-fit:contain; object-position:center bottom; transition:transform 260ms ease,filter 260ms ease; }
+.roster-card-visual img { width:100%; height:100%; object-fit:cover; object-position:center 16%; transition:transform 260ms ease,filter 260ms ease; }
 .roster-card:hover .roster-card-visual img,.roster-card:focus-visible .roster-card-visual img { filter:brightness(1.05) saturate(1.08); transform:scale(1.035); }
 .roster-card-caption { position:absolute; right:0; bottom:0; left:0; z-index:2; display:grid; gap:7px; padding:72px 22px 22px; opacity:0; transform:translateY(18px); transition:opacity 220ms ease,transform 220ms ease; }
 .roster-card:hover .roster-card-caption,.roster-card:focus-visible .roster-card-caption { opacity:1; transform:none; }
@@ -21,6 +21,12 @@ body.profile-modal-open { overflow:hidden; }
 .coach-section { background:#0d0e11; color:var(--white); }
 .coach-section .eyebrow { color:var(--red); }
 .coach-section h2 { color:var(--white); }
+.coach-placeholder { cursor:default; }
+.coach-placeholder:hover,.coach-placeholder:focus-visible { border-color:rgba(255,255,255,.18); box-shadow:none; transform:none; }
+.coach-placeholder .roster-card-caption { opacity:1; transform:none; }
+.coach-placeholder .roster-card-visual { background:linear-gradient(145deg,#161821,#252936); }
+.coach-placeholder-mark { display:grid; width:58px; height:58px; place-items:center; border:1px solid rgba(255,255,255,.35); border-radius:50%; color:rgba(255,255,255,.75); font-size:2rem; font-weight:300; }
+.coach-placeholder-note { color:rgba(255,255,255,.68); font-size:.78rem; line-height:1.4; }
 .profile-modal[hidden] { display:none; }
 .profile-modal { position:fixed; inset:0; z-index:80; display:grid; place-items:center; padding:24px; }
 .profile-modal-backdrop { position:absolute; inset:0; background:rgba(7,8,10,.78); backdrop-filter:blur(5px); }
