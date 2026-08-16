@@ -37,3 +37,37 @@
   .program-card:active::before,.program-card:focus-visible::before { filter:grayscale(0) saturate(1); opacity:1; }
   .program-card p { max-height:90px; opacity:1; transform:none; }
 }
+
+body[data-page="pubg.html"] .page-hero,
+body[data-page="mobile-legends.html"] .page-hero,
+body[data-page="brawl-stars.html"] .page-hero,
+body[data-page="clash-of-clans.html"] .page-hero,
+body[data-page="roblox.html"] .page-hero { position:relative; display:flex; min-height:clamp(430px,46vw,620px); align-items:flex-end; overflow:hidden; padding:clamp(90px,12vw,150px) 0 78px; background-color:var(--ink); background-repeat:no-repeat; background-size:cover; }
+body[data-page="pubg.html"] .page-hero { background-image:url("../assets/game-wallpapers/pubg-wallpaper.jpg"); background-position:center 42%; }
+body[data-page="mobile-legends.html"] .page-hero { background-image:url("../assets/game-wallpapers/mobile-legends-wallpaper.webp"); background-position:center center; }
+body[data-page="brawl-stars.html"] .page-hero { background-image:url("../assets/game-wallpapers/brawl-stars-wallpaper.jpg"); background-position:center center; }
+body[data-page="clash-of-clans.html"] .page-hero { background-image:url("../assets/game-wallpapers/clash-of-clans-wallpaper.png"); background-position:center center; }
+body[data-page="roblox.html"] .page-hero { background-image:url("../assets/game-wallpapers/roblox-wallpaper.jpg"); background-position:center center; }
+body[data-page="pubg.html"] .page-hero::before,
+body[data-page="mobile-legends.html"] .page-hero::before,
+body[data-page="brawl-stars.html"] .page-hero::before,
+body[data-page="clash-of-clans.html"] .page-hero::before,
+body[data-page="roblox.html"] .page-hero::before { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,18,22,.93) 0%,rgba(17,18,22,.76) 36%,rgba(17,18,22,.3) 76%,rgba(17,18,22,.5) 100%); content:""; }
+body[data-page="pubg.html"] .page-hero .site-shell,
+body[data-page="mobile-legends.html"] .page-hero .site-shell,
+body[data-page="brawl-stars.html"] .page-hero .site-shell,
+body[data-page="clash-of-clans.html"] .page-hero .site-shell,
+body[data-page="roblox.html"] .page-hero .site-shell { position:relative; z-index:1; }
+
+@media (max-width:680px) {
+  body[data-page="pubg.html"] .page-hero,
+  body[data-page="mobile-legends.html"] .page-hero,
+  body[data-page="brawl-stars.html"] .page-hero,
+  body[data-page="clash-of-clans.html"] .page-hero,
+  body[data-page="roblox.html"] .page-hero { min-height:470px; padding:90px 0 62px; background-position:center center; }
+  body[data-page="pubg.html"] .page-hero::before,
+  body[data-page="mobile-legends.html"] .page-hero::before,
+  body[data-page="brawl-stars.html"] .page-hero::before,
+  body[data-page="clash-of-clans.html"] .page-hero::before,
+  body[data-page="roblox.html"] .page-hero::before { background:linear-gradient(180deg,rgba(17,18,22,.62) 0%,rgba(17,18,22,.72) 44%,rgba(17,18,22,.97) 100%); }
+}
