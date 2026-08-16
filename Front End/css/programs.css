@@ -1,73 +1,321 @@
-.filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
-.filter-button { min-height:40px; padding:0 15px; border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer; font-size:.76rem; font-weight:900; letter-spacing:.07em; text-transform:uppercase; }
-.filter-button:hover,.filter-button.active { border-color:var(--ink); background:var(--ink); color:var(--white); }
-.program-card { position:relative; display:grid; min-height:430px; align-content:end; gap:15px; overflow:hidden; border-color:#34363d; background:var(--ink); color:var(--white); isolation:isolate; transition:border-color 180ms ease,transform 180ms ease,box-shadow 180ms ease; }
-.program-card::before { position:absolute; inset:24px 24px 126px; z-index:-2; background-position:center; background-repeat:no-repeat; background-size:contain; content:""; filter:grayscale(1) saturate(.15); opacity:.58; transition:filter 220ms ease,opacity 220ms ease,transform 220ms ease; }
-.program-card::after { position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(17,18,22,.04) 20%,rgba(17,18,22,.4) 50%,rgba(17,18,22,.98) 82%); content:""; }
-.program-card[href="pubg.html"]::before { background-image:url("../assets/pubg-logo.png"); }
-.program-card[href="mobile-legends.html"]::before { background-image:url("../assets/mobile-legends-logo.png"); }
-.program-card[href="brawl-stars.html"]::before { background-image:url("../assets/brawl-stars-logo.png"); }
-.program-card[href="clash-of-clans.html"]::before { background-image:url("../assets/clash-of-clans-logo.png"); }
-.program-card[href="roblox.html"]::before { background-image:url("../assets/roblox-logo.png"); }
-.program-card:hover,.program-card:focus-visible { border-color:var(--red); box-shadow:0 18px 45px rgba(17,18,22,.2); transform:translateY(-4px); }
-.program-card:hover::before,.program-card:focus-visible::before { filter:grayscale(0) saturate(1); opacity:1; transform:scale(1.05); }
-.program-card:focus-visible { outline:3px solid rgba(227,50,60,.35); outline-offset:4px; }
-.program-card-top,.team-heading { display:none; }
-.program-card-top,.program-card h3,.program-card p,.team-heading { position:relative; z-index:1; }
-.product-meta { display:flex; align-items:center; justify-content:space-between; gap:14px; }
-.game-tag,.status-tag { display:inline-flex; min-height:25px; align-items:center; padding:0 8px; background:rgba(255,255,255,.12); color:rgba(255,255,255,.78); font-size:.68rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
-.program-card h3 { margin-bottom:-4px; color:var(--white); }
-.program-card p { max-height:0; margin:0; overflow:hidden; color:rgba(255,255,255,.72); opacity:0; transform:translateY(8px); transition:max-height 220ms ease,opacity 220ms ease,transform 220ms ease; }
-.program-card:hover p,.program-card:focus-visible p { max-height:80px; opacity:1; transform:none; }
-.team-heading { padding-top:12px; border-top:1px solid rgba(255,255,255,.2); }
-.team-heading strong { color:var(--white); }
-.team-heading span { color:#ff6670; font-size:.75rem; font-weight:900; text-transform:uppercase; }
-.roster-snippet { display:none; }
-.roster-table-wrap { overflow-x:auto; border:1px solid var(--line); background:var(--white); }
-.roster-table { width:100%; min-width:640px; border-collapse:collapse; text-align:left; }
-.roster-table th,.roster-table td { padding:16px 18px; border-bottom:1px solid var(--line); }
-.roster-table th { background:#e9eaec; color:var(--muted); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; }
-.roster-table tr:last-child td { border-bottom:0; }
-.roster-table td { font-size:.9rem; }
-.roster-table td:first-child { font-weight:900; }
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
 
-@media (hover:none), (max-width:680px) {
-  .program-card { min-height:400px; }
-  .program-card::before { filter:grayscale(1) saturate(.15); opacity:.58; }
-  .program-card:active::before,.program-card:focus-visible::before { filter:grayscale(0) saturate(1); opacity:1; }
-  .program-card p { max-height:90px; opacity:1; transform:none; }
+.filter-button {
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.program-card {
+  position: relative;
+  display: grid;
+  min-height: 430px;
+  align-content: end;
+  gap: 15px;
+  overflow: hidden;
+  border-color: #34363d;
+  background: var(--ink);
+  color: var(--white);
+  isolation: isolate;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.program-card::before {
+  position: absolute;
+  inset: 24px 24px 126px;
+  z-index: -2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  filter: grayscale(1) saturate(.15);
+  opacity: .58;
+  transition: filter 220ms ease, opacity 220ms ease, transform 220ms ease;
+}
+
+.program-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(17, 18, 22, .04) 20%, rgba(17, 18, 22, .4) 50%, rgba(17, 18, 22, .98) 82%);
+  content: "";
+}
+
+.program-card[href="pubg.html"]::before {
+  background-image: url("../assets/pubg-logo.png");
+}
+
+.program-card[href="mobile-legends.html"]::before {
+  background-image: url("../assets/mobile-legends-logo.png");
+}
+
+.program-card[href="brawl-stars.html"]::before {
+  background-image: url("../assets/brawl-stars-logo.png");
+}
+
+.program-card[href="clash-of-clans.html"]::before {
+  background-image: url("../assets/clash-of-clans-logo.png");
+}
+
+.program-card[href="roblox.html"]::before {
+  background-image: url("../assets/roblox-logo.png");
+}
+
+.program-card:hover,
+.program-card:focus-visible {
+  border-color: var(--red);
+  box-shadow: 0 18px 45px rgba(17, 18, 22, .2);
+  transform: translateY(-4px);
+}
+
+.program-card:hover::before,
+.program-card:focus-visible::before {
+  filter: grayscale(0) saturate(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.program-card:focus-visible {
+  outline: 3px solid rgba(227, 50, 60, .35);
+  outline-offset: 4px;
+}
+
+.program-card-top,
+.team-heading {
+  display: none;
+}
+
+.program-card-top,
+.program-card h3,
+.program-card p,
+.team-heading {
+  position: relative;
+  z-index: 1;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.game-tag,
+.status-tag {
+  display: inline-flex;
+  min-height: 25px;
+  align-items: center;
+  padding: 0 8px;
+  background: rgba(255, 255, 255, .12);
+  color: rgba(255, 255, 255, .78);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.program-card h3 {
+  margin-bottom: -4px;
+  color: var(--white);
+}
+
+.program-card p {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, .72);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: max-height 220ms ease, opacity 220ms ease, transform 220ms ease;
+}
+
+.program-card:hover p,
+.program-card:focus-visible p {
+  max-height: 80px;
+  opacity: 1;
+  transform: none;
+}
+
+.team-heading {
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+}
+
+.team-heading strong {
+  color: var(--white);
+}
+
+.team-heading span {
+  color: #ff6670;
+  font-size: .75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.roster-snippet {
+  display: none;
+}
+
+.roster-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.roster-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.roster-table th,
+.roster-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.roster-table th {
+  background: #e9eaec;
+  color: var(--muted);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.roster-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.roster-table td {
+  font-size: .9rem;
+}
+
+.roster-table td:first-child {
+  font-weight: 900;
+}
+
+@media (hover:none),
+(max-width:680px) {
+  .program-card {
+    min-height: 400px;
+  }
+
+  .program-card::before {
+    filter: grayscale(1) saturate(.15);
+    opacity: .58;
+  }
+
+  .program-card:active::before,
+  .program-card:focus-visible::before {
+    filter: grayscale(0) saturate(1);
+    opacity: 1;
+  }
+
+  .program-card p {
+    max-height: 90px;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 body[data-page="pubg.html"] .page-hero,
 body[data-page="mobile-legends.html"] .page-hero,
 body[data-page="brawl-stars.html"] .page-hero,
 body[data-page="clash-of-clans.html"] .page-hero,
-body[data-page="roblox.html"] .page-hero { position:relative; display:flex; min-height:clamp(430px,46vw,620px); align-items:flex-end; overflow:hidden; padding:clamp(90px,12vw,150px) 0 78px; background-color:var(--ink); background-repeat:no-repeat; background-size:cover; }
-body[data-page="pubg.html"] .page-hero { background-image:url("../assets/game-wallpapers/pubg-wallpaper.jpg"); background-position:center 42%; }
-body[data-page="mobile-legends.html"] .page-hero { background-image:url("../assets/game-wallpapers/mobile-legends-wallpaper.webp"); background-position:center center; }
-body[data-page="brawl-stars.html"] .page-hero { background-image:url("../assets/game-wallpapers/brawl-stars-wallpaper.jpg"); background-position:center center; }
-body[data-page="clash-of-clans.html"] .page-hero { background-image:url("../assets/game-wallpapers/clash-of-clans-wallpaper.png"); background-position:center center; }
-body[data-page="roblox.html"] .page-hero { background-image:url("../assets/game-wallpapers/roblox-wallpaper.jpg"); background-position:center center; }
+body[data-page="roblox.html"] .page-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(430px, 46vw, 620px);
+  align-items: flex-end;
+  overflow: hidden;
+  padding: clamp(90px, 12vw, 150px) 0 78px;
+  background-color: var(--ink);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body[data-page="pubg.html"] .page-hero {
+  background-image: url("../assets/game-wallpapers/pubg-wallpaper.jpg");
+  background-position: center 42%;
+}
+
+body[data-page="mobile-legends.html"] .page-hero {
+  background-image: url("../assets/game-wallpapers/mobile-legends-wallpaper.webp");
+  background-position: center center;
+}
+
+body[data-page="brawl-stars.html"] .page-hero {
+  background-image: url("../assets/game-wallpapers/brawl-stars-wallpaper.jpg");
+  background-position: center center;
+}
+
+body[data-page="clash-of-clans.html"] .page-hero {
+  background-image: url("../assets/game-wallpapers/clash-of-clans-wallpaper.png");
+  background-position: center center;
+}
+
+body[data-page="roblox.html"] .page-hero {
+  background-image: url("../assets/game-wallpapers/roblox-wallpaper.jpg");
+  background-position: center center;
+}
+
 body[data-page="pubg.html"] .page-hero::before,
 body[data-page="mobile-legends.html"] .page-hero::before,
 body[data-page="brawl-stars.html"] .page-hero::before,
 body[data-page="clash-of-clans.html"] .page-hero::before,
-body[data-page="roblox.html"] .page-hero::before { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,18,22,.93) 0%,rgba(17,18,22,.76) 36%,rgba(17,18,22,.3) 76%,rgba(17,18,22,.5) 100%); content:""; }
+body[data-page="roblox.html"] .page-hero::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(17, 18, 22, .93) 0%, rgba(17, 18, 22, .76) 36%, rgba(17, 18, 22, .3) 76%, rgba(17, 18, 22, .5) 100%);
+  content: "";
+}
+
 body[data-page="pubg.html"] .page-hero .site-shell,
 body[data-page="mobile-legends.html"] .page-hero .site-shell,
 body[data-page="brawl-stars.html"] .page-hero .site-shell,
 body[data-page="clash-of-clans.html"] .page-hero .site-shell,
-body[data-page="roblox.html"] .page-hero .site-shell { position:relative; z-index:1; }
+body[data-page="roblox.html"] .page-hero .site-shell {
+  position: relative;
+  z-index: 1;
+}
 
 @media (max-width:680px) {
+
   body[data-page="pubg.html"] .page-hero,
   body[data-page="mobile-legends.html"] .page-hero,
   body[data-page="brawl-stars.html"] .page-hero,
   body[data-page="clash-of-clans.html"] .page-hero,
-  body[data-page="roblox.html"] .page-hero { min-height:470px; padding:90px 0 62px; background-position:center center; }
+  body[data-page="roblox.html"] .page-hero {
+    min-height: 470px;
+    padding: 90px 0 62px;
+    background-position: center center;
+  }
+
   body[data-page="pubg.html"] .page-hero::before,
   body[data-page="mobile-legends.html"] .page-hero::before,
   body[data-page="brawl-stars.html"] .page-hero::before,
   body[data-page="clash-of-clans.html"] .page-hero::before,
-  body[data-page="roblox.html"] .page-hero::before { background:linear-gradient(180deg,rgba(17,18,22,.62) 0%,rgba(17,18,22,.72) 44%,rgba(17,18,22,.97) 100%); }
+  body[data-page="roblox.html"] .page-hero::before {
+    background: linear-gradient(180deg, rgba(17, 18, 22, .62) 0%, rgba(17, 18, 22, .72) 44%, rgba(17, 18, 22, .97) 100%);
+  }
 }
