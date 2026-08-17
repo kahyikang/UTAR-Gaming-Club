@@ -45,3 +45,34 @@ if (scheduleItems.length) {
     nextItem.querySelector(".schedule-copy")?.prepend(badge);
   }
 }
+
+/* --- Add-to-calendar: build a downloadable .ics file for a schedule item --- */
+const pad2 = (num) => String(num).padStart(2, "0");
+document.querySelectorAll("[data-ics]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const { icsTitle: title, icsStart: start, icsEnd: end, icsDesc: description } = button.dataset;
+    const toIcsLocal = (isoLocal) => isoLocal.replace(/[-:]/g, "");
+    const nowUtc = new Date();
+    const dtstamp = `${nowUtc.getUTCFullYear()}${pad2(nowUtc.getUTCMonth() + 1)}${pad2(nowUtc.getUTCDate())}T${pad2(nowUtc.getUTCHours())}${pad2(nowUtc.getUTCMinutes())}${pad2(nowUtc.getUTCSeconds())}Z`;
+    const lines = [
+      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Utar Gaming//Event Schedule//EN", "BEGIN:VEVENT",
+      `UID:${Date.now()}-${Math.random().toString(36).slice(2)}@utargaming`,
+      `DTSTAMP:${dtstamp}`,
+      `DTSTART:${toIcsLocal(start)}`,
+      `DTEND:${toIcsLocal(end)}`,
+      `SUMMARY:${title}`,
+      `DESCRIPTION:${(description || "").replace(/,/g, "\\,")}`,
+      "LOCATION:UTAR Campus",
+      "END:VEVENT", "END:VCALENDAR",
+    ];
+    const blob = new Blob([lines.join("\r\n")], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${title.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  });
+});
