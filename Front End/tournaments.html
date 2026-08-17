@@ -1,12 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Tournaments | Utar Gaming</title><link rel="stylesheet" href="css/general.css" /><link rel="stylesheet" href="css/events.css" /><link rel="stylesheet" href="css/responsive.css" /><link rel="stylesheet" href="css/features.css" />    <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg" />
-  </head>
-  <body data-page="tournaments.html">
-    <header class="site-header" data-header><div class="site-shell header-inner"><a class="brand" href="index.html" aria-label="Utar Gaming home"><img src="assets/utar-gaming-logo.jpeg" alt="Utar Gaming E-Sports Club logo" /><span><strong>Utar Gaming</strong><small>E-Sports Club</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span></span><span></span><span></span><b class="sr-only">Open menu</b></button><nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary navigation"><a data-page-link="index.html" href="index.html">Home</a><a data-page-link="about.html" href="about.html">About us</a><a data-page-link="programs.html" href="program/programs.html">Programs</a><details class="nav-dropdown"><summary>Events <span aria-hidden="true">+</span></summary><div class="dropdown-menu"><a data-page-link="event-schedule.html" href="event-schedule.html">Event schedule</a><a data-page-link="tournaments.html" href="tournaments.html">Tournaments</a></div></details><details class="nav-dropdown"><summary>Media <span aria-hidden="true">+</span></summary><div class="dropdown-menu"><a data-page-link="gallery.html" href="gallery.html">Gallery &amp; highlights</a><a data-page-link="news.html" href="news.html">News &amp; media</a></div></details><a data-page-link="shop.html" href="shop.html">Shop</a><a data-page-link="contact.html" href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Join the club</a></nav></div></header>
-    <main><section class="page-hero"><div class="site-shell"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="events.html">Events</a><span>/</span><span>Tournaments</span></nav><p class="eyebrow">Tournaments</p><h1>Competition worth showing up for.</h1><p>List upcoming and past tournaments with game categories, formats, prizes, registration links, and results.</p></div></section>
-      <section class="section"><div class="site-shell"><div class="section-label"><p class="eyebrow">Upcoming tournament</p><h2>Nexus Open 2026</h2></div><div class="tournament-panel"><div class="tournament-panel-inner"><p>Two days of campus competition, live casting, creator booths, and community challenges.</p></div><dl><div><dt>Date</dt><dd>22-23 August 2026</dd></div><div><dt>Games</dt><dd>Valorant, MLBB, EA FC, Tekken</dd></div><div><dt>Format</dt><dd>Open bracket</dd></div><div><dt>Prize pool</dt><dd>RM 3,000</dd></div></dl><a class="button button-primary table-action" href="contact.html">Ask about registration</a></div></div></section>
-      <section class="section section-tint"><div class="site-shell"><div class="section-label"><p class="eyebrow">Tournament archive</p><h2>Past events and results.</h2></div><div class="values-grid"><article class="simple-card"><span class="status-tag">Past</span><h3>Campus Cup 2025</h3><p>Valorant · Champions: Team name · Prize: RM 1,500</p></article><article class="simple-card"><span class="status-tag">Upcoming</span><h3>Nexus Open 2026</h3><p>Multi-game · Registration opens soon · Prize: RM 3,000</p></article><article class="simple-card"><span class="status-tag">Draft</span><h3>Community Showmatch</h3><p>Game category · Date placeholder · Guest creators</p></article></div></div></section>
-    </main><footer class="site-footer"><div class="site-shell footer-inner"><div class="footer-brand"><img src="assets/utar-gaming-logo.jpeg" alt="" /><span><strong>Utar Gaming</strong><small>E-Sports Club</small></span></div><p>&copy; 2026 Utar Gaming E-Sports Club. Template content for customisation.</p><a href="contact.html">Get in touch <span aria-hidden="true">&#8594;</span></a></div></footer><script src="js/common.js?v=20260816" defer></script><script src="js/tournaments.js" defer></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tournaments | Utar Gaming</title>
+  <link rel="stylesheet" href="css/general.css" />
+  <link rel="stylesheet" href="css/events.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/features.css" />
+  <link rel="stylesheet" href="css/tournament-page.css" />
+  <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg" />
+</head>
+<body data-page="tournaments.html" class="tournament-page">
+  <header class="site-header" data-header>
+    <div class="site-shell header-inner">
+      <a class="brand" href="index.html" aria-label="Utar Gaming home">
+        <img src="assets/utar-gaming-logo.jpeg" alt="Utar Gaming E-Sports Club logo" />
+        <span><strong>Utar Gaming</strong><small>E-Sports Club</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span></span><span></span><span></span><b class="sr-only">Open menu</b>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary navigation">
+        <a data-page-link="index.html" href="index.html">Home</a>
+        <a data-page-link="about.html" href="about.html">About us</a>
+        <a data-page-link="programs.html" href="program/programs.html">Programs</a>
+        <details class="nav-dropdown">
+          <summary>Events <span aria-hidden="true">+</span></summary>
+          <div class="dropdown-menu">
+            <a data-page-link="event-schedule.html" href="event-schedule.html">Event schedule</a>
+            <a data-page-link="tournaments.html" href="tournaments.html">Tournaments</a>
+          </div>
+        </details>
+        <details class="nav-dropdown">
+          <summary>Media <span aria-hidden="true">+</span></summary>
+          <div class="dropdown-menu">
+            <a data-page-link="gallery.html" href="gallery.html">Gallery &amp; highlights</a>
+            <a data-page-link="news.html" href="news.html">News &amp; media</a>
+          </div>
+        </details>
+        <a data-page-link="shop.html" href="shop.html">Shop</a>
+        <a data-page-link="contact.html" href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Join the club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="tournament-hero" aria-labelledby="tournament-title">
+      <div class="tournament-hero-grid" aria-hidden="true"></div>
+      <div class="tournament-hero-mark" aria-hidden="true">UG</div>
+      <div class="site-shell tournament-hero-inner">
+        <nav class="breadcrumb tournament-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>/</span><a href="events.html">Events</a><span>/</span><span>Tournaments</span>
+        </nav>
+        <div class="tournament-hero-content">
+          <div>
+            <p class="tournament-kicker"><span class="live-dot"></span> Upcoming Tournament</p>
+            <h1 id="tournament-title">Nexus Open <em>2026</em></h1>
+            <p class="tournament-hero-copy">Two days of campus competition featuring UTAR Gaming's five game programs, live match action, community play and a final championship stage.</p>
+            <div class="tournament-hero-actions">
+              <a class="button button-primary" href="event-schedule.html">View Schedule</a>
+              <a class="button tournament-outline-button" href="#registration">Registration Info</a>
+            </div>
+          </div>
+
+          <aside class="hero-event-card" aria-label="Tournament summary">
+            <p class="hero-card-label">Tournament starts in</p>
+            <div class="hero-countdown" data-countdown data-target="2026-08-22T10:00:00+08:00">
+              <div><strong data-days>00</strong><span>Days</span></div>
+              <div><strong data-hours>00</strong><span>Hours</span></div>
+              <div><strong data-minutes>00</strong><span>Min</span></div>
+              <div><strong data-seconds>00</strong><span>Sec</span></div>
+            </div>
+            <div class="hero-event-meta">
+              <div><span>Date</span><strong>22–23 Aug 2026</strong></div>
+              <div><span>Venue</span><strong>UTAR Campus</strong></div>
+              <div><span>Prize Pool</span><strong>RM 3,000</strong></div>
+              <div><span>Programs</span><strong>5 Games</strong></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="tournament-overview section" id="overview">
+      <div class="site-shell">
+        <div class="tournament-section-heading">
+          <div>
+            <p class="eyebrow">Tournament Overview</p>
+            <h2>One tournament.<br />Five battlefields.</h2>
+          </div>
+          <p>Nexus Open brings together the club's competitive and community programs in one weekend. Each game keeps its own match format while sharing the same tournament stage.</p>
+        </div>
+        <div class="overview-stat-grid">
+          <article><span>01</span><strong>Open Competition</strong><p>Game-specific matches organised under one tournament weekend.</p></article>
+          <article><span>02</span><strong>Two-Day Format</strong><p>Group stages and qualifying rounds lead into championship matches.</p></article>
+          <article><span>03</span><strong>Club Programs</strong><p>Every featured game connects directly to an existing UTAR Gaming program.</p></article>
+          <article><span>04</span><strong>Live Results</strong><p>Match outcomes and champion information can be updated after each round.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tournament-timeline-section section section-dark" id="timeline">
+      <div class="site-shell">
+        <div class="tournament-section-heading light-heading">
+          <div>
+            <p class="eyebrow">Tournament Timeline</p>
+            <h2>Road to the final.</h2>
+          </div>
+          <p>From registration to the award ceremony, the tournament follows a clear progression so players can quickly understand what happens next.</p>
+        </div>
+        <ol class="tournament-timeline">
+          <li class="timeline-current">
+            <div class="timeline-marker"><span>01</span></div>
+            <div class="timeline-copy"><span class="timeline-date">10–19 AUG</span><h3>Registration</h3><p>Team entry and player details are submitted before the tournament closes registration.</p></div>
+          </li>
+          <li>
+            <div class="timeline-marker"><span>02</span></div>
+            <div class="timeline-copy"><span class="timeline-date">22 AUG · DAY 1</span><h3>Group Stage</h3><p>Opening rounds for PUBG, Mobile Legends and the first game-category match blocks.</p></div>
+          </li>
+          <li>
+            <div class="timeline-marker"><span>03</span></div>
+            <div class="timeline-copy"><span class="timeline-date">23 AUG · MORNING</span><h3>Playoffs</h3><p>Qualified teams and players progress into knockout or final-stage competition.</p></div>
+          </li>
+          <li>
+            <div class="timeline-marker"><span>04</span></div>
+            <div class="timeline-copy"><span class="timeline-date">23 AUG · AFTERNOON</span><h3>Grand Finals</h3><p>The strongest competitors meet in the decisive championship matches.</p></div>
+          </li>
+          <li>
+            <div class="timeline-marker"><span>05</span></div>
+            <div class="timeline-copy"><span class="timeline-date">23 AUG · EVENING</span><h3>Award Ceremony</h3><p>Winners are recognised and final tournament results are published.</p></div>
+          </li>
+        </ol>
+        <a class="timeline-link" href="event-schedule.html">See the full event schedule <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="games-section section" id="games">
+      <div class="site-shell">
+        <div class="tournament-section-heading">
+          <div>
+            <p class="eyebrow">Game Categories</p>
+            <h2>Choose your competition.</h2>
+          </div>
+          <p>Select a game to preview its tournament format. The categories use the same game programs already featured across the UTAR Gaming website.</p>
+        </div>
+
+        <div class="tournament-game-grid" role="list">
+          <button class="tournament-game-card active" type="button" data-game-tab="pubg" aria-pressed="true">
+            <span class="game-card-number">01</span><img src="assets/pubg-logo.png" alt="PUBG logo" /><span><strong>PUBG</strong><small>Utar Reapers</small></span>
+          </button>
+          <button class="tournament-game-card" type="button" data-game-tab="mlbb" aria-pressed="false">
+            <span class="game-card-number">02</span><img src="assets/mobile-legends-logo.png" alt="Mobile Legends logo" /><span><strong>Mobile Legends</strong><small>Utar Lynx</small></span>
+          </button>
+          <button class="tournament-game-card" type="button" data-game-tab="brawl" aria-pressed="false">
+            <span class="game-card-number">03</span><img src="assets/brawl-stars-logo.png" alt="Brawl Stars logo" /><span><strong>Brawl Stars</strong><small>Utar Brawlers</small></span>
+          </button>
+          <button class="tournament-game-card" type="button" data-game-tab="coc" aria-pressed="false">
+            <span class="game-card-number">04</span><img src="assets/clash-of-clans-logo.png" alt="Clash of Clans logo" /><span><strong>Clash of Clans</strong><small>Utar War Clan</small></span>
+          </button>
+          <button class="tournament-game-card" type="button" data-game-tab="roblox" aria-pressed="false">
+            <span class="game-card-number">05</span><img src="assets/roblox-logo.png" alt="Roblox logo" /><span><strong>Roblox</strong><small>Utar Creators</small></span>
+          </button>
+        </div>
+
+        <div class="format-panel" aria-live="polite">
+          <div class="format-logo-wrap"><img data-format-logo src="assets/pubg-logo.png" alt="" /></div>
+          <div class="format-main-copy">
+            <p class="format-label" data-format-label>Battle Royale</p>
+            <h3 data-format-title>PUBG · Squad Competition</h3>
+            <p data-format-copy>Teams compete across placement and elimination rounds, with overall performance determining who reaches the final lobby.</p>
+          </div>
+          <dl class="format-facts">
+            <div><dt>Club Program</dt><dd data-format-team>Utar Reapers</dd></div>
+            <div><dt>Format</dt><dd data-format-mode>Squad rounds</dd></div>
+            <div><dt>Stage</dt><dd data-format-stage>Group → Final lobby</dd></div>
+          </dl>
+          <a class="format-program-link" data-format-link href="program/pubg.html">View program <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bracket-section competition-showcase-section section section-tint" id="bracket">
+      <div class="site-shell">
+        <div class="tournament-section-heading">
+          <div>
+            <p class="eyebrow">Competition Format</p>
+            <h2 data-showcase-title>PUBG leaderboard.</h2>
+          </div>
+          <p data-showcase-copy>Each game uses a format that suits how it is actually played. Select a game above to switch this tournament view.</p>
+        </div>
+
+        <div class="format-note">
+          <span>FORMAT NOTE</span>
+          <p>Only Mobile Legends uses a full playoff bracket. The other games use their own leaderboard, match-flow, war-score or challenge-ranking view.</p>
+        </div>
+
+        <div class="bracket-status-row competition-status-row">
+          <div><span class="status-pulse"></span><strong data-showcase-status-title>Leaderboard status</strong><span data-showcase-status>Waiting for Day 1 match points</span></div>
+          <a href="event-schedule.html">Match schedule →</a>
+        </div>
+
+        <div class="competition-showcase" aria-live="polite">
+          <section class="competition-panel active" data-format-view="pubg" aria-label="PUBG leaderboard format">
+            <div class="format-view-heading"><span>Battle Royale</span><strong>Overall Standings</strong><small>Placement + elimination points</small></div>
+            <div class="leaderboard-card">
+              <div class="leaderboard-row leaderboard-head"><span>Rank</span><span>Team</span><span>Matches</span><span>Points</span></div>
+              <div class="leaderboard-row is-highlighted"><span>01</span><span><img src="assets/pubg-logo.png" alt="" />Utar Reapers</span><span>3</span><strong>42</strong></div>
+              <div class="leaderboard-row"><span>02</span><span>Team Vanguard</span><span>3</span><strong>36</strong></div>
+              <div class="leaderboard-row"><span>03</span><span>Team Havoc</span><span>3</span><strong>31</strong></div>
+              <div class="leaderboard-row"><span>04</span><span>Team Orbit</span><span>3</span><strong>27</strong></div>
+            </div>
+            <p class="format-view-caption">Top squads qualify for the final lobby based on cumulative placement and elimination points.</p>
+          </section>
+
+          <section class="competition-panel" data-format-view="mlbb" aria-label="Mobile Legends playoff bracket">
+            <div class="format-view-heading"><span>Featured Playoff Bracket</span><strong>Mobile Legends</strong><small>Quarterfinals → Semifinals → Grand Final</small></div>
+            <div class="bracket-board" aria-label="Mobile Legends tournament bracket">
+              <div class="bracket-column">
+                <div class="bracket-column-title"><span>Round 1</span><strong>Quarterfinals</strong></div>
+                <div class="bracket-match"><span>Match 01</span><p><strong>Utar Lynx</strong><b>—</b></p><p><strong>Team Phoenix</strong><b>—</b></p></div>
+                <div class="bracket-match"><span>Match 02</span><p><strong>Team Nova</strong><b>—</b></p><p><strong>Team Eclipse</strong><b>—</b></p></div>
+                <div class="bracket-match"><span>Match 03</span><p><strong>Team Vortex</strong><b>—</b></p><p><strong>Team Apex</strong><b>—</b></p></div>
+                <div class="bracket-match"><span>Match 04</span><p><strong>Team Pulse</strong><b>—</b></p><p><strong>Team Orion</strong><b>—</b></p></div>
+              </div>
+              <div class="bracket-column bracket-column-mid">
+                <div class="bracket-column-title"><span>Round 2</span><strong>Semifinals</strong></div>
+                <div class="bracket-match"><span>Match 05</span><p><strong>Winner M01</strong><b>—</b></p><p><strong>Winner M02</strong><b>—</b></p></div>
+                <div class="bracket-match"><span>Match 06</span><p><strong>Winner M03</strong><b>—</b></p><p><strong>Winner M04</strong><b>—</b></p></div>
+              </div>
+              <div class="bracket-column bracket-column-final">
+                <div class="bracket-column-title"><span>Final Round</span><strong>Grand Final</strong></div>
+                <div class="bracket-match bracket-final-match"><span>Championship</span><p><strong>Winner M05</strong><b>—</b></p><p><strong>Winner M06</strong><b>—</b></p><div class="champion-slot"><span>Champion</span><strong>TBD</strong></div></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="competition-panel" data-format-view="brawl" aria-label="Brawl Stars elimination match format">
+            <div class="format-view-heading"><span>3v3 Elimination</span><strong>Match Progression</strong><small>Best-of series by stage</small></div>
+            <div class="elimination-flow">
+              <article><span>01</span><small>Qualifier</small><h3>Best of 3</h3><p>Teams fight through map rotation and objective modes.</p><b>8 Teams</b></article>
+              <i>→</i>
+              <article><span>02</span><small>Semifinal</small><h3>Best of 3</h3><p>The top four teams advance into the knockout stage.</p><b>4 Teams</b></article>
+              <i>→</i>
+              <article class="flow-final"><span>03</span><small>Final</small><h3>Best of 5</h3><p>The last two teams compete for the championship.</p><b>2 Teams</b></article>
+            </div>
+          </section>
+
+          <section class="competition-panel" data-format-view="coc" aria-label="Clash of Clans war score format">
+            <div class="format-view-heading"><span>Clan War</span><strong>War Scoreboard</strong><small>Stars first · destruction percentage as tiebreaker</small></div>
+            <div class="war-score-card">
+              <div class="war-team"><img src="assets/clash-of-clans-logo.png" alt="" /><span><small>UTAR GAMING</small><strong>Utar War Clan</strong></span></div>
+              <div class="war-score"><span><small>Stars</small><strong>12</strong></span><b>VS</b><span><small>Stars</small><strong>10</strong></span></div>
+              <div class="war-team war-team-right"><span><small>OPPONENT</small><strong>Team Fortress</strong></span><span class="war-placeholder-logo">TF</span></div>
+              <div class="war-destruction"><span>94.6% destruction</span><span>89.2% destruction</span></div>
+            </div>
+            <p class="format-view-caption">The clan with more stars wins. Destruction percentage is used when the star count is tied.</p>
+          </section>
+
+          <section class="competition-panel" data-format-view="roblox" aria-label="Roblox challenge ranking format">
+            <div class="format-view-heading"><span>Competitive Challenge</span><strong>Challenge Ranking</strong><small>Performance across multiple challenge rounds</small></div>
+            <div class="challenge-ranking">
+              <article class="challenge-first"><span class="challenge-rank">01</span><img src="assets/roblox-logo.png" alt="" /><div><small>Utar Creators</small><strong>285 pts</strong></div><b>Finalist</b></article>
+              <article><span class="challenge-rank">02</span><span class="challenge-avatar">PX</span><div><small>Pixel X</small><strong>248 pts</strong></div><b>Qualified</b></article>
+              <article><span class="challenge-rank">03</span><span class="challenge-avatar">RB</span><div><small>Red Blocks</small><strong>231 pts</strong></div><b>Qualified</b></article>
+              <article><span class="challenge-rank">04</span><span class="challenge-avatar">NX</span><div><small>Nexus Crew</small><strong>218 pts</strong></div><b>In progress</b></article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="prize-section section section-dark" id="prizes">
+      <div class="site-shell prize-layout">
+        <div class="prize-intro">
+          <p class="eyebrow">Prize Pool</p>
+          <h2>RM 3,000</h2>
+          <p>The tournament's sample prize allocation is displayed clearly so competitors can understand the championship rewards at a glance.</p>
+        </div>
+        <div class="podium-grid">
+          <article class="podium-card podium-first"><span class="podium-rank">01</span><div><p>Champion</p><strong>RM 1,500</strong></div><span class="podium-label">1st Place</span></article>
+          <article class="podium-card"><span class="podium-rank">02</span><div><p>Runner-up</p><strong>RM 900</strong></div><span class="podium-label">2nd Place</span></article>
+          <article class="podium-card"><span class="podium-rank">03</span><div><p>Third Place</p><strong>RM 600</strong></div><span class="podium-label">3rd Place</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="registration-section section" id="registration">
+      <div class="site-shell registration-panel">
+        <div class="registration-copy">
+          <p class="eyebrow">Registration</p>
+          <h2>Ready to compete?</h2>
+          <p>Check the important tournament information before submitting a team enquiry. Final eligibility and game-specific rules can be confirmed with the club organiser.</p>
+          <div class="registration-actions">
+            <a class="button button-primary" href="contact.html">Register / Enquire</a>
+            <a class="registration-text-link" href="event-schedule.html">Check match schedule →</a>
+          </div>
+        </div>
+        <dl class="registration-facts">
+          <div><dt>Registration closes</dt><dd>19 August 2026</dd></div>
+          <div><dt>Tournament dates</dt><dd>22–23 August 2026</dd></div>
+          <div><dt>Team requirement</dt><dd>Depends on selected game</dd></div>
+          <div><dt>Player check-in</dt><dd>Before scheduled match time</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="archive-section section section-tint" id="archive">
+      <div class="site-shell">
+        <div class="archive-heading-row">
+          <div class="section-label"><p class="eyebrow">Tournament Archive</p><h2>Past events and results.</h2></div>
+          <label class="bookmark-toggle"><input type="checkbox" data-bookmark-filter /> Show saved only (<span data-bookmark-count>0</span>)</label>
+        </div>
+        <div class="tournament-archive-grid" data-archive-grid>
+          <article class="archive-card">
+            <div class="archive-card-top"><span class="archive-year">2025</span><span class="archive-status past">Past</span></div>
+            <h3>Campus Cup 2025</h3>
+            <p>Multi-game campus tournament featuring competitive club teams and community players.</p>
+            <dl><div><dt>Champion</dt><dd>UTAR Gaming Team</dd></div><div><dt>Prize</dt><dd>RM 1,500</dd></div></dl>
+            <button class="bookmark-btn" type="button" data-bookmark="campus-cup-2025" aria-pressed="false">☆ Save event</button>
+          </article>
+          <article class="archive-card archive-card-featured">
+            <div class="archive-card-top"><span class="archive-year">2026</span><span class="archive-status upcoming">Upcoming</span></div>
+            <h3>Nexus Open 2026</h3>
+            <p>Five UTAR Gaming programs compete across two days of tournament action.</p>
+            <dl><div><dt>Date</dt><dd>22–23 Aug</dd></div><div><dt>Prize</dt><dd>RM 3,000</dd></div></dl>
+            <button class="bookmark-btn" type="button" data-bookmark="nexus-open-2026" aria-pressed="false">☆ Save event</button>
+          </article>
+          <article class="archive-card">
+            <div class="archive-card-top"><span class="archive-year">2026</span><span class="archive-status planned">Planned</span></div>
+            <h3>Community Showmatch</h3>
+            <p>A future friendly event designed for club members, creators and guest players.</p>
+            <dl><div><dt>Format</dt><dd>Showmatch</dd></div><div><dt>Status</dt><dd>To be announced</dd></div></dl>
+            <button class="bookmark-btn" type="button" data-bookmark="community-showmatch-2026" aria-pressed="false">☆ Save event</button>
+          </article>
+        </div>
+        <p class="archive-empty" data-archive-empty hidden>No saved tournaments yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-shell footer-inner">
+      <div class="footer-brand"><img src="assets/utar-gaming-logo.jpeg" alt="" /><span><strong>Utar Gaming</strong><small>E-Sports Club</small></span></div>
+      <p>&copy; 2026 Utar Gaming E-Sports Club.</p>
+      <a href="contact.html">Get in touch <span aria-hidden="true">→</span></a>
+    </div>
+  </footer>
+
+  <script src="js/common.js?v=20260816" defer></script>
+  <script src="js/tournaments.js" defer></script>
+  <script src="js/tournament-page.js" defer></script>
+</body>
 </html>
