@@ -1,11 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Event Schedule | Utar Gaming</title><link rel="stylesheet" href="css/general.css" /><link rel="stylesheet" href="css/events.css" /><link rel="stylesheet" href="css/responsive.css" /><link rel="stylesheet" href="css/features.css" />    <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg" />
-  </head>
-  <body data-page="event-schedule.html">
-    <header class="site-header" data-header><div class="site-shell header-inner"><a class="brand" href="index.html" aria-label="Utar Gaming home"><img src="assets/utar-gaming-logo.jpeg" alt="Utar Gaming E-Sports Club logo" /><span><strong>Utar Gaming</strong><small>E-Sports Club</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span></span><span></span><span></span><b class="sr-only">Open menu</b></button><nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary navigation"><a data-page-link="index.html" href="index.html">Home</a><a data-page-link="about.html" href="about.html">About us</a><a data-page-link="programs.html" href="program/programs.html">Programs</a><details class="nav-dropdown"><summary>Events <span aria-hidden="true">+</span></summary><div class="dropdown-menu"><a data-page-link="event-schedule.html" href="event-schedule.html">Event schedule</a><a data-page-link="tournaments.html" href="tournaments.html">Tournaments</a></div></details><details class="nav-dropdown"><summary>Media <span aria-hidden="true">+</span></summary><div class="dropdown-menu"><a data-page-link="gallery.html" href="gallery.html">Gallery &amp; highlights</a><a data-page-link="news.html" href="news.html">News &amp; media</a></div></details><a data-page-link="shop.html" href="shop.html">Shop</a><a data-page-link="contact.html" href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Join the club</a></nav></div></header>
-    <main><section class="page-hero"><div class="site-shell"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="events.html">Events</a><span>/</span><span>Event schedule</span></nav><p class="eyebrow">Event schedule</p><h1>What is happening next.</h1><p>Use this dedicated page for training sessions, meetings, workshops, LAN nights, and community activities.</p></div></section>
-      <section class="section"><div class="site-shell events-layout"><section class="schedule"><div class="schedule-heading"><p class="eyebrow">Upcoming sessions</p><h2>Keep your calendar ready.</h2><div class="filter-row schedule-filter-row" role="tablist" aria-label="Filter the schedule" data-schedule-filter><button class="filter-button active" type="button" data-filter="all">All</button><button class="filter-button" type="button" data-filter="tournament">Tournament</button><button class="filter-button" type="button" data-filter="tryout">Tryout</button><button class="filter-button" type="button" data-filter="workshop">Workshop</button><button class="filter-button" type="button" data-filter="community">Community</button></div></div><ul class="schedule-list"><li class="schedule-item" data-schedule-item data-category="tryout"><time class="schedule-date" datetime="2026-07-18">18 Jul<br />2026</time><div class="schedule-copy"><strong>Valorant team tryouts</strong><span>Open evaluation session for new and returning players.</span></div><span class="schedule-type">Tryout</span></li><li class="schedule-item" data-schedule-item data-category="community"><time class="schedule-date" datetime="2026-07-24">24 Jul<br />2026</time><div class="schedule-copy"><strong>Friday LAN night</strong><span>Casual matches, community games, and a beginner-friendly lobby.</span></div><span class="schedule-type">Community</span></li><li class="schedule-item" data-schedule-item data-category="workshop"><time class="schedule-date" datetime="2026-08-08">08 Aug<br />2026</time><div class="schedule-copy"><strong>Streaming and casting workshop</strong><span>Learn production basics with the media crew.</span></div><span class="schedule-type">Workshop</span></li><li class="schedule-item" data-schedule-item data-category="tournament"><time class="schedule-date" datetime="2026-08-22">22 Aug<br />2026</time><div class="schedule-copy"><strong>Nexus Open 2026</strong><span>Inter-faculty tournament weekend at the campus arena.</span></div><span class="schedule-type">Tournament</span></li></ul></section><aside class="tournament-panel"><div class="tournament-panel-inner"><p class="eyebrow">Need another page?</p><h2>Explore tournaments.</h2></div><p style="padding:0 26px;">Open the tournament page for brackets, game categories, prizes, and past results.</p><a class="button button-primary table-action" href="tournaments.html">View tournaments</a></aside></div></section>
-    </main><footer class="site-footer"><div class="site-shell footer-inner"><div class="footer-brand"><img src="assets/utar-gaming-logo.jpeg" alt="" /><span><strong>Utar Gaming</strong><small>E-Sports Club</small></span></div><p>&copy; 2026 Utar Gaming E-Sports Club. Template content for customisation.</p><a href="contact.html">Get in touch <span aria-hidden="true">&#8594;</span></a></div></footer><script src="js/common.js?v=20260816" defer></script><script src="js/filters.js" defer></script><script src="js/events.js" defer></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Schedule | Utar Gaming</title>
+  <link rel="stylesheet" href="css/general.css" />
+  <link rel="stylesheet" href="css/events.css" />
+  <link rel="stylesheet" href="css/event-schedule.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg" />
+</head>
+<body data-page="event-schedule.html" class="vct-schedule-page">
+  <header class="site-header" data-header>
+    <div class="site-shell header-inner">
+      <a class="brand" href="index.html" aria-label="Utar Gaming home">
+        <img src="assets/utar-gaming-logo.jpeg" alt="Utar Gaming E-Sports Club logo" />
+        <span><strong>Utar Gaming</strong><small>E-Sports Club</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span></span><span></span><span></span><b class="sr-only">Open menu</b>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary navigation">
+        <a data-page-link="index.html" href="index.html">Home</a>
+        <a data-page-link="about.html" href="about.html">About us</a>
+        <a data-page-link="programs.html" href="program/programs.html">Programs</a>
+        <details class="nav-dropdown">
+          <summary>Events <span aria-hidden="true">+</span></summary>
+          <div class="dropdown-menu">
+            <a data-page-link="event-schedule.html" href="event-schedule.html">Event schedule</a>
+            <a data-page-link="tournaments.html" href="tournaments.html">Tournaments</a>
+          </div>
+        </details>
+        <details class="nav-dropdown">
+          <summary>Media <span aria-hidden="true">+</span></summary>
+          <div class="dropdown-menu">
+            <a data-page-link="gallery.html" href="gallery.html">Gallery &amp; highlights</a>
+            <a data-page-link="news.html" href="news.html">News &amp; media</a>
+          </div>
+        </details>
+        <a data-page-link="shop.html" href="shop.html">Shop</a>
+        <a data-page-link="contact.html" href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Join the club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="esports-schedule-shell">
+    <aside class="league-sidebar" aria-label="Game program filters">
+      <div class="league-sidebar-brand">
+        <span class="league-mark">UG</span>
+        <div><strong>UTAR GAMING</strong><span>EVENT SCHEDULE</span></div>
+      </div>
+
+      <div class="league-filter-title">GAME PROGRAMS</div>
+      <button class="league-filter active" type="button" data-program-filter="all">
+        <span class="league-filter-icon league-filter-all">ALL</span>
+        <span><strong>All Programs</strong><small>Complete club schedule</small></span>
+      </button>
+      <button class="league-filter" type="button" data-program-filter="pubg">
+        <img src="assets/pubg-logo.png" alt="" />
+        <span><strong>PUBG</strong><small>Utar Reapers</small></span>
+      </button>
+      <button class="league-filter" type="button" data-program-filter="mlbb">
+        <img src="assets/mobile-legends-logo.png" alt="" />
+        <span><strong>Mobile Legends</strong><small>Utar Lynx</small></span>
+      </button>
+      <button class="league-filter" type="button" data-program-filter="brawlstars">
+        <img src="assets/brawl-stars-logo.png" alt="" />
+        <span><strong>Brawl Stars</strong><small>Utar Brawlers</small></span>
+      </button>
+      <button class="league-filter" type="button" data-program-filter="coc">
+        <img src="assets/clash-of-clans-logo.png" alt="" />
+        <span><strong>Clash of Clans</strong><small>Utar War Clan</small></span>
+      </button>
+      <button class="league-filter" type="button" data-program-filter="roblox">
+        <img src="assets/roblox-logo.png" alt="" />
+        <span><strong>Roblox</strong><small>Utar Creators</small></span>
+      </button>
+
+      <div class="league-sidebar-note">
+        <span>2026 Club Season</span>
+        <strong>Aug — Oct</strong>
+        <p>Training, workshops, community sessions and tournaments in one place.</p>
+      </div>
+    </aside>
+
+    <section class="schedule-center">
+      <header class="schedule-topbar">
+        <div class="selected-date" aria-live="polite">
+          <p class="topbar-kicker">CLUB EVENT TIMELINE</p>
+          <div class="selected-date-labels">
+            <span class="relative-day-label" data-selected-relative>SCHEDULE</span>
+            <span data-selected-weekday>THURSDAY</span>
+          </div>
+          <strong data-selected-date>Aug 20</strong>
+          <small data-selected-context>1 scheduled item on this day</small>
+        </div>
+        <div class="schedule-controls">
+          <div class="date-control-group" aria-label="Schedule date controls">
+            <button type="button" class="square-control" data-date-prev aria-label="Previous event date">&#8592;</button>
+            <button type="button" class="today-control" data-date-today>Today</button>
+            <button type="button" class="square-control" data-date-next aria-label="Next event date">&#8594;</button>
+          </div>
+          <label class="activity-select-wrap">
+            <span class="sr-only">Filter by activity type</span>
+            <select data-type-filter>
+              <option value="all">All Activities</option>
+              <option value="tournament">Tournament</option>
+              <option value="practice">Practice</option>
+              <option value="workshop">Workshop</option>
+              <option value="community">Community</option>
+              <option value="tryout">Tryout</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <div class="schedule-feed" data-schedule-feed>
+        <div class="load-more-slot">
+          <button class="load-more-button" type="button" data-load-more>Load More</button>
+        </div>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-08-20">
+          <h2>Thursday Aug 20</h2>
+          <article class="match-card" data-event-card data-program="mlbb" data-type="practice">
+            <div class="match-card-main">
+              <button class="match-status-icon" type="button" data-ics data-ics-title="Mobile Legends weekly scrim" data-ics-start="2026-08-20T19:00:00" data-ics-end="2026-08-20T21:00:00" data-ics-desc="Ranked scrim block for the Utar Lynx roster and reserves." aria-label="Add Mobile Legends weekly scrim to calendar">+</button>
+              <div class="match-team match-team-left">
+                <span class="team-name">Utar Lynx</span>
+                <img src="assets/mobile-legends-logo.png" alt="Mobile Legends logo" />
+              </div>
+              <div class="match-center-copy"><strong>7:00 PM</strong><span>Weekly Scrim</span></div>
+              <div class="match-event-copy"><strong>Practice Block</strong><span>Ranked draft &amp; rotation timing</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/mobile-legends-logo.png" alt="" /> Mobile Legends</span><span>Practice</span><span>2 hours</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-08-22">
+          <h2>Saturday Aug 22</h2>
+          <article class="match-card" data-event-card data-program="pubg" data-type="tournament">
+            <div class="match-card-main">
+              <button class="match-status-icon is-live-style" type="button" data-ics data-ics-title="Nexus Open 2026 - PUBG Group Stage" data-ics-start="2026-08-22T10:00:00" data-ics-end="2026-08-22T13:00:00" data-ics-desc="PUBG group-stage block for the Utar Reapers at Nexus Open 2026." aria-label="Add PUBG group stage to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar Reapers</span><img src="assets/pubg-logo.png" alt="PUBG logo" /></div>
+              <div class="match-center-copy"><strong>10:00 AM</strong><span>Group Stage</span></div>
+              <div class="match-event-copy"><strong>Nexus Open 2026</strong><span>Battle royale · squad round</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/pubg-logo.png" alt="" /> PUBG</span><span>Nexus Open · Group Stage</span><span>Round 1</span></div>
+          </article>
+
+          <article class="match-card" data-event-card data-program="mlbb" data-type="tournament">
+            <div class="match-card-main">
+              <button class="match-status-icon is-live-style" type="button" data-ics data-ics-title="Nexus Open 2026 - Mobile Legends Group Stage" data-ics-start="2026-08-22T14:00:00" data-ics-end="2026-08-22T17:00:00" data-ics-desc="Mobile Legends group-stage block for Utar Lynx at Nexus Open 2026." aria-label="Add Mobile Legends group stage to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar Lynx</span><img src="assets/mobile-legends-logo.png" alt="Mobile Legends logo" /></div>
+              <div class="match-center-copy"><strong>2:00 PM</strong><span>Group Stage</span></div>
+              <div class="match-event-copy"><strong>Nexus Open 2026</strong><span>MOBA · 5v5 bracket</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/mobile-legends-logo.png" alt="" /> Mobile Legends</span><span>Nexus Open · Group Stage</span><span>Bo3</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-08-23">
+          <h2>Sunday Aug 23</h2>
+          <article class="match-card" data-event-card data-program="brawlstars" data-type="tournament">
+            <div class="match-card-main">
+              <button class="match-status-icon is-live-style" type="button" data-ics data-ics-title="Nexus Open 2026 - Brawl Stars Final" data-ics-start="2026-08-23T12:00:00" data-ics-end="2026-08-23T14:00:00" data-ics-desc="Brawl Stars finals block for Utar Brawlers at Nexus Open 2026." aria-label="Add Brawl Stars final to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar Brawlers</span><img src="assets/brawl-stars-logo.png" alt="Brawl Stars logo" /></div>
+              <div class="match-center-copy"><strong>12:00 PM</strong><span>Finals</span></div>
+              <div class="match-event-copy"><strong>Nexus Open 2026</strong><span>Action · championship round</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/brawl-stars-logo.png" alt="" /> Brawl Stars</span><span>Nexus Open · Finals</span><span>Bo5</span></div>
+          </article>
+
+          <article class="match-card" data-event-card data-program="coc" data-type="tournament">
+            <div class="match-card-main">
+              <button class="match-status-icon is-live-style" type="button" data-ics data-ics-title="Nexus Open 2026 - Clash of Clans Final" data-ics-start="2026-08-23T15:00:00" data-ics-end="2026-08-23T17:00:00" data-ics-desc="Clash of Clans finals block for Utar War Clan at Nexus Open 2026." aria-label="Add Clash of Clans final to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar War Clan</span><img src="assets/clash-of-clans-logo.png" alt="Clash of Clans logo" /></div>
+              <div class="match-center-copy"><strong>3:00 PM</strong><span>Finals</span></div>
+              <div class="match-event-copy"><strong>Nexus Open 2026</strong><span>Strategy · clan war round</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/clash-of-clans-logo.png" alt="" /> Clash of Clans</span><span>Nexus Open · Finals</span><span>War format</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-08-29">
+          <h2>Saturday Aug 29</h2>
+          <article class="match-card" data-event-card data-program="pubg" data-type="workshop">
+            <div class="match-card-main">
+              <button class="match-status-icon" type="button" data-ics data-ics-title="PUBG squad strategy workshop" data-ics-start="2026-08-29T14:00:00" data-ics-end="2026-08-29T16:00:00" data-ics-desc="Rotations, loadouts and endgame positioning workshop for the Utar Reapers." aria-label="Add PUBG workshop to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar Reapers</span><img src="assets/pubg-logo.png" alt="PUBG logo" /></div>
+              <div class="match-center-copy"><strong>2:00 PM</strong><span>Workshop</span></div>
+              <div class="match-event-copy"><strong>Squad Strategy</strong><span>Rotations, loadouts &amp; endgame positioning</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/pubg-logo.png" alt="" /> PUBG</span><span>Workshop</span><span>2 hours</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-09-05">
+          <h2>Saturday Sep 05</h2>
+          <article class="match-card" data-event-card data-program="brawlstars" data-type="community">
+            <div class="match-card-main">
+              <button class="match-status-icon" type="button" data-ics data-ics-title="Brawl Stars open lobby night" data-ics-start="2026-09-05T19:00:00" data-ics-end="2026-09-05T22:00:00" data-ics-desc="Casual matches for every skill level with the Utar Brawlers community." aria-label="Add Brawl Stars open lobby to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar Brawlers</span><img src="assets/brawl-stars-logo.png" alt="Brawl Stars logo" /></div>
+              <div class="match-center-copy"><strong>7:00 PM</strong><span>Community</span></div>
+              <div class="match-event-copy"><strong>Open Lobby Night</strong><span>Casual matches · all skill levels welcome</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/brawl-stars-logo.png" alt="" /> Brawl Stars</span><span>Community</span><span>Open entry</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-09-12">
+          <h2>Saturday Sep 12</h2>
+          <article class="match-card" data-event-card data-program="roblox" data-type="tryout">
+            <div class="match-card-main">
+              <button class="match-status-icon" type="button" data-ics data-ics-title="Roblox creator and competitive tryouts" data-ics-start="2026-09-12T18:00:00" data-ics-end="2026-09-12T20:00:00" data-ics-desc="Open evaluation for competitive players and creator-track applicants for Utar Creators." aria-label="Add Roblox tryouts to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar Creators</span><img src="assets/roblox-logo.png" alt="Roblox logo" /></div>
+              <div class="match-center-copy"><strong>6:00 PM</strong><span>Tryouts</span></div>
+              <div class="match-event-copy"><strong>Creator + Competitive</strong><span>Player evaluation &amp; creator-track intake</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/roblox-logo.png" alt="" /> Roblox</span><span>Tryout</span><span>Open intake</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-09-19">
+          <h2>Saturday Sep 19</h2>
+          <article class="match-card" data-event-card data-program="coc" data-type="tournament">
+            <div class="match-card-main">
+              <button class="match-status-icon is-live-style" type="button" data-ics data-ics-title="Clash of Clans clan war kickoff" data-ics-start="2026-09-19T20:00:00" data-ics-end="2026-09-19T21:00:00" data-ics-desc="Season war opener for the Utar War Clan." aria-label="Add Clash of Clans clan war to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">Utar War Clan</span><img src="assets/clash-of-clans-logo.png" alt="Clash of Clans logo" /></div>
+              <div class="match-center-copy"><strong>8:00 PM</strong><span>Clan War</span></div>
+              <div class="match-event-copy"><strong>Season War Kickoff</strong><span>Attack planning · clan coordination</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img src="assets/clash-of-clans-logo.png" alt="" /> Clash of Clans</span><span>Tournament</span><span>War opener</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-10-03">
+          <h2>Saturday Oct 03</h2>
+          <article class="match-card" data-event-card data-program="all" data-type="workshop">
+            <div class="match-card-main">
+              <button class="match-status-icon" type="button" data-ics data-ics-title="Streaming and casting workshop" data-ics-start="2026-10-03T14:00:00" data-ics-end="2026-10-03T16:00:00" data-ics-desc="Production basics, live casting and stream setup for all UTAR Gaming programs." aria-label="Add streaming workshop to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">All Programs</span><img class="club-round-logo" src="assets/utar-gaming-logo.jpeg" alt="UTAR Gaming logo" /></div>
+              <div class="match-center-copy"><strong>2:00 PM</strong><span>Workshop</span></div>
+              <div class="match-event-copy"><strong>Streaming + Casting</strong><span>Production basics with the media crew</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img class="club-round-logo" src="assets/utar-gaming-logo.jpeg" alt="" /> Multi-program</span><span>Workshop</span><span>Media crew</span></div>
+          </article>
+        </section>
+
+        <section class="schedule-day" data-schedule-day data-date="2026-10-10">
+          <h2>Saturday Oct 10</h2>
+          <article class="match-card" data-event-card data-program="all" data-type="tournament">
+            <div class="match-card-main">
+              <button class="match-status-icon is-live-style" type="button" data-ics data-ics-title="Campus Cup 2026 Qualifiers" data-ics-start="2026-10-10T10:00:00" data-ics-end="2026-10-10T18:00:00" data-ics-desc="Campus Cup qualifying day across UTAR Gaming programs." aria-label="Add Campus Cup qualifiers to calendar">+</button>
+              <div class="match-team match-team-left"><span class="team-name">UTAR Gaming</span><img class="club-round-logo" src="assets/utar-gaming-logo.jpeg" alt="UTAR Gaming logo" /></div>
+              <div class="match-center-copy"><strong>10:00 AM</strong><span>Qualifiers</span></div>
+              <div class="match-event-copy"><strong>Campus Cup 2026</strong><span>Multi-program qualifying day</span></div>
+            </div>
+            <div class="match-card-meta"><span class="meta-game"><img class="club-round-logo" src="assets/utar-gaming-logo.jpeg" alt="" /> Multi-program</span><span>Tournament</span><span>Qualifiers</span></div>
+          </article>
+        </section>
+
+        <div class="schedule-empty" data-schedule-empty hidden>No events match this filter.</div>
+      </div>
+    </section>
+
+    <aside class="schedule-rail">
+      <section class="rail-block">
+        <div class="rail-heading"><h2>Club Programs</h2><span>2026</span></div>
+        <ol class="program-ranking">
+          <li><span class="rank-number">1</span><img src="assets/pubg-logo.png" alt="" /><span><strong>PUBG</strong><small>Utar Reapers</small></span></li>
+          <li><span class="rank-number">2</span><img src="assets/mobile-legends-logo.png" alt="" /><span><strong>MLBB</strong><small>Utar Lynx</small></span></li>
+          <li><span class="rank-number">3</span><img src="assets/brawl-stars-logo.png" alt="" /><span><strong>Brawl Stars</strong><small>Utar Brawlers</small></span></li>
+          <li><span class="rank-number">4</span><img src="assets/clash-of-clans-logo.png" alt="" /><span><strong>Clash of Clans</strong><small>Utar War Clan</small></span></li>
+          <li><span class="rank-number">5</span><img src="assets/roblox-logo.png" alt="" /><span><strong>Roblox</strong><small>Utar Creators</small></span></li>
+        </ol>
+        <a class="rail-link" href="program/programs.html">View All Programs <span>&#8250;</span></a>
+      </section>
+
+      <section class="rail-block next-tournament-card">
+        <p class="rail-kicker">NEXT TOURNAMENT</p>
+        <h2>Nexus Open 2026</h2>
+        <div class="rail-tournament-date">22 — 23 AUG</div>
+        <p>Campus competition featuring the club programs from PUBG, Mobile Legends, Brawl Stars, Clash of Clans and Roblox.</p>
+        <div class="rail-pills"><span>5 Programs</span><span>2 Days</span></div>
+        <a class="rail-link" href="tournaments.html">Tournament Details <span>&#8250;</span></a>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="site-footer compact-schedule-footer">
+    <div class="site-shell footer-inner">
+      <div class="footer-brand"><img src="assets/utar-gaming-logo.jpeg" alt="" /><span><strong>Utar Gaming</strong><small>E-Sports Club</small></span></div>
+      <p>&copy; 2026 Utar Gaming E-Sports Club.</p>
+      <a href="contact.html">Get in touch <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </footer>
+
+  <script src="js/common.js?v=20260816" defer></script>
+  <script src="js/event-schedule.js" defer></script>
+</body>
 </html>
