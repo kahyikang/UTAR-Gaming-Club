@@ -16,7 +16,7 @@ document.querySelectorAll("[data-bookmark]").forEach((button) => {
 renderBookmarkCount();
 const bookmarkFilterToggle = document.querySelector("[data-bookmark-filter]");
 if (bookmarkFilterToggle) {
-  const archiveCards = document.querySelectorAll("[data-archive-grid] .simple-card");
+  const archiveCards = document.querySelectorAll("[data-archive-grid] .simple-card, [data-archive-grid] .archive-card");
   const emptyMessage = document.querySelector("[data-archive-empty]");
   const applyBookmarkFilter = () => {
     const onlySaved = bookmarkFilterToggle.checked;
