@@ -9,6 +9,9 @@
     --red-deep: #a91f2a;
     --blue: #1d5cc6;
     --gold: #e8af3f;
+    --purple: #7b4fd1;
+    --orange: #c9622a;
+    --teal: #1f8a70;
     --max-width: 1180px;
     --shadow: 0 18px 48px rgba(17, 18, 22, .1);
 }
@@ -415,6 +418,13 @@ p {
     padding: 30px;
     color: var(--white);
     overflow: hidden;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.feature-card:hover,
+.feature-card:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 44px rgba(17, 18, 22, .32);
 }
 
 .feature-card::before {
@@ -426,6 +436,45 @@ p {
     border: 36px solid rgba(255, 255, 255, .12);
     border-radius: 50%;
     content: "";
+    transition: transform 280ms ease;
+}
+
+.feature-card:hover::before,
+.feature-card:focus-visible::before {
+    transform: scale(1.12) rotate(16deg);
+}
+
+.feature-hint {
+    max-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    color: rgba(255, 255, 255, .92);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: max-height 220ms ease, opacity 200ms ease, margin-bottom 220ms ease;
+}
+
+.feature-card:hover .feature-hint,
+.feature-card:focus-visible .feature-hint {
+    max-height: 40px;
+    margin-bottom: 10px;
+    opacity: 1;
+}
+
+.card-arrow {
+    transition: transform 200ms ease;
+}
+
+.feature-card:hover .card-arrow,
+.feature-card:focus-visible .card-arrow {
+    transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .feature-card, .feature-card::before, .feature-hint, .card-arrow { transition: none; }
 }
 
 .feature-card-red {
