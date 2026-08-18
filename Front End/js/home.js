@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =====================================================
-     SCROLL REVEAL
-  ===================================================== */
-
   const revealElements = document.querySelectorAll(".reveal");
 
   const revealObserver = new IntersectionObserver(
@@ -33,11 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     revealObserver.observe(element);
 
   });
-
-
-  /* =====================================================
-     3D TILT EFFECT
-  ===================================================== */
 
   const tiltCards = document.querySelectorAll("[data-tilt]");
 
@@ -82,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
     card.addEventListener("mouseleave", () => {
 
       card.style.transform =
@@ -91,11 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   });
-
-
-  /* =====================================================
-     SMOOTH SCROLL
-  ===================================================== */
 
   document.querySelectorAll(
     'a[href^="#"]'
@@ -135,11 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   });
-
-
-  /* =====================================================
-     HERO PARALLAX
-  ===================================================== */
 
   const heroVisual =
     document.querySelector(".about-hero-visual");
@@ -181,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
         )`;
 
     });
-
 
     hero.addEventListener("mouseleave", () => {
 
