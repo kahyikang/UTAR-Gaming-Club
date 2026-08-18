@@ -43,6 +43,7 @@
       stage: "Group → Final lobby",
       logo: "assets/pubg-logo.png",
       link: "program/pubg.html",
+      wallpaper: "assets/tournament-backgrounds/pubg-user-hd.jpg",
       showcaseTitle: "PUBG leaderboard.",
       showcaseCopy: "PUBG is scored through cumulative placement and elimination points, so a standings table communicates progress better than a knockout bracket.",
       statusTitle: "Leaderboard status",
@@ -57,6 +58,7 @@
       stage: "Groups → Knockout",
       logo: "assets/mobile-legends-logo.png",
       link: "program/mobile-legends.html",
+      wallpaper: "assets/tournament-backgrounds/mlbb-user-hd.jpg",
       showcaseTitle: "Mobile Legends playoffs.",
       showcaseCopy: "Mobile Legends uses the featured knockout bracket because its 5v5 best-of series progresses naturally from quarterfinals to the grand final.",
       statusTitle: "Bracket status",
@@ -71,6 +73,7 @@
       stage: "Qualifiers → Final",
       logo: "assets/brawl-stars-logo.png",
       link: "program/brawl-stars.html",
+      wallpaper: "assets/tournament-backgrounds/brawl-user-hd.jpg",
       showcaseTitle: "Brawl Stars elimination flow.",
       showcaseCopy: "Brawl Stars is shown as a compact match progression so visitors can understand the qualifier, semifinal and final series without forcing a full bracket.",
       statusTitle: "Elimination status",
@@ -85,6 +88,7 @@
       stage: "War rounds → Final",
       logo: "assets/clash-of-clans-logo.png",
       link: "program/clash-of-clans.html",
+      wallpaper: "assets/tournament-backgrounds/coc-user-hd.jpg",
       showcaseTitle: "Clash of Clans war score.",
       showcaseCopy: "Clash of Clans is presented as a war scoreboard using stars and destruction percentage, which better matches how clan-war results are judged.",
       statusTitle: "War status",
@@ -99,6 +103,7 @@
       stage: "Qualifier → Final",
       logo: "assets/roblox-logo.png",
       link: "program/roblox.html",
+      wallpaper: "assets/tournament-backgrounds/roblox-user-hd.jpg",
       showcaseTitle: "Roblox challenge ranking.",
       showcaseCopy: "Roblox uses a challenge ranking view where players or teams collect points across rounds before the highest-ranked entries move into the final stage.",
       statusTitle: "Ranking status",
@@ -113,6 +118,17 @@
   const showcaseCopy = document.querySelector("[data-showcase-copy]");
   const showcaseStatusTitle = document.querySelector("[data-showcase-status-title]");
   const showcaseStatus = document.querySelector("[data-showcase-status]");
+  const wallpaperZone = document.querySelector(".games-section");
+
+  const applyGameWallpaper = (wallpaper) => {
+    if (!wallpaperZone) return;
+    /* Use an important inline value so older tournament CSS cannot hide the selected image. */
+    wallpaperZone.style.setProperty(
+      "background-image",
+      `linear-gradient(rgba(10,12,16,.18), rgba(10,12,16,.18)), url("${wallpaper}")`,
+      "important"
+    );
+  };
 
   const setGame = (key, focusPanel = false) => {
     const data = gameData[key];
@@ -147,6 +163,8 @@
       if (showcaseCopy) showcaseCopy.textContent = data.showcaseCopy;
       if (showcaseStatusTitle) showcaseStatusTitle.textContent = data.statusTitle;
       if (showcaseStatus) showcaseStatus.textContent = data.status;
+
+      applyGameWallpaper(data.wallpaper);
 
       panel.classList.remove("is-changing");
       if (focusPanel) panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
