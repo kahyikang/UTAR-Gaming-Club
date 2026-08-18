@@ -1291,3 +1291,305 @@ html { scroll-behavior: smooth; }
       rgba(8,9,11,.96) 100%);
   }
 }
+
+/* ===== Selected game wallpaper on the large Tournament page background ===== */
+.tournament-page .games-section,
+.tournament-page .competition-showcase-section {
+  background-color: #dfe2e5;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-image .25s ease;
+}
+
+/* Keep the actual information readable while allowing the game image to show
+   clearly across the large area that used to be plain white / light grey. */
+.tournament-page .games-section .tournament-section-heading,
+.tournament-page .competition-showcase-section .tournament-section-heading {
+  padding: 18px 20px;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(3px);
+}
+
+.tournament-page .games-section .tournament-game-card:not(.active),
+.tournament-page .competition-showcase-section .format-note,
+.tournament-page .competition-showcase-section .bracket-status-row,
+.tournament-page .competition-showcase-section .competition-panel {
+  background-color: rgba(255,255,255,.90);
+}
+
+
+/* ===== Seamless game background zone (single image, no section seam) ===== */
+.tournament-page .game-background-zone {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  transition: background-image .3s ease-in-out;
+}
+
+.tournament-page .game-background-zone .games-section,
+.tournament-page .game-background-zone .competition-showcase-section {
+  background: transparent !important;
+}
+
+.tournament-page .game-background-zone .games-section {
+  padding-bottom: 34px;
+}
+
+.tournament-page .game-background-zone .competition-showcase-section {
+  padding-top: 46px;
+}
+
+/* Light content surfaces preserve readability while the one-piece wallpaper remains visible. */
+.tournament-page .game-background-zone .tournament-section-heading {
+  padding: 20px 22px;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(4px);
+}
+
+.tournament-page .game-background-zone .tournament-game-card:not(.active),
+.tournament-page .game-background-zone .format-note,
+.tournament-page .game-background-zone .bracket-status-row,
+.tournament-page .game-background-zone .competition-panel {
+  background-color: rgba(255,255,255,.90);
+}
+
+@media (max-width: 760px) {
+  .tournament-page .game-background-zone { background-position: center top; }
+}
+
+/* User-provided game wallpapers — one seamless background, no grid pattern */
+.tournament-page .game-background-zone {
+  background-image: none;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+.tournament-page .game-background-zone::before,
+.tournament-page .game-background-zone::after {
+  display: none !important;
+  content: none !important;
+}
+.tournament-page .game-background-zone .games-section {
+  background-color: transparent !important;
+}
+.tournament-page .game-background-zone .competition-showcase-section {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+
+/* ===== Background image optimisation: sharper, less zoomed ===== */
+.tournament-page .game-background-zone {
+  /* Do not stretch small wallpapers edge-to-edge on very wide screens. */
+  background-size: min(1500px, 94vw) auto !important;
+  background-position: center 34px !important;
+  background-repeat: no-repeat !important;
+  background-color: #e7e7e3;
+  position: relative;
+}
+
+/* Soft side/bottom fill keeps the page looking intentional when the image
+   is shown closer to its natural aspect ratio instead of being over-zoomed. */
+.tournament-page .game-background-zone {
+  box-shadow: inset 0 80px 100px rgba(255,255,255,.10),
+              inset 0 -120px 140px rgba(231,231,227,.55);
+}
+
+/* Slightly more transparent content surfaces let the picture remain visible
+   without forcing the wallpaper to be enlarged. */
+.tournament-page .game-background-zone .tournament-section-heading {
+  background: rgba(255,255,255,.84);
+  backdrop-filter: blur(2px);
+}
+
+.tournament-page .game-background-zone .tournament-game-card:not(.active),
+.tournament-page .game-background-zone .format-note,
+.tournament-page .game-background-zone .bracket-status-row,
+.tournament-page .game-background-zone .competition-panel {
+  background-color: rgba(255,255,255,.93);
+}
+
+@media (max-width: 1100px) {
+  .tournament-page .game-background-zone {
+    background-size: 1120px auto !important;
+    background-position: center 24px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .tournament-page .game-background-zone {
+    background-size: auto 720px !important;
+    background-position: center top !important;
+  }
+}
+
+
+/* ===== Responsive hero-style game wallpaper =====
+   Scales with the browser width like a wide game hero banner.
+   Uses one 16:9 image across the whole game background zone without
+   stretching it vertically or enlarging it just to cover the section. */
+.tournament-page .game-background-zone {
+  background-size: 100% auto !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-color: #d9dad8 !important;
+  box-shadow: none !important;
+  transition: background-image .28s ease, background-size .18s ease;
+}
+
+/* Keep the wallpaper visible, but give the information a clean glass-panel look. */
+.tournament-page .game-background-zone .tournament-section-heading {
+  background: rgba(255,255,255,.82) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.tournament-page .game-background-zone .tournament-game-card:not(.active),
+.tournament-page .game-background-zone .format-note,
+.tournament-page .game-background-zone .bracket-status-row,
+.tournament-page .game-background-zone .competition-panel {
+  background-color: rgba(255,255,255,.91) !important;
+}
+
+/* On narrower screens keep the same wide-banner behaviour and avoid cover zoom. */
+@media (max-width: 1100px) {
+  .tournament-page .game-background-zone {
+    background-size: auto 760px !important;
+    background-position: center top !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .tournament-page .game-background-zone {
+    background-size: auto 620px !important;
+    background-position: center top !important;
+  }
+}
+
+
+/* ===== Split layout: game artwork on top, clean white competition area below ===== */
+.tournament-page .game-background-zone {
+  background: #fff !important;
+}
+
+.tournament-page .game-background-zone .games-section {
+  background-size: 100% auto !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-color: #d9dad8 !important;
+  min-height: 620px;
+}
+
+.tournament-page .game-background-zone .competition-showcase-section {
+  background: #fff !important;
+  border-top: 0;
+  box-shadow: none;
+}
+
+.tournament-page .game-background-zone .competition-showcase-section .tournament-section-heading {
+  background: #fff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.tournament-page .game-background-zone .competition-showcase-section .format-note,
+.tournament-page .game-background-zone .competition-showcase-section .bracket-status-row,
+.tournament-page .game-background-zone .competition-showcase-section .competition-panel {
+  background-color: #fff !important;
+}
+
+@media (max-width: 1100px) {
+  .tournament-page .game-background-zone .games-section {
+    background-size: auto 690px !important;
+    background-position: center top !important;
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 760px) {
+  .tournament-page .game-background-zone .games-section {
+    background-size: auto 560px !important;
+    min-height: 500px;
+  }
+}
+
+
+/* FINAL FIX: visible game artwork above, plain white competition area below. */
+.tournament-page .game-background-zone .games-section {
+  background-color: #d9dad8 !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+}
+.tournament-page .game-background-zone .competition-showcase-section {
+  background-image: none !important;
+  background-color: #fff !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ===== Prize Pool background enhancement — tournament page only ===== */
+.tournament-page .prize-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(227,50,60,.22) 0, rgba(227,50,60,.08) 18%, transparent 38%),
+    radial-gradient(circle at 82% 72%, rgba(227,50,60,.13) 0, transparent 32%),
+    linear-gradient(135deg, #101116 0%, #15161b 45%, #0d0e12 100%);
+}
+
+.tournament-page .prize-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(112deg, transparent 0 17%, rgba(255,255,255,.035) 17.2% 17.8%, transparent 18% 42%, rgba(255,255,255,.025) 42.2% 42.8%, transparent 43% 100%),
+    radial-gradient(ellipse at 50% -15%, rgba(255,255,255,.10), transparent 43%);
+  opacity: .9;
+}
+
+.tournament-page .prize-section::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -220px;
+  width: min(1050px, 92vw);
+  height: 430px;
+  z-index: -1;
+  pointer-events: none;
+  transform: translateX(-50%);
+  border: 1px solid rgba(227,50,60,.16);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(227,50,60,.10), transparent 68%);
+  box-shadow: 0 0 100px rgba(227,50,60,.07);
+}
+
+.tournament-page .prize-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.tournament-page .podium-card {
+  background: rgba(23,24,28,.84);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 18px 44px rgba(0,0,0,.20);
+}
+
+.tournament-page .podium-first {
+  background: linear-gradient(180deg, rgba(227,50,60,.18), rgba(23,24,28,.88) 48%);
+  box-shadow: 0 24px 58px rgba(0,0,0,.27), 0 0 34px rgba(227,50,60,.07);
+}
+
+@media (max-width: 680px) {
+  .tournament-page .prize-section {
+    background:
+      radial-gradient(circle at 50% 5%, rgba(227,50,60,.18), transparent 34%),
+      linear-gradient(145deg, #101116, #15161b 55%, #0d0e12);
+  }
+}
