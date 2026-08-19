@@ -641,3 +641,17 @@
     font-size: 1.05rem;
   }
 }
+
+/* Hide Event Schedule side-panel scrollbars while keeping scrolling enabled */
+.vct-schedule-page .league-sidebar,
+.vct-schedule-page .schedule-rail {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.vct-schedule-page .league-sidebar::-webkit-scrollbar,
+.vct-schedule-page .schedule-rail::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
