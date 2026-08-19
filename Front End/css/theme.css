@@ -1,0 +1,137 @@
+/* Shared palette layer. Keep this file last so every page uses the same club colors. */
+:root {
+    --ink: #1a0e38;
+    --ink-soft: #2f1d5e;
+    --paper: #ffffff;
+    --white: #ffffff;
+    --line: #e0dff0;
+    --muted: #6c6d83;
+    --red: #3aa8bf;
+    --red-deep: #217b91;
+    --blue: #5375a7;
+    --gold: #aa8bd7;
+    --purple: #6a0dad;
+    --orange: #a43de2;
+    --teal: #4bb7ae;
+    --shadow: 0 18px 48px rgba(26, 14, 56, .18);
+    --theme-purple: #6a0dad;
+    --theme-deep: #1a0e38;
+    --theme-panel: #2f1d5e;
+    --theme-cyan: #3aa8bf;
+    --theme-cyan-deep: #217b91;
+    --theme-blue: #5375a7;
+    --theme-lavender: #ffffff;
+    --accent-rgb: 58, 168, 191;
+}
+
+/* Dark surfaces use the original bright cyan for stronger contrast. */
+.site-header,
+.section-dark,
+.page-hero,
+.landing-hero,
+.roster-section,
+.coach-section,
+.program-card,
+.media-tile,
+.vct-schedule-page,
+.esports-api-section,
+.tournament-hero,
+.tournament-sticky-nav,
+.game-background-zone,
+.about-header,
+.about-hero,
+.culture-section,
+.image-story-section,
+.mission-section,
+.values-section,
+.community-image-section,
+.about-footer,
+.contact-hero,
+.contact-reasons-section {
+    --red: #00f0ff;
+    --red-deep: #00b8c6;
+    --theme-cyan: #00f0ff;
+    --theme-cyan-deep: #00b8c6;
+    --accent-rgb: 0, 240, 255;
+}
+
+.tournament-hero {
+    --tournament-red: #00f0ff;
+}
+
+.profile-dialog-media {
+    --red: #00f0ff;
+    --red-deep: #00b8c6;
+    --accent-rgb: 0, 240, 255;
+}
+
+body {
+    background: var(--theme-lavender);
+}
+
+.site-header {
+    background: rgba(26, 14, 56, .96);
+    border-bottom-color: rgba(var(--accent-rgb), .22);
+}
+
+.site-header.scrolled {
+    box-shadow: 0 8px 24px rgba(26, 14, 56, .3);
+}
+
+.site-footer,
+.section-dark,
+.page-hero {
+    background: var(--theme-deep);
+}
+
+.eyebrow,
+.site-nav > a.active,
+.nav-dropdown summary span,
+.breadcrumb span {
+    color: var(--theme-cyan);
+}
+
+.nav-cta,
+.button-primary {
+    border-color: var(--theme-cyan);
+}
+
+.nav-cta:hover,
+.button-primary,
+.product-meta button:hover {
+    background: var(--theme-cyan);
+    color: var(--theme-deep) !important;
+}
+
+.button-primary:hover {
+    background: var(--theme-cyan-deep);
+}
+
+.dropdown-menu {
+    border-color: var(--theme-purple);
+    background: var(--theme-panel);
+}
+
+.simple-card,
+.program-card,
+.person-card,
+.news-card,
+.product-card,
+.contact-form {
+    background: var(--theme-lavender);
+}
+
+.simple-card,
+.profile-summary {
+    border-top-color: var(--theme-cyan);
+}
+
+.section-tint {
+    background: #eeeafd;
+}
+
+@media (max-width: 980px) {
+    .site-nav {
+        background: rgba(26, 14, 56, .98);
+    }
+}

@@ -7,9 +7,9 @@
   background:
     linear-gradient(
       135deg,
-      #111216 0%,
-      #18191e 55%,
-      #0d0e11 100%
+      #1a0e38 0%,
+      #2d1d61 55%,
+      #160d32 100%
     );
 
   color: #ffffff;
@@ -35,7 +35,7 @@
 
   border-radius: 50%;
 
-  background: rgba(227, 50, 60, 0.14);
+  background: rgba(var(--accent-rgb), 0.14);
 
   filter: blur(80px);
 
@@ -56,7 +56,7 @@
 
   height: 400px;
 
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(249, 247, 255,.08);
 
   transform: rotate(45deg);
 
@@ -109,7 +109,7 @@
 
   margin-bottom: 50px;
 
-  color: rgba(255,255,255,.55);
+  color: rgba(249, 247, 255,.55);
 
   font-size: .75rem;
 
@@ -133,7 +133,7 @@
 
 .contact-hero .eyebrow {
 
-  color: #e3323c;
+  color: var(--red);
 
   margin-bottom: 20px;
 
@@ -168,7 +168,7 @@
 
   display: block;
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
@@ -179,7 +179,7 @@
 
   margin-top: 30px;
 
-  color: rgba(255,255,255,.68);
+  color: rgba(249, 247, 255,.68);
 
   font-size: 1rem;
 
@@ -194,7 +194,7 @@
 
   height: 4px;
 
-  background: #e3323c;
+  background: var(--red);
 
   margin-top: 35px;
 
@@ -216,7 +216,7 @@
 
 .contact-hero-label span {
 
-  color: rgba(255,255,255,.45);
+  color: rgba(249, 247, 255,.45);
 
   margin-left: 10px;
 
@@ -225,7 +225,7 @@
 
 .contact-hero-side {
 
-  border-left: 1px solid rgba(255,255,255,.14);
+  border-left: 1px solid rgba(249, 247, 255,.14);
 
   padding-left: 40px;
 
@@ -234,7 +234,7 @@
 
 .hero-contact-number {
 
-  color: #e3323c;
+  color: var(--red);
 
   font-size: 5rem;
 
@@ -260,7 +260,7 @@
 
 .contact-hero-side span {
 
-  color: rgba(255,255,255,.55);
+  color: rgba(249, 247, 255,.55);
 
   font-size: .85rem;
 
@@ -272,7 +272,7 @@
 
 .contact-main-section {
 
-  background: #f5f5f2;
+  background: #ffffff;
 
 }
 
@@ -328,7 +328,7 @@
 
   display: block;
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
@@ -337,7 +337,7 @@
 
   max-width: 500px;
 
-  color: #666;
+  color: #716987;
 
   line-height: 1.8;
 
@@ -372,7 +372,7 @@
 
 .contact-detail-number {
 
-  color: #e3323c;
+  color: var(--red);
 
   font-size: .75rem;
 
@@ -402,7 +402,7 @@
 
 .contact-detail-item strong {
 
-  color: #111216;
+  color: #1a0e38;
 
   font-size: .95rem;
 
@@ -413,7 +413,7 @@
 
 .contact-detail-item a:hover {
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
@@ -433,7 +433,7 @@
 
   letter-spacing: .12em;
 
-  color: #777;
+  color: #716987;
 
 }
 
@@ -453,11 +453,11 @@
 
 .contact-social a {
 
-  border: 1px solid #d7d7d7;
+  border: 1px solid #d2cbe8;
 
   padding: 10px 13px;
 
-  color: #111216;
+  color: #1a0e38;
 
   text-decoration: none;
 
@@ -472,9 +472,9 @@
 
 .contact-social a:hover {
 
-  background: #e3323c;
+  background: var(--red);
 
-  border-color: #e3323c;
+  border-color: var(--red);
 
   color: #ffffff;
 
@@ -491,10 +491,10 @@
       50px
     );
 
-  border-top: 5px solid #e3323c;
+  border-top: 5px solid var(--red);
 
   box-shadow:
-    0 18px 50px rgba(0,0,0,.08);
+    0 18px 50px rgba(14, 7, 30,.08);
 
 }
 
@@ -521,14 +521,14 @@
 
 .form-heading h2 span {
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
 
 .form-heading p:last-child {
 
-  color: #777;
+  color: #716987;
 
   line-height: 1.6;
 
@@ -569,7 +569,7 @@
 
 .contact-form label > span {
 
-  color: #555;
+  color: #665d80;
 
   font-size: .7rem;
 
@@ -587,11 +587,11 @@
   width: 100%;
 
   border:
-    1px solid #d8d8d8;
+    1px solid #d2cbe8;
 
-  background: #fafafa;
+  background: #faf8ff;
 
-  color: #111216;
+  color: #1a0e38;
 
   outline: none;
 
@@ -633,13 +633,13 @@
 .contact-form select:focus,
 .contact-form textarea:focus {
 
-  border-color: #e3323c;
+  border-color: var(--red);
 
   background: #ffffff;
 
   box-shadow:
     0 0 0 3px
-    rgba(227,50,60,.1);
+    rgba(var(--accent-rgb),.1);
 
 }
 
@@ -647,7 +647,7 @@
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
 
-  color: #aaa;
+  color: #9289aa;
 
 }
 
@@ -683,14 +683,14 @@
 
 .form-note.success {
 
-  color: #26733e;
+  color: #24c9a7;
 
 }
 
 
 .form-note.error {
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
@@ -699,7 +699,7 @@
   padding:
     100px 0;
 
-  background: #111216;
+  background: #1a0e38;
 
   color: #ffffff;
 
@@ -745,14 +745,14 @@
 
 .contact-section-heading h2 span {
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
 
 .contact-section-heading > p {
 
-  color: rgba(255,255,255,.55);
+  color: rgba(249, 247, 255,.55);
 
   line-height: 1.7;
 
@@ -782,7 +782,7 @@
 
   border:
     1px solid
-    rgba(255,255,255,.12);
+    rgba(249, 247, 255,.12);
 
   display: flex;
 
@@ -800,23 +800,23 @@
   transform:
     translateY(-8px);
 
-  background: #1b1c21;
+  background: #33216d;
 
 }
 
 
 .contact-reason-card.red-card {
 
-  background: #e3323c;
+  background: var(--red);
 
-  border-color: #e3323c;
+  border-color: var(--red);
 
 }
 
 
 .contact-reason-card.red-card:hover {
 
-  background: #c92731;
+  background: var(--red-deep);
 
 }
 
@@ -854,7 +854,7 @@
 
 .contact-reason-card p {
 
-  color: rgba(255,255,255,.6);
+  color: rgba(249, 247, 255,.6);
 
   line-height: 1.7;
 
@@ -865,7 +865,7 @@
 
 .contact-reason-card.red-card p {
 
-  color: rgba(255,255,255,.85);
+  color: rgba(249, 247, 255,.85);
 
 }
 
@@ -895,7 +895,7 @@
 
 .contact-process-section {
 
-  background: #f5f5f2;
+  background: #ffffff;
 
 }
 
@@ -931,7 +931,7 @@
 
   display: block;
 
-  color: #e3323c;
+  color: var(--red);
 
 }
 
@@ -947,7 +947,7 @@
     );
 
   border-top:
-    1px solid #d5d5d5;
+    1px solid #d2cbe8;
 
 }
 
@@ -958,7 +958,7 @@
     35px 25px;
 
   border-right:
-    1px solid #d5d5d5;
+    1px solid #d2cbe8;
 
 }
 
@@ -972,7 +972,7 @@
 
 .process-item > span {
 
-  color: #e3323c;
+  color: var(--red);
 
   font-size: .8rem;
 
@@ -993,7 +993,7 @@
 
 .process-item p {
 
-  color: #777;
+  color: #716987;
 
   line-height: 1.7;
 
@@ -1003,7 +1003,7 @@
 
 .contact-final-section {
 
-  background: #e3323c;
+  background: var(--red);
 
   color: #ffffff;
 
@@ -1061,14 +1061,14 @@
 
   display: block;
 
-  color: #111216;
+  color: #1a0e38;
 
 }
 
 
 .contact-final-inner .button-light {
 
-  background: #111216;
+  background: #1a0e38;
 
   color: #ffffff;
 
@@ -1109,7 +1109,7 @@
 
     border-top:
       1px solid
-      rgba(255,255,255,.15);
+      rgba(249, 247, 255,.15);
 
     padding:
       25px 0 60px;
@@ -1154,7 +1154,7 @@
     border-right: none;
 
     border-bottom:
-      1px solid #d5d5d5;
+      1px solid #d2cbe8;
 
   }
 
