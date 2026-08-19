@@ -24,8 +24,8 @@ $(function () {
       team: "Utar Lynx",
       type: "community",
       typeLabel: "Practice",
-      start: "2026-08-20T19:00:00+08:00",
-      end: "2026-08-20T21:00:00+08:00",
+      start: "2026-11-20T19:00:00+08:00",
+      end: "2026-11-20T21:00:00+08:00",
       logo: "assets/mobile-legends-logo.png",
       copy: "Ranked draft practice and rotation timing for the Utar Lynx roster.",
       link: "event-schedule.html"
@@ -36,8 +36,8 @@ $(function () {
       team: "Utar Reapers",
       type: "tournament",
       typeLabel: "Tournament",
-      start: "2026-08-22T10:00:00+08:00",
-      end: "2026-08-22T13:00:00+08:00",
+      start: "2026-11-28T10:00:00+08:00",
+      end: "2026-11-28T13:00:00+08:00",
       logo: "assets/pubg-logo.png",
       copy: "PUBG squad group-stage matches for the Utar Reapers at Nexus Open 2026.",
       link: "tournaments.html"
@@ -48,8 +48,8 @@ $(function () {
       team: "Utar Lynx",
       type: "tournament",
       typeLabel: "Tournament",
-      start: "2026-08-22T14:00:00+08:00",
-      end: "2026-08-22T17:00:00+08:00",
+      start: "2026-11-28T14:00:00+08:00",
+      end: "2026-11-28T17:00:00+08:00",
       logo: "assets/mobile-legends-logo.png",
       copy: "Mobile Legends group-stage competition for Utar Lynx.",
       link: "tournaments.html"
@@ -60,8 +60,8 @@ $(function () {
       team: "Utar Brawlers",
       type: "tournament",
       typeLabel: "Final",
-      start: "2026-08-23T12:00:00+08:00",
-      end: "2026-08-23T14:00:00+08:00",
+      start: "2026-11-29T12:00:00+08:00",
+      end: "2026-11-29T14:00:00+08:00",
       logo: "assets/brawl-stars-logo.png",
       copy: "Championship-stage Brawl Stars matches for Utar Brawlers.",
       link: "tournaments.html"
@@ -72,8 +72,8 @@ $(function () {
       team: "Utar Reapers",
       type: "community",
       typeLabel: "Workshop",
-      start: "2026-08-29T14:00:00+08:00",
-      end: "2026-08-29T16:00:00+08:00",
+      start: "2026-12-05T14:00:00+08:00",
+      end: "2026-12-05T16:00:00+08:00",
       logo: "assets/pubg-logo.png",
       copy: "Rotations, loadouts and endgame positioning workshop for the squad.",
       link: "event-schedule.html"
@@ -84,8 +84,8 @@ $(function () {
       team: "Utar Brawlers",
       type: "community",
       typeLabel: "Community",
-      start: "2026-09-05T19:00:00+08:00",
-      end: "2026-09-05T22:00:00+08:00",
+      start: "2026-12-12T19:00:00+08:00",
+      end: "2026-12-12T22:00:00+08:00",
       logo: "assets/brawl-stars-logo.png",
       copy: "Casual matches for every skill level with the club community.",
       link: "event-schedule.html"
@@ -96,8 +96,8 @@ $(function () {
       team: "Utar Creators",
       type: "community",
       typeLabel: "Tryout",
-      start: "2026-09-12T18:00:00+08:00",
-      end: "2026-09-12T20:00:00+08:00",
+      start: "2026-12-19T18:00:00+08:00",
+      end: "2026-12-19T20:00:00+08:00",
       logo: "assets/roblox-logo.png",
       copy: "Open evaluation for competitive players and creator-track applicants.",
       link: "event-schedule.html"
@@ -108,8 +108,8 @@ $(function () {
       team: "UTAR Gaming",
       type: "tournament",
       typeLabel: "Qualifier",
-      start: "2026-10-10T10:00:00+08:00",
-      end: "2026-10-10T18:00:00+08:00",
+      start: "2026-12-27T10:00:00+08:00",
+      end: "2026-12-27T18:00:00+08:00",
       logo: "assets/utar-gaming-logo.jpeg?v=20260819-logo",
       copy: "Campus Cup qualifying day across UTAR Gaming programs.",
       link: "tournaments.html"
@@ -139,7 +139,8 @@ $(function () {
   };
 
   const showLoading = () => {
-    $status.removeClass("is-error").text("Calling REST API for current Malaysia time…");
+    $status.show().removeClass("is-error").text("Calling REST API for current Malaysia time…");
+    $source.closest(".api-source-note").show();
     $refresh.addClass("is-loading").prop("disabled", true);
     $grid.html(`
       <article class="api-project-card api-placeholder"><div class="api-placeholder-line"></div><div class="api-placeholder-line"></div><div class="api-placeholder-line"></div></article>
@@ -202,14 +203,16 @@ $(function () {
           hour: "numeric", minute: "2-digit", hour12: true,
           timeZone: "Asia/Kuala_Lumpur"
         }).format(malaysiaNow);
-        $status.removeClass("is-error").text(`REST API connected · Malaysia time: ${displayNow} · showing the next 3 matching events`);
+        $status.show().removeClass("is-error").text(`REST API connected · Malaysia time: ${displayNow} · showing the next 3 matching events`);
+        $source.closest(".api-source-note").show();
         $source.text("Live time source: Time API · Asia/Kuala_Lumpur");
       })
       .fail(function () {
         malaysiaNow = new Date();
         renderEvents();
-        $status.addClass("is-error").text("REST API unavailable · showing the schedule using your browser time as fallback");
-        $source.text("Fallback active · use Refresh schedule to call the REST API again");
+        $status.removeClass("is-error").empty().hide();
+        $source.empty();
+        $source.closest(".api-source-note").hide();
       })
       .always(function () {
         $refresh.removeClass("is-loading").prop("disabled", false);
