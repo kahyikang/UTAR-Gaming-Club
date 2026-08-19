@@ -12,10 +12,46 @@
   const topbar = document.querySelector('.schedule-topbar');
   const siteHeader = document.querySelector('.site-header');
 
-  let activeProgram = 'all';
-  let activeType = 'all';
-  let activeDateIndex = 0;
-  let visibleDayCount = Math.min(3, daySections.length);
+  /* Session storage: remember the visitor's Event Schedule view
+     for the current browser tab/session only. */
+  const SESSION_KEY = 'ugc_event_schedule_state';
+
+  const readSessionState = () => {
+    try {
+      return JSON.parse(sessionStorage.getItem(SESSION_KEY)) || {};
+    } catch {
+      return {};
+    }
+  };
+
+  const savedState = readSessionState();
+
+  let activeProgram =
+    typeof savedState.program === 'string' ? savedState.program : 'all';
+  let activeType =
+    typeof savedState.type === 'string' ? savedState.type : 'all';
+  let activeDateIndex =
+    Number.isInteger(savedState.dateIndex) ? savedState.dateIndex : 0;
+  let visibleDayCount =
+    Number.isInteger(savedState.visibleDayCount)
+      ? Math.min(Math.max(savedState.visibleDayCount, 1), daySections.length)
+      : Math.min(3, daySections.length);
+
+  const saveSessionState = () => {
+    try {
+      sessionStorage.setItem(
+        SESSION_KEY,
+        JSON.stringify({
+          program: activeProgram,
+          type: activeType,
+          dateIndex: activeDateIndex,
+          visibleDayCount,
+        })
+      );
+    } catch {
+      /* Keep the schedule usable even if storage is unavailable. */
+    }
+  };
   let currentScrollIndex = -1;
   let scrollTicking = false;
 
@@ -79,6 +115,7 @@
     const visibleCards = section.querySelectorAll('[data-event-card]:not([hidden])').length;
 
     activeDateIndex = index;
+    saveSessionState();
 
     if (selectedRelative) selectedRelative.textContent = getRelativeLabel(isoDate);
     if (selectedWeekday) selectedWeekday.textContent = formatted.weekday;
@@ -191,6 +228,7 @@
       activeProgram = button.dataset.programFilter;
       programButtons.forEach((item) => item.classList.toggle('active', item === button));
       visibleDayCount = daySections.length;
+      saveSessionState();
       render();
     });
   });
@@ -198,6 +236,7 @@
   typeSelect?.addEventListener('change', () => {
     activeType = typeSelect.value;
     visibleDayCount = daySections.length;
+    saveSessionState();
     render();
   });
 
@@ -240,6 +279,7 @@
 
   loadMoreButton?.addEventListener('click', () => {
     visibleDayCount = Math.min(daySections.length, visibleDayCount + 2);
+    saveSessionState();
     render();
   });
 
@@ -294,8 +334,34 @@
     });
   });
 
+  /* Restore the saved controls for this browser session. */
+  if (!programButtons.some((button) => button.dataset.programFilter === activeProgram)) {
+    activeProgram = 'all';
+  }
+  programButtons.forEach((button) => {
+    button.classList.toggle('active', button.dataset.programFilter === activeProgram);
+  });
+
+  if (typeSelect) {
+    const hasSavedType = Array.from(typeSelect.options).some(
+      (option) => option.value === activeType
+    );
+    if (!hasSavedType) activeType = 'all';
+    typeSelect.value = activeType;
+  }
+
+  if (activeDateIndex < 0 || activeDateIndex >= daySections.length) {
+    activeDateIndex = 0;
+  }
+
   window.addEventListener('scroll', requestScrollUpdate, { passive: true });
   window.addEventListener('resize', requestScrollUpdate);
 
   render();
+
+  /* Re-open the remembered date after the filters have been restored. */
+  if (daySections[activeDateIndex] && !daySections[activeDateIndex].hidden) {
+    updateHeaderForIndex(activeDateIndex, false);
+  }
+  saveSessionState();
 })();
