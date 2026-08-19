@@ -640,6 +640,12 @@
   position:
     absolute;
 
+  --controller-scroll-x: 0px;
+  --controller-scroll-y: 0px;
+  --controller-scroll-rotate-x: 0deg;
+  --controller-scroll-rotate-y: 0deg;
+  --controller-scroll-rotate-z: 0deg;
+
   left:
     50%;
 
@@ -653,10 +659,13 @@
     190px;
 
   transform:
-    translate(-50%, -50%)
-    rotateX(8deg)
-    rotateY(-12deg)
-    rotateZ(-3deg);
+    translate(
+      calc(-50% + var(--controller-scroll-x)),
+      calc(-50% + var(--controller-scroll-y))
+    )
+    rotateX(calc(8deg + var(--controller-scroll-rotate-x)))
+    rotateY(calc(-12deg + var(--controller-scroll-rotate-y)))
+    rotateZ(calc(-3deg + var(--controller-scroll-rotate-z)));
 
   transform-style:
     preserve-3d;
@@ -665,6 +674,9 @@
     transform
     .12s
     ease-out;
+
+  will-change:
+    transform;
 
   animation:
     controller-float

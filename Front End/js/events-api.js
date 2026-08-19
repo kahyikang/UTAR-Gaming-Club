@@ -110,7 +110,7 @@ $(function () {
       typeLabel: "Qualifier",
       start: "2026-10-10T10:00:00+08:00",
       end: "2026-10-10T18:00:00+08:00",
-      logo: "assets/utar-gaming-logo.jpeg",
+      logo: "assets/utar-gaming-logo.jpeg?v=20260819-logo",
       copy: "Campus Cup qualifying day across UTAR Gaming programs.",
       link: "tournaments.html"
     }

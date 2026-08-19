@@ -171,4 +171,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+  const landingHero = document.querySelector(".landing-hero");
+  const controller = document.querySelector("[data-hero-object]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (landingHero && controller) {
+    let frameId = null;
+
+    const updateControllerMotion = () => {
+      frameId = null;
+
+      if (reducedMotion.matches) {
+        controller.style.setProperty("--controller-scroll-x", "0px");
+        controller.style.setProperty("--controller-scroll-y", "0px");
+        controller.style.setProperty("--controller-scroll-rotate-x", "0deg");
+        controller.style.setProperty("--controller-scroll-rotate-y", "0deg");
+        controller.style.setProperty("--controller-scroll-rotate-z", "0deg");
+        return;
+      }
+
+      const rect = landingHero.getBoundingClientRect();
+      const progress = Math.max(
+        -1,
+        Math.min(1, -rect.top / Math.max(rect.height, 1))
+      );
+
+      controller.style.setProperty(
+        "--controller-scroll-x",
+        `${progress * 24}px`
+      );
+      controller.style.setProperty(
+        "--controller-scroll-y",
+        `${progress * -80}px`
+      );
+      controller.style.setProperty(
+        "--controller-scroll-rotate-x",
+        `${progress * 10}deg`
+      );
+      controller.style.setProperty(
+        "--controller-scroll-rotate-y",
+        `${progress * 14}deg`
+      );
+      controller.style.setProperty(
+        "--controller-scroll-rotate-z",
+        `${progress * -5}deg`
+      );
+    };
+
+    const requestControllerMotion = () => {
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(updateControllerMotion);
+      }
+    };
+
+    window.addEventListener("scroll", requestControllerMotion, { passive: true });
+    window.addEventListener("resize", requestControllerMotion);
+
+    if (typeof reducedMotion.addEventListener === "function") {
+      reducedMotion.addEventListener("change", requestControllerMotion);
+    }
+
+    updateControllerMotion();
+  }
+
 });
