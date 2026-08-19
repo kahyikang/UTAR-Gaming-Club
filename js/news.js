@@ -1,6 +1,5 @@
-// js/news.js — news.html only.
-// common.js no longer includes generic filter handling, so this file owns:
-// 1) filter-by-category buttons, 2) sessionStorage-backed recently viewed.
+// js/news.js - News & Media page only.
+// Handles category filters, view tabs, recently viewed items, and the article popup.
 (function () {
   /* --- 1. Filter by category --- */
   const filterButtons = document.querySelectorAll("[data-filter]");
@@ -16,11 +15,27 @@
     });
   });
 
-  /* --- 2. Recently viewed (sessionStorage) --- */
-  const STORAGE_KEY = "ug_recent_news";
+  /* --- 2. View tabs: All news / Recently viewed --- */
+  const viewTabs = document.querySelectorAll("[data-view-tab]");
+  const viewPanels = document.querySelectorAll("[data-view-panel]");
 
+  viewTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.viewTab;
+      viewTabs.forEach((item) => {
+        const selected = item === tab;
+        item.classList.toggle("active", selected);
+        item.setAttribute("aria-selected", String(selected));
+      });
+      viewPanels.forEach((panel) => panel.toggleAttribute("hidden", panel.dataset.viewPanel !== target));
+    });
+  });
+
+  /* --- 3. Recently viewed (sessionStorage) --- */
+  const STORAGE_KEY = "ug_recent_news";
   const recentList = document.querySelector("[data-recent-list]");
   const recentEmpty = document.querySelector("[data-recent-empty]");
+  const recentCount = document.querySelector("[data-recent-count]");
   const clearBtn = document.querySelector("[data-clear-recent]");
   const readMoreButtons = document.querySelectorAll("[data-read-more]");
   if (!recentList || !readMoreButtons.length) return;
@@ -38,28 +53,47 @@
     try {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     } catch (err) {
-      /* sessionStorage unavailable - fail silently */
+      /* Storage may be unavailable in private browsing. */
     }
   }
 
   function renderRecent(items) {
     recentList.innerHTML = "";
+    if (recentCount) recentCount.textContent = "(" + items.length + ")";
     if (!items.length) {
       recentEmpty.removeAttribute("hidden");
       return;
     }
     recentEmpty.setAttribute("hidden", "");
-    items
-      .slice()
-      .reverse()
-      .forEach((item) => {
-        const li = document.createElement("li");
-        li.textContent = item.title;
-        const time = document.createElement("span");
-        time.textContent = item.time;
-        li.appendChild(time);
-        recentList.appendChild(li);
+    items.slice().reverse().forEach((item) => {
+      const li = document.createElement("li");
+      li.tabIndex = 0;
+      li.setAttribute("role", "button");
+      li.setAttribute("aria-label", "Open " + item.title + " again");
+      li.textContent = item.title;
+      const time = document.createElement("span");
+      time.textContent = item.time;
+      li.appendChild(time);
+      li.addEventListener("click", () => jumpToArticle(item.id));
+      li.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          jumpToArticle(item.id);
+        }
       });
+      recentList.appendChild(li);
+    });
+  }
+
+  function jumpToArticle(id) {
+    document.querySelector('[data-view-tab="all"]')?.click();
+    document.querySelector('[data-filter="all"]')?.click();
+    const card = document.querySelector('.news-card[data-id="' + id + '"]');
+    if (!card) return;
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.add("is-jumped-to");
+    setTimeout(() => card.classList.remove("is-jumped-to"), 1600);
+    card.querySelector("[data-read-more]")?.click();
   }
 
   function logView(id, title) {
@@ -73,12 +107,14 @@
     renderRecent(readRecent());
   }
 
-  /* --- 3. Read more popup (modal) --- */
+  /* --- 4. Read more popup --- */
   const modal = document.querySelector("[data-news-modal]");
   const modalCategory = document.querySelector("[data-modal-category]");
   const modalTitle = document.querySelector("[data-modal-title]");
   const modalExcerpt = document.querySelector("[data-modal-excerpt]");
   const modalFull = document.querySelector("[data-modal-full]");
+  const modalImage = document.querySelector("[data-modal-image]");
+  const modalPlaceholder = document.querySelector("[data-modal-placeholder]");
   const modalCloseTriggers = document.querySelectorAll("[data-modal-close]");
   let lastFocusedButton = null;
 
@@ -87,11 +123,29 @@
     const title = card.querySelector("h3")?.textContent || card.dataset.title || "";
     const excerpt = card.querySelector("p:not(.news-full)")?.textContent || "";
     const full = card.querySelector(".news-full")?.textContent || "";
+    const cardImage = card.querySelector("img");
 
     modalCategory.textContent = category;
     modalTitle.textContent = title;
     modalExcerpt.textContent = excerpt;
     modalFull.textContent = full;
+
+    if (cardImage && modalImage) {
+      modalImage.onerror = null;
+      modalImage.src = cardImage.src;
+      modalImage.alt = cardImage.alt;
+      modalImage.removeAttribute("hidden");
+      modalPlaceholder?.setAttribute("hidden", "");
+      modalImage.onerror = () => {
+        modalImage.setAttribute("hidden", "");
+        modalImage.removeAttribute("src");
+        modalPlaceholder?.removeAttribute("hidden");
+      };
+    } else {
+      modalImage?.setAttribute("hidden", "");
+      modalImage?.removeAttribute("src");
+      modalPlaceholder?.removeAttribute("hidden");
+    }
 
     modal.removeAttribute("hidden");
     document.body.classList.add("news-modal-open");
@@ -102,7 +156,7 @@
   function closeModal() {
     modal.setAttribute("hidden", "");
     document.body.classList.remove("news-modal-open");
-    lastFocusedButton?.focus();
+    if (lastFocusedButton && typeof lastFocusedButton.focus === "function") lastFocusedButton.focus();
   }
 
   readMoreButtons.forEach((button) => {
@@ -115,15 +169,12 @@
   });
 
   modalCloseTriggers.forEach((trigger) => trigger.addEventListener("click", closeModal));
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !modal.hasAttribute("hidden")) closeModal();
   });
-
   clearBtn?.addEventListener("click", () => {
     writeRecent([]);
     renderRecent([]);
   });
-
   renderRecent(readRecent());
 })();

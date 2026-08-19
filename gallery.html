@@ -7,11 +7,10 @@
     <meta name="description" content="Match photos and highlight clips from Utar Gaming E-Sports Club events and tournaments." />
 
     <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/gallery.css?v=20260819-merge" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/features.css" />
     <link rel="stylesheet" href="css/theme.css?v=20260819-2" />
-
     <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg?v=20260819-logo" />
   </head>
   <body data-page="gallery.html">
@@ -55,92 +54,123 @@
           <div class="breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Gallery &amp; Highlights</span></div>
           <p class="eyebrow">Media</p>
           <h1>Gallery &amp; Highlights</h1>
-          <p>Match photos and highlight clips from our tournaments, scrims, and social nights. Tap Save on anything you want to find again later &mdash; no login needed.</p>
+          <p>Match photos and highlight clips from our tournaments, scrims, and social nights. Tap Save on anything you want to find again later - no login needed.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="site-shell">
-          <div class="filter-row" role="group" aria-label="Filter highlights by game">
-            <button class="filter-button active" type="button" data-filter="all">All highlights</button>
-            <button class="filter-button" type="button" data-filter="pubg">PUBG</button>
-            <button class="filter-button" type="button" data-filter="mobile-legends">Mobile Legends</button>
-            <button class="filter-button" type="button" data-filter="brawl-stars">Brawl Stars</button>
-            <button class="filter-button" type="button" data-filter="clash-of-clans">Clash of Clans</button>
-            <button class="filter-button" type="button" data-filter="roblox">Roblox</button>
-            <button class="filter-button" type="button" data-filter="club">Club events</button>
+          <div class="view-tabs" role="tablist" aria-label="Gallery views">
+            <button class="view-tab active" type="button" data-view-tab="all" role="tab" aria-selected="true">All highlights</button>
+            <button class="view-tab" type="button" data-view-tab="players" role="tab" aria-selected="false">Player highlights</button>
+            <button class="view-tab" type="button" data-view-tab="saved" role="tab" aria-selected="false">My saved <span data-saved-count>(0)</span></button>
           </div>
 
-          <div class="media-grid" data-media-grid>
-            <article class="media-tile" data-category="pubg">
-              <img src="assets/gallery/pubg-finals.jpg" alt="PUBG squad finals highlight" onerror="this.remove()" />
-              <span>Highlight clip &middot; PUBG</span>
-              <h3>Chicken dinner: squad finals</h3>
-              <p class="tile-desc">A last-second flank in the final circle wins the season's first chicken dinner.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="pubg-finals" data-title="Chicken dinner: squad finals" data-game="PUBG">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="mobile-legends">
-              <img src="assets/gallery/mlbb-teamfight.jpg" alt="Mobile Legends inter-faculty cup team fight" onerror="this.remove()" />
-              <span>Match photo &middot; Mobile Legends</span>
-              <h3>Inter-faculty cup team fight</h3>
-              <p class="tile-desc">A five-man rotation catches the enemy jungle for a clean semi-final team wipe.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="mlbb-teamfight" data-title="Inter-faculty cup team fight" data-game="Mobile Legends">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="brawl-stars">
-              <img src="assets/gallery/brawl-showdown.jpg" alt="Brawl Stars community showdown night" onerror="this.remove()" />
-              <span>Highlight clip &middot; Brawl Stars</span>
-              <h3>Community showdown night</h3>
-              <p class="tile-desc">An open-bracket showdown decided by a golden-goal round in the final match.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="brawl-showdown" data-title="Community showdown night" data-game="Brawl Stars">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="clash-of-clans">
-              <img src="assets/gallery/coc-warchamp.jpg" alt="Clash of Clans clan war championship" onerror="this.remove()" />
-              <span>Match photo &middot; Clash of Clans</span>
-              <h3>Clan war championship</h3>
-              <p class="tile-desc">A clean three-star sweep across the enemy base wins the clan war title.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="coc-warchamp" data-title="Clan war championship" data-game="Clash of Clans">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="roblox">
-              <img src="assets/game-wallpapers/roblox-wallpaper.jpg" alt="Roblox community gaming highlight" onerror="this.remove()" />
-              <span>Event photo &middot; Roblox</span>
-              <h3>Obby race social night</h3>
-              <p class="tile-desc">A casual obstacle-course race night, open to members of every skill level.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="roblox-obby" data-title="Obby race social night" data-game="Roblox">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="pubg">
-              <img src="assets/gallery/pubg-finals.jpg" alt="PUBG weekly scrim recap" onerror="this.remove()" />
-              <span>Highlight clip &middot; PUBG</span>
-              <h3>Weekly scrim recap</h3>
-              <p class="tile-desc">Highlights from this week's scrim block against three invited university teams.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="pubg-scrim" data-title="Weekly scrim recap" data-game="PUBG">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="mobile-legends">
-              <img src="assets/gallery/mlbb-teamfight.jpg" alt="Mobile Legends MVP spotlight player interview" onerror="this.remove()" />
-              <span>Video &middot; Mobile Legends</span>
-              <h3>MVP spotlight: player interview</h3>
-              <p class="tile-desc">A sit-down chat with the tournament MVP on rotations, comms, and match-day nerves.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="mlbb-mvp" data-title="MVP spotlight: player interview" data-game="Mobile Legends">&#9734; Save</button>
-            </article>
-            <article class="media-tile" data-category="club">
-              <img src="assets/events/event-hero-background.png" alt="Nexus Open 2026 opening ceremony" onerror="this.remove()" />
-              <span>Event photo &middot; Nexus Open</span>
-              <h3>Nexus Open 2026 opening ceremony</h3>
-              <p class="tile-desc">All participating teams take the stage as Nexus Open 2026 officially kicks off.</p>
-              <button class="bookmark-btn" type="button" data-save data-id="nexus-opening" data-title="Nexus Open 2026 opening ceremony" data-game="Club event">&#9734; Save</button>
-            </article>
-          </div>
-        </div>
-      </section>
+          <div data-view-panel="all">
+            <div class="filter-row" role="group" aria-label="Filter highlights by game">
+              <button class="filter-button active" type="button" data-filter="all">All highlights</button>
+              <button class="filter-button" type="button" data-filter="pubg">PUBG</button>
+              <button class="filter-button" type="button" data-filter="mobile-legends">Mobile Legends</button>
+              <button class="filter-button" type="button" data-filter="brawl-stars">Brawl Stars</button>
+              <button class="filter-button" type="button" data-filter="clash-of-clans">Clash of Clans</button>
+              <button class="filter-button" type="button" data-filter="roblox">Roblox</button>
+              <button class="filter-button" type="button" data-filter="club">Club events</button>
+            </div>
 
-      <section class="section section-tint">
-        <div class="site-shell">
-          <div class="panel-head">
-            <h2>My saved highlights</h2>
-            <button class="panel-clear" type="button" data-clear-saved>Clear saved</button>
+            <div class="media-grid" data-media-grid>
+              <article class="media-tile" tabindex="0" data-category="pubg">
+                <img src="assets/gallery/pubg-finals.jpg" alt="PUBG squad finals highlight" onerror="this.remove()" />
+                <span>Highlight clip &middot; PUBG</span>
+                <h3>Chicken dinner: squad finals</h3>
+                <p class="media-tile-desc">Down to the final circle - watch the squad secure the win in a nail-biting last stand.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="pubg-finals" data-title="Chicken dinner: squad finals" data-game="PUBG">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="mobile-legends">
+                <img src="assets/gallery/mlbb-teamfight.jpg" alt="Mobile Legends inter-faculty cup team fight" onerror="this.remove()" />
+                <span>Match photo &middot; Mobile Legends</span>
+                <h3>Inter-faculty cup team fight</h3>
+                <p class="media-tile-desc">A five-man team fight that decided the inter-faculty cup semi-final.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="mlbb-teamfight" data-title="Inter-faculty cup team fight" data-game="Mobile Legends">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="brawl-stars">
+                <img src="assets/gallery/brawl-showdown.jpg" alt="Brawl Stars community showdown night" onerror="this.remove()" />
+                <span>Highlight clip &middot; Brawl Stars</span>
+                <h3>Community showdown night</h3>
+                <p class="media-tile-desc">Open-bracket chaos from our monthly community showdown night.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="brawl-showdown" data-title="Community showdown night" data-game="Brawl Stars">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="clash-of-clans">
+                <img src="assets/gallery/coc-warchamp.jpg" alt="Clash of Clans clan war championship" onerror="this.remove()" />
+                <span>Match photo &middot; Clash of Clans</span>
+                <h3>Clan war championship</h3>
+                <p class="media-tile-desc">Our top attackers three-star their way to the clan war championship.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="coc-warchamp" data-title="Clan war championship" data-game="Clash of Clans">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="roblox">
+                <img src="assets/game-wallpapers/roblox-wallpaper.jpg" alt="Roblox obby race social night" onerror="this.remove()" />
+                <span>Event photo &middot; Roblox</span>
+                <h3>Obby race social night</h3>
+                <p class="media-tile-desc">Members raced through community-made obstacle courses on our social night.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="roblox-obby" data-title="Obby race social night" data-game="Roblox">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="pubg">
+                <img src="assets/gallery/pubg-finals.jpg" alt="PUBG weekly scrim recap" onerror="this.remove()" />
+                <span>Highlight clip &middot; PUBG</span>
+                <h3>Weekly scrim recap</h3>
+                <p class="media-tile-desc">A behind-the-scenes look at a typical Tuesday scrim session.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="pubg-scrim" data-title="Weekly scrim recap" data-game="PUBG">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="mobile-legends">
+                <img src="assets/gallery/mlbb-teamfight.jpg" alt="Mobile Legends MVP spotlight player interview" onerror="this.remove()" />
+                <span>Video &middot; Mobile Legends</span>
+                <h3>MVP spotlight: player interview</h3>
+                <p class="media-tile-desc">Sit down with our MVP to hear how they read the draft phase.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="mlbb-mvp" data-title="MVP spotlight: player interview" data-game="Mobile Legends">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="club">
+                <img src="assets/events/event-hero-background.png" alt="Nexus Open 2026 opening ceremony" onerror="this.remove()" />
+                <span>Event photo &middot; Nexus Open</span>
+                <h3>Nexus Open 2026 opening ceremony</h3>
+                <p class="media-tile-desc">Lights, casters, and the crowd - how Nexus Open 2026 kicked off.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="nexus-opening" data-title="Nexus Open 2026 opening ceremony" data-game="Club event">&#9734; Save</button>
+              </article>
+            </div>
           </div>
-          <p class="storage-note">Saved with your browser's <code>localStorage</code>, so your list stays on this device even after you close the tab &mdash; but it won't follow you to another device since there's no account attached.</p>
-          <div class="saved-grid" data-saved-list></div>
-          <p class="archive-empty" data-saved-empty>Nothing saved yet. Click &ldquo;Save&rdquo; on any highlight above to add it here.</p>
+
+          <div data-view-panel="players" hidden>
+            <p class="storage-note">Standout individual plays - clutches, outplays, and skill highlights from our players.</p>
+            <div class="media-grid player-grid" data-player-grid>
+              <article class="media-tile" tabindex="0" data-category="pubg">
+                <img src="assets/pubg-roster/pubg-player-1.jpg" alt="PUBG player highlight" onerror="this.remove()" />
+                <span>Player highlight &middot; PUBG</span>
+                <h3>PUBG roster clutch reel</h3>
+                <p class="media-tile-desc">A calm endgame hold from the PUBG roster.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="pubg-player-highlight" data-title="PUBG roster clutch reel" data-game="PUBG">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="mobile-legends">
+                <img src="assets/mobile-legends-roster/mobile-legends-player-1.jpg" alt="Mobile Legends player highlight" onerror="this.remove()" />
+                <span>Player highlight &middot; Mobile Legends</span>
+                <h3>Mobile Legends outplay reel</h3>
+                <p class="media-tile-desc">Sharp rotations and a clean objective steal from the MLBB squad.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="mlbb-player-highlight" data-title="Mobile Legends outplay reel" data-game="Mobile Legends">&#9734; Save</button>
+              </article>
+              <article class="media-tile" tabindex="0" data-category="brawl-stars">
+                <img src="assets/brawl-stars-roster/brawl-stars-player-1.jpg" alt="Brawl Stars player highlight" onerror="this.remove()" />
+                <span>Player highlight &middot; Brawl Stars</span>
+                <h3>Brawl Stars final-round reel</h3>
+                <p class="media-tile-desc">A high-pressure final round from the Brawl Stars program.</p>
+                <button class="bookmark-btn" type="button" data-save data-id="brawl-player-highlight" data-title="Brawl Stars final-round reel" data-game="Brawl Stars">&#9734; Save</button>
+              </article>
+            </div>
+          </div>
+
+          <div data-view-panel="saved" hidden>
+            <div class="panel-head">
+              <button class="panel-clear" type="button" data-clear-saved>Clear saved</button>
+            </div>
+            <div class="saved-grid" data-saved-list></div>
+            <p class="archive-empty" data-saved-empty>Nothing saved yet. Switch to All highlights and click Save on anything you want to find again later.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -153,7 +183,21 @@
       </div>
     </footer>
 
+    <div class="highlight-modal" data-highlight-modal hidden>
+      <div class="highlight-modal-backdrop" data-modal-close></div>
+      <div class="highlight-modal-panel" role="dialog" aria-modal="true" aria-labelledby="highlightModalTitle">
+        <button class="news-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
+        <img data-modal-image alt="" hidden />
+        <video data-modal-video controls playsinline hidden></video>
+        <div class="highlight-modal-placeholder" data-modal-placeholder hidden></div>
+        <small data-modal-game></small>
+        <h3 id="highlightModalTitle" data-modal-title></h3>
+        <p data-modal-desc></p>
+        <button class="bookmark-btn" type="button" data-modal-save>&#9734; Save</button>
+      </div>
+    </div>
+
     <script src="js/common.js?v=20260818" defer></script>
-    <script src="js/gallery.js" defer></script>
+    <script src="js/gallery.js?v=20260819-merge" defer></script>
   </body>
 </html>

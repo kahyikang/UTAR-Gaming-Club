@@ -7,11 +7,10 @@
     <meta name="description" content="Announcements, match recaps, and press mentions from Utar Gaming E-Sports Club." />
 
     <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/news.css" />
+    <link rel="stylesheet" href="css/news.css?v=20260819-merge" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/features.css" />
     <link rel="stylesheet" href="css/theme.css?v=20260819-2" />
-
     <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg?v=20260819-logo" />
   </head>
   <body data-page="news.html">
@@ -61,70 +60,79 @@
 
       <section class="section">
         <div class="site-shell">
-          <div class="filter-row" role="group" aria-label="Filter news by category">
-            <button class="filter-button active" type="button" data-filter="all">All news</button>
-            <button class="filter-button" type="button" data-filter="announcement">Announcements</button>
-            <button class="filter-button" type="button" data-filter="recap">Match recaps</button>
-            <button class="filter-button" type="button" data-filter="feature">Features</button>
-            <button class="filter-button" type="button" data-filter="press">Press</button>
+          <div class="view-tabs" role="tablist" aria-label="News views">
+            <button class="view-tab active" type="button" data-view-tab="all" role="tab" aria-selected="true">All news</button>
+            <button class="view-tab" type="button" data-view-tab="recent" role="tab" aria-selected="false">Recently viewed <span data-recent-count>(0)</span></button>
           </div>
 
-          <div class="news-grid" data-news-grid>
-            <article class="news-card" data-category="announcement" data-id="tryouts-2026" data-title="2026 team tryouts are now open">
-              <small>Announcement</small>
-              <h3>2026 team tryouts are now open</h3>
-              <p>Applications close on 18 July. All game programs are recruiting, from first-timers to competitive-ready players.</p>
-              <p class="news-full">Sign-ups are open to all UTAR students regardless of prior competitive experience. Tryout sessions will run across two weekends, with results and squad placements announced the following week on this page and in the club Discord.</p>
-              <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
-            </article>
-            <article class="news-card" data-category="recap" data-id="pubg-runnerup" data-title="PUBG squad secures runner-up at inter-varsity cup">
-              <small>Match recap</small>
-              <h3>PUBG squad secures runner-up at inter-varsity cup</h3>
-              <p>A tight final circle came down to the last two squads standing, with Utar Gaming finishing just short of the title.</p>
-              <p class="news-full">The team placed first in three of five matches across the group stage before facing a stacked finals bracket. Coaches praised the squad's rotation discipline, and the roster will carry the momentum into the upcoming Nexus Open.</p>
-              <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
-            </article>
-            <article class="news-card" data-category="feature" data-id="new-vp" data-title="Meet the committee: new vice president for 2026">
-              <small>Feature</small>
-              <h3>Meet the committee: new vice president for 2026</h3>
-              <p>We sat down with the club's newly appointed Vice President to talk goals for the year ahead.</p>
-              <p class="news-full">Priorities for the term include expanding the coaching pipeline, growing casual community events, and formalising a sponsorship track for future tournaments. A full write-up will follow in the next committee update.</p>
-              <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
-            </article>
-            <article class="news-card" data-category="press" data-id="campus-bulletin" data-title="Utar Gaming featured in campus tech bulletin">
-              <small>Press</small>
-              <h3>Utar Gaming featured in campus tech bulletin</h3>
-              <p>The university's tech bulletin covered the club's growth and its role in campus student life this semester.</p>
-              <p class="news-full">The feature highlighted the club's member growth over the past year and its collaboration with other student societies on joint LAN events, positioning Utar Gaming as one of the more active technology-adjacent clubs on campus.</p>
-              <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
-            </article>
-            <article class="news-card" data-category="announcement" data-id="nexus-deadline" data-title="Nexus Open 2026 registration deadline extended">
-              <small>Announcement</small>
-              <h3>Nexus Open 2026 registration deadline extended</h3>
-              <p>Due to demand, team registration for the Nexus Open has been extended by one week.</p>
-              <p class="news-full">Teams that have already registered do not need to take any action. New teams can register through the Tournaments page before the new closing date; slots are limited per game category.</p>
-              <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
-            </article>
-            <article class="news-card" data-category="recap" data-id="brawl-showdown-win" data-title="Mobile Legends team wins community showdown">
-              <small>Match recap</small>
-              <h3>Mobile Legends team wins community showdown</h3>
-              <p>A clean sweep in the grand finals capped off a strong showing at this month's community showdown night.</p>
-              <p class="news-full">The roster went undefeated across the bracket, with the jungle-support duo drawing praise for objective control. Highlights from the run are available on the Gallery &amp; Highlights page.</p>
-              <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
-            </article>
-          </div>
-        </div>
-      </section>
+          <div data-view-panel="all">
+            <div class="filter-row" role="group" aria-label="Filter news by category">
+              <button class="filter-button active" type="button" data-filter="all">All news</button>
+              <button class="filter-button" type="button" data-filter="announcement">Announcements</button>
+              <button class="filter-button" type="button" data-filter="recap">Match recaps</button>
+              <button class="filter-button" type="button" data-filter="feature">Features</button>
+              <button class="filter-button" type="button" data-filter="press">Press</button>
+            </div>
 
-      <section class="section section-tint">
-        <div class="site-shell">
-          <div class="panel-head">
-            <h2>Recently viewed this session</h2>
-            <button class="panel-clear" type="button" data-clear-recent>Clear session</button>
+            <div class="news-grid" data-news-grid>
+              <article class="news-card" data-category="announcement" data-id="tryouts-2026" data-title="2026 team tryouts are now open">
+                <img src="assets/events/event-schedule-card.png" alt="2026 team tryouts announcement" onerror="this.remove()" />
+                <small>Announcement</small>
+                <h3>2026 team tryouts are now open</h3>
+                <p>Applications close on 18 July. All game programs are recruiting, from first-timers to competitive-ready players.</p>
+                <p class="news-full">Sign-ups are open to all UTAR students regardless of prior competitive experience. Tryout sessions will run across two weekends, with results and squad placements announced the following week on this page and in the club Discord.</p>
+                <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
+              </article>
+              <article class="news-card" data-category="recap" data-id="pubg-runnerup" data-title="PUBG squad secures runner-up at inter-varsity cup">
+                <img src="assets/gallery/pubg-finals.jpg" alt="PUBG squad at inter-varsity cup" onerror="this.remove()" />
+                <small>Match recap</small>
+                <h3>PUBG squad secures runner-up at inter-varsity cup</h3>
+                <p>A tight final circle came down to the last two squads standing, with Utar Gaming finishing just short of the title.</p>
+                <p class="news-full">The team placed first in three of five matches across the group stage before facing a stacked finals bracket. Coaches praised the squad's rotation discipline, and the roster will carry the momentum into the upcoming Nexus Open.</p>
+                <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
+              </article>
+              <article class="news-card" data-category="feature" data-id="new-vp" data-title="Meet the committee: new vice president for 2026">
+                <img src="assets/gaming-team.jpg.png" alt="Utar Gaming committee vice president" onerror="this.remove()" />
+                <small>Feature</small>
+                <h3>Meet the committee: new vice president for 2026</h3>
+                <p>We sat down with the club's newly appointed Vice President to talk goals for the year ahead.</p>
+                <p class="news-full">Priorities for the term include expanding the coaching pipeline, growing casual community events, and formalising a sponsorship track for future tournaments. A full write-up will follow in the next committee update.</p>
+                <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
+              </article>
+              <article class="news-card" data-category="press" data-id="campus-bulletin" data-title="Utar Gaming featured in campus tech bulletin">
+                <img src="assets/gaming-community.jpg.png" alt="Campus tech bulletin feature" onerror="this.remove()" />
+                <small>Press</small>
+                <h3>Utar Gaming featured in campus tech bulletin</h3>
+                <p>The university's tech bulletin covered the club's growth and its role in campus student life this semester.</p>
+                <p class="news-full">The feature highlighted the club's member growth over the past year and its collaboration with other student societies on joint LAN events, positioning Utar Gaming as one of the more active technology-adjacent clubs on campus.</p>
+                <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
+              </article>
+              <article class="news-card" data-category="announcement" data-id="nexus-deadline" data-title="Nexus Open 2026 registration deadline extended">
+                <img src="assets/events/tournament-card.png" alt="Nexus Open 2026 registration" onerror="this.remove()" />
+                <small>Announcement</small>
+                <h3>Nexus Open 2026 registration deadline extended</h3>
+                <p>Due to demand, team registration for the Nexus Open has been extended by one week.</p>
+                <p class="news-full">Teams that have already registered do not need to take any action. New teams can register through the Tournaments page before the new closing date; slots are limited per game category.</p>
+                <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
+              </article>
+              <article class="news-card" data-category="recap" data-id="brawl-showdown-win" data-title="Mobile Legends team wins community showdown">
+                <img src="assets/gallery/mlbb-teamfight.jpg" alt="Mobile Legends community showdown win" onerror="this.remove()" />
+                <small>Match recap</small>
+                <h3>Mobile Legends team wins community showdown</h3>
+                <p>A clean sweep in the grand finals capped off a strong showing at this month's community showdown night.</p>
+                <p class="news-full">The roster went undefeated across the bracket, with the jungle-support duo drawing praise for objective control. Highlights from the run are available on the Gallery &amp; Highlights page.</p>
+                <button class="read-more" type="button" data-read-more>Read more <span aria-hidden="true">&#8594;</span></button>
+              </article>
+            </div>
           </div>
-          <p class="storage-note">Tracked with your browser's <code>sessionStorage</code>, so this list only lasts for as long as this tab stays open &mdash; closing the tab clears it automatically.</p>
-          <ul class="recent-list" data-recent-list></ul>
-          <p class="archive-empty" data-recent-empty>Nothing opened yet this session. Click &ldquo;Read more&rdquo; on any article above.</p>
+
+          <div data-view-panel="recent" hidden>
+            <div class="panel-head">
+              <button class="panel-clear" type="button" data-clear-recent>Clear session</button>
+            </div>
+            <ul class="recent-list" data-recent-list></ul>
+            <p class="archive-empty" data-recent-empty>Nothing opened yet this session. Switch to All news and click Read more on any article.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -141,6 +149,8 @@
       <div class="news-modal-backdrop" data-modal-close></div>
       <div class="news-modal-panel" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle">
         <button class="news-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
+        <img data-modal-image alt="" hidden />
+        <div class="news-modal-placeholder" data-modal-placeholder hidden></div>
         <small data-modal-category></small>
         <h3 id="newsModalTitle" data-modal-title></h3>
         <p data-modal-excerpt></p>
@@ -149,6 +159,6 @@
     </div>
 
     <script src="js/common.js?v=20260818" defer></script>
-    <script src="js/news.js" defer></script>
+    <script src="js/news.js?v=20260819-merge" defer></script>
   </body>
 </html>
