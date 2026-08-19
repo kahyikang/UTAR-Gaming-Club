@@ -32,6 +32,31 @@
   updateCountdown();
   if (countdown) window.setInterval(updateCountdown, 1000);
 
+  /* Tournament session storage -----------------------------------------
+     Remember the selected game only for the current browser tab/session. */
+  const TOURNAMENT_SESSION_KEY = "ugc_tournament_state";
+
+  const readTournamentSession = () => {
+    try {
+      return JSON.parse(sessionStorage.getItem(TOURNAMENT_SESSION_KEY)) || {};
+    } catch {
+      return {};
+    }
+  };
+
+  const saveTournamentSession = (selectedGame) => {
+    try {
+      sessionStorage.setItem(
+        TOURNAMENT_SESSION_KEY,
+        JSON.stringify({ selectedGame })
+      );
+    } catch {
+      /* Keep the tournament page usable if sessionStorage is unavailable. */
+    }
+  };
+
+  const tournamentSession = readTournamentSession();
+
   /* Interactive game category selector -------------------------------- */
   const gameData = {
     pubg: {
@@ -43,7 +68,7 @@
       stage: "Group → Final lobby",
       logo: "assets/pubg-logo.png",
       link: "program/pubg.html",
-      wallpaper: "assets/tournament-backgrounds/pubg-user-hd.jpg",
+      wallpaper: "assets/tournament-backgrounds/pubg-user-hd.webp",
       showcaseTitle: "PUBG leaderboard.",
       showcaseCopy: "PUBG is scored through cumulative placement and elimination points, so a standings table communicates progress better than a knockout bracket.",
       statusTitle: "Leaderboard status",
@@ -125,7 +150,7 @@
     /* Use an important inline value so older tournament CSS cannot hide the selected image. */
     wallpaperZone.style.setProperty(
       "background-image",
-      `linear-gradient(rgba(10,12,16,.18), rgba(10,12,16,.18)), url("${wallpaper}")`,
+      `linear-gradient(rgba(10,12,16,.04), rgba(10,12,16,.04)), url("${wallpaper}")`,
       "important"
     );
   };
@@ -133,6 +158,8 @@
   const setGame = (key, focusPanel = false) => {
     const data = gameData[key];
     if (!data || !panel) return;
+
+    saveTournamentSession(key);
 
     gameButtons.forEach((button) => {
       const isActive = button.dataset.gameTab === key;
@@ -185,7 +212,16 @@
       setGame(gameButtons[nextIndex].dataset.gameTab);
     });
   });
-  if (gameButtons.length) setGame(gameButtons.find((button) => button.classList.contains("active"))?.dataset.gameTab || gameButtons[0].dataset.gameTab);
+  if (gameButtons.length) {
+    const savedGame = tournamentSession.selectedGame;
+    const initialGame =
+      savedGame && gameData[savedGame]
+        ? savedGame
+        : (gameButtons.find((button) => button.classList.contains("active"))?.dataset.gameTab ||
+           gameButtons[0].dataset.gameTab);
+
+    setGame(initialGame);
+  }
 
   /* Sticky section navigation + reading progress ----------------------- */
   const trackedSections = Array.from(document.querySelectorAll("[data-track-section]"));
@@ -246,10 +282,10 @@
   if (timelineItems.length >= 5) {
     const now = Date.now();
     const cutoffs = [
-      new Date("2026-08-20T00:00:00+08:00").getTime(),
-      new Date("2026-08-23T00:00:00+08:00").getTime(),
-      new Date("2026-08-23T13:00:00+08:00").getTime(),
-      new Date("2026-08-23T18:00:00+08:00").getTime(),
+      new Date("2026-11-28T10:00:00+08:00").getTime(),
+      new Date("2026-11-29T09:00:00+08:00").getTime(),
+      new Date("2026-11-29T14:00:00+08:00").getTime(),
+      new Date("2026-11-29T18:00:00+08:00").getTime(),
     ];
     let currentStage = 0;
     while (currentStage < cutoffs.length && now >= cutoffs[currentStage]) currentStage += 1;
