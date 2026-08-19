@@ -43,11 +43,14 @@
     href="assets/utar-gaming-logo.jpeg"
   >
 
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+
 </head>
 
 
 <body data-page="contact.html">
-
 
   <header
     class="site-header"
@@ -55,7 +58,6 @@
   >
 
     <div class="site-shell header-inner">
-
 
       <a
         class="brand"
@@ -82,7 +84,6 @@
 
       </a>
 
-
       <button
         class="menu-toggle"
         type="button"
@@ -92,7 +93,9 @@
       >
 
         <span></span>
+
         <span></span>
+
         <span></span>
 
         <b class="sr-only">
@@ -100,7 +103,6 @@
         </b>
 
       </button>
-
 
       <nav
         class="site-nav"
@@ -110,6 +112,8 @@
       >
 
 
+        <!-- HOME -->
+
         <a
           data-page-link="index.html"
           href="index.html"
@@ -117,6 +121,8 @@
           Home
         </a>
 
+
+        <!-- ABOUT US -->
 
         <a
           data-page-link="about.html"
@@ -126,61 +132,14 @@
         </a>
 
 
-        <details class="nav-dropdown">
+        <!-- PROGRAMS -->
 
-          <summary>
-
-            Programs
-
-            <span aria-hidden="true">
-              +
-            </span>
-
-          </summary>
-
-
-          <div class="dropdown-menu">
-
-            <a
-              href="program/programs.html"
-            >
-              Programs
-            </a>
-
-            <a
-              href="program/pubg.html"
-            >
-              PUBG
-            </a>
-
-            <a
-              href="program/mobile-legends.html"
-            >
-              Mobile Legends
-            </a>
-
-            <a
-              href="program/brawl-stars.html"
-            >
-              Brawl Stars
-            </a>
-
-            <a
-              href="program/clash-of-clans.html"
-            >
-              Clash of Clans
-            </a>
-
-            <a
-              href="program/roblox.html"
-            >
-              Roblox
-            </a>
-
-          </div>
-
-        </details>
-
+        <a
+          data-page-link="programs.html"
+          href="program/programs.html"
+        >
+          Programs
+        </a>
 
         <details class="nav-dropdown">
 
@@ -198,12 +157,15 @@
           <div class="dropdown-menu">
 
             <a
+              data-page-link="event-schedule.html"
               href="event-schedule.html"
             >
               Event schedule
             </a>
 
+
             <a
+              data-page-link="tournaments.html"
               href="tournaments.html"
             >
               Tournaments
@@ -212,7 +174,6 @@
           </div>
 
         </details>
-
 
         <details class="nav-dropdown">
 
@@ -230,12 +191,15 @@
           <div class="dropdown-menu">
 
             <a
+              data-page-link="gallery.html"
               href="gallery.html"
             >
               Gallery &amp; highlights
             </a>
 
+
             <a
+              data-page-link="news.html"
               href="news.html"
             >
               News &amp; media
@@ -246,6 +210,8 @@
         </details>
 
 
+        <!-- SHOP -->
+
         <a
           data-page-link="shop.html"
           href="shop.html"
@@ -254,6 +220,8 @@
         </a>
 
 
+        <!-- CONTACT -->
+
         <a
           data-page-link="contact.html"
           href="contact.html"
@@ -261,6 +229,8 @@
           Contact
         </a>
 
+
+        <!-- JOIN CLUB -->
 
         <a
           class="nav-cta"
@@ -276,18 +246,17 @@
 
   </header>
 
-
   <main>
 
-
     <section class="contact-hero">
-
 
       <div class="contact-hero-grid">
 
 
         <div class="contact-hero-content">
 
+
+          <!-- BREADCRUMB -->
 
           <nav
             class="breadcrumb"
@@ -355,37 +324,29 @@
 
         <div class="contact-hero-side">
 
-
           <div class="hero-contact-number">
             01
           </div>
 
-
           <p>
             START A CONVERSATION
           </p>
-
 
           <span>
             YOUR NEXT GAME
             COULD START HERE.
           </span>
 
-
         </div>
 
 
       </div>
 
-
     </section>
-
 
     <section class="section contact-main-section">
 
-
       <div class="site-shell contact-layout">
-
 
         <div class="contact-information">
 
@@ -415,17 +376,13 @@
 
           </p>
 
-
           <div class="contact-details">
 
-
             <div class="contact-detail-item">
-
 
               <div class="contact-detail-number">
                 01
               </div>
-
 
               <div>
 
@@ -441,17 +398,16 @@
 
               </div>
 
-
             </div>
 
 
-            <div class="contact-detail-item">
+            <!-- CLUB -->
 
+            <div class="contact-detail-item">
 
               <div class="contact-detail-number">
                 02
               </div>
-
 
               <div>
 
@@ -465,17 +421,16 @@
 
               </div>
 
-
             </div>
 
 
-            <div class="contact-detail-item">
+            <!-- SOCIAL MEDIA -->
 
+            <div class="contact-detail-item">
 
               <div class="contact-detail-number">
                 03
               </div>
-
 
               <div>
 
@@ -489,38 +444,90 @@
 
               </div>
 
-
             </div>
 
 
           </div>
 
-
           <div class="contact-social">
-
 
             <p>
               FOLLOW US
             </p>
 
 
-            <div>
+            <div class="social-links">
 
-              <a href="#">
+
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Instagram
               </a>
 
-              <a href="#">
+
+              <a
+                href="https://www.tiktok.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 TikTok
               </a>
 
-              <a href="#">
+
+              <a
+                href="https://discord.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Discord
               </a>
 
-              <a href="#">
+
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 YouTube
               </a>
+
+
+            </div>
+
+          </div>
+
+          <div class="contact-social-plugin">
+
+
+            <p class="eyebrow">
+              SOCIAL MEDIA PLUGIN
+            </p>
+
+
+            <h3>
+              Watch UTAR Gaming
+            </h3>
+
+
+            <p>
+              Watch our esports content,
+              tournament highlights and
+              gaming activities.
+            </p>
+
+
+            <div class="contact-youtube-wrapper">
+
+              <iframe
+                src="https://www.youtube.com/embed/RMGjoTaqAQQ"
+                title="UTAR Gaming YouTube video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
 
             </div>
 
@@ -529,7 +536,6 @@
 
 
         </div>
-
 
         <div class="contact-form-wrapper">
 
@@ -543,10 +549,13 @@
 
 
             <h2>
+
               HOW CAN WE
+
               <span>
                 HELP?
               </span>
+
             </h2>
 
 
@@ -563,7 +572,6 @@
             class="contact-form"
             data-contact-form
           >
-
 
             <div class="form-row">
 
@@ -601,7 +609,6 @@
 
 
             </div>
-
 
             <label>
 
@@ -647,7 +654,6 @@
 
             </label>
 
-
             <label>
 
               <span>
@@ -661,7 +667,6 @@
               ></textarea>
 
             </label>
-
 
             <button
               class="button button-primary contact-submit"
@@ -692,331 +697,17 @@
 
       </div>
 
-
-    </section>
-
-
-    <section class="contact-reasons-section">
-
-
-      <div class="site-shell">
-
-
-        <div class="contact-section-heading">
-
-
-          <div>
-
-            <p class="eyebrow">
-              GET INVOLVED
-            </p>
-
-            <h2>
-
-              FIND YOUR
-
-              <span>
-                PLACE.
-              </span>
-
-            </h2>
-
-          </div>
-
-
-          <p>
-
-            There are many ways to become
-            part of the UTAR Gaming community.
-
-          </p>
-
-
-        </div>
-
-
-        <div class="contact-reasons-grid">
-
-
-          <article class="contact-reason-card red-card">
-
-
-            <div class="reason-top">
-
-              <span>
-                01
-              </span>
-
-              <span>
-                +
-              </span>
-
-            </div>
-
-
-            <h3>
-              JOIN THE CLUB
-            </h3>
-
-
-            <p>
-
-              Become part of our gaming community,
-              meet new players and participate
-              in club activities.
-
-            </p>
-
-
-            <a href="contact.html">
-
-              CONTACT US
-
-              <span>
-                &#8594;
-              </span>
-
-            </a>
-
-
-          </article>
-
-
-          <article class="contact-reason-card">
-
-
-            <div class="reason-top">
-
-              <span>
-                02
-              </span>
-
-              <span>
-                +
-              </span>
-
-            </div>
-
-
-            <h3>
-              TEAM TRYOUTS
-            </h3>
-
-
-            <p>
-
-              Interested in competitive esports?
-              Contact us about upcoming team
-              tryouts and training sessions.
-
-            </p>
-
-
-            <a href="program/programs.html">
-
-              VIEW PROGRAMS
-
-              <span>
-                &#8594;
-              </span>
-
-            </a>
-
-
-          </article>
-
-
-          <article class="contact-reason-card">
-
-
-            <div class="reason-top">
-
-              <span>
-                03
-              </span>
-
-              <span>
-                +
-              </span>
-
-            </div>
-
-
-            <h3>
-              PARTNERSHIPS
-            </h3>
-
-
-            <p>
-
-              Interested in collaborating with
-              UTAR Gaming for events, sponsorships
-              or community activities?
-
-            </p>
-
-
-            <a href="contact.html">
-
-              START A CONVERSATION
-
-              <span>
-                &#8594;
-              </span>
-
-            </a>
-
-
-          </article>
-
-
-        </div>
-
-
-      </div>
-
-
-    </section>
-
-
-    <section class="section contact-process-section">
-
-
-      <div class="site-shell">
-
-
-        <div class="contact-process-heading">
-
-          <p class="eyebrow">
-            SIMPLE PROCESS
-          </p>
-
-          <h2>
-            THREE STEPS.
-            <span>
-              ONE COMMUNITY.
-            </span>
-          </h2>
-
-        </div>
-
-
-        <div class="contact-process-grid">
-
-
-          <div class="process-item">
-
-            <span>
-              01
-            </span>
-
-            <h3>
-              SEND
-            </h3>
-
-            <p>
-              Fill in the contact form
-              with your enquiry.
-            </p>
-
-          </div>
-
-
-          <div class="process-item">
-
-            <span>
-              02
-            </span>
-
-            <h3>
-              CONNECT
-            </h3>
-
-            <p>
-              Our committee reviews
-              your message.
-            </p>
-
-          </div>
-
-
-          <div class="process-item">
-
-            <span>
-              03
-            </span>
-
-            <h3>
-              GET INVOLVED
-            </h3>
-
-            <p>
-              Start your journey
-              with UTAR Gaming.
-            </p>
-
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-
-    </section>
-
-
-    <section class="contact-final-section">
-
-
-      <div class="site-shell contact-final-inner">
-
-
-        <div>
-
-          <p>
-            READY TO LEVEL UP?
-          </p>
-
-          <h2>
-            YOUR NEXT
-            <span>
-              MOVE STARTS HERE.
-            </span>
-          </h2>
-
-        </div>
-
-
-        <a
-          href="program/programs.html"
-          class="button button-light"
-        >
-
-          EXPLORE PROGRAMS
-
-          <span>
-            &#8594;
-          </span>
-
-        </a>
-
-
-      </div>
-
-
     </section>
 
 
   </main>
 
-
   <footer class="site-footer">
-
 
     <div class="site-shell footer-inner">
 
+
+      <!-- FOOTER BRAND -->
 
       <div class="footer-brand">
 
@@ -1039,7 +730,6 @@
 
       </div>
 
-
       <p>
 
         &copy; 2026 Utar Gaming E-Sports Club.
@@ -1047,6 +737,8 @@
 
       </p>
 
+
+      <!-- FOOTER LINK -->
 
       <a href="contact.html">
 
@@ -1061,20 +753,24 @@
 
     </div>
 
-
   </footer>
 
+  <script
+    src="js/common.js?v=20260819"
+    defer>
+  </script>
+
 
   <script
-    src="js/common.js?v=20260818"
-    defer
-  ></script>
+    src="js/storage.js?v=20260819"
+    defer>
+  </script>
 
 
   <script
-    src="js/contact.js?v=20260818"
-    defer
-  ></script>
+    src="js/contact.js?v=20260819"
+    defer>
+  </script>
 
 
 </body>
