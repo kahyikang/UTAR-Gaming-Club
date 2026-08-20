@@ -30,6 +30,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
+  const statCounters = document.querySelectorAll("[data-count-to]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (statCounters.length) {
+    const formatCounter = (element, value) => {
+      const padding = Number(element.dataset.countPadding || 0);
+      const suffix = element.dataset.countSuffix || "";
+      return `${String(Math.round(value)).padStart(padding, "0")}${suffix}`;
+    };
+
+    const renderCounter = (element, value) => {
+      element.textContent = formatCounter(element, value);
+    };
+
+    const animateCounter = (element) => {
+      const target = Number(element.dataset.countTo || 0);
+
+      if (reducedMotion.matches) {
+        renderCounter(element, target);
+        return;
+      }
+
+      const duration = 1250;
+      const startTime = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        renderCounter(element, target * easedProgress);
+
+        if (progress < 1) {
+          window.requestAnimationFrame(tick);
+        }
+      };
+
+      window.requestAnimationFrame(tick);
+    };
+
+    statCounters.forEach((counter) => renderCounter(counter, 0));
+
+    if ("IntersectionObserver" in window) {
+      const counterObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            statCounters.forEach(animateCounter);
+            observer.disconnect();
+          });
+        },
+        { threshold: 0.35 }
+      );
+
+      const statsSection = document.querySelector(".hero-numbers");
+      if (statsSection) {
+        counterObserver.observe(statsSection);
+      }
+    } else {
+      statCounters.forEach(animateCounter);
+    }
+  }
+
   const tiltCards = document.querySelectorAll("[data-tilt]");
 
 
@@ -173,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const landingHero = document.querySelector(".landing-hero");
   const controller = document.querySelector("[data-hero-object]");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   if (landingHero && controller) {
     let frameId = null;

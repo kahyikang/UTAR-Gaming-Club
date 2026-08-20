@@ -487,6 +487,32 @@
 
 }
 
+.hero-numbers > div {
+
+  position: relative;
+
+  padding-left: 14px;
+
+}
+
+.hero-numbers > div::before {
+
+  position: absolute;
+  top: 4px;
+  bottom: 3px;
+  left: 0;
+  width: 3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--theme-cyan),
+      var(--theme-purple)
+    );
+
+  content: "";
+
+}
 
 .hero-numbers strong {
 
@@ -494,13 +520,35 @@
     block;
 
   color:
-    var(--white);
+    transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--theme-cyan) 0%,
+      var(--white) 48%,
+      #c99cff 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
 
   font-size:
-    1.8rem;
+    clamp(
+      2.1rem,
+      4vw,
+      3.25rem
+    );
 
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+  letter-spacing: .02em;
+  
   line-height:
     1;
+
+  filter:
+    drop-shadow(0 0 14px rgba(0, 240, 255, .18));
 
 }
 
