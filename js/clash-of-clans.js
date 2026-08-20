@@ -11,6 +11,7 @@ if (clashOfClansProfileModal && clashOfClansProfileTriggers.length) {
   const modalAbout = clashOfClansProfileModal.querySelector("[data-profile-modal-about]");
   const modalAchievements = clashOfClansProfileModal.querySelector("[data-profile-modal-achievements]");
   const closeButton = clashOfClansProfileModal.querySelector(".profile-modal-close");
+  const modalScroll = clashOfClansProfileModal.querySelector(".profile-dialog-scroll");
   let lastTrigger = null;
 
   const closeProfile = () => {
@@ -37,6 +38,10 @@ if (clashOfClansProfileModal && clashOfClansProfileTriggers.length) {
       return item;
     }));
     clashOfClansProfileModal.hidden = false;
+    if (modalScroll) {
+      modalScroll.scrollTop = 0;
+      modalScroll.scrollLeft = 0;
+    }
     document.body.classList.add("profile-modal-open");
     closeButton?.focus();
   };

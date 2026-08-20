@@ -11,6 +11,7 @@ if (brawlStarsProfileModal && brawlStarsProfileTriggers.length) {
   const modalAbout = brawlStarsProfileModal.querySelector("[data-profile-modal-about]");
   const modalAchievements = brawlStarsProfileModal.querySelector("[data-profile-modal-achievements]");
   const closeButton = brawlStarsProfileModal.querySelector(".profile-modal-close");
+  const modalScroll = brawlStarsProfileModal.querySelector(".profile-dialog-scroll");
   let lastTrigger = null;
 
   const closeProfile = () => {
@@ -37,6 +38,10 @@ if (brawlStarsProfileModal && brawlStarsProfileTriggers.length) {
       return item;
     }));
     brawlStarsProfileModal.hidden = false;
+    if (modalScroll) {
+      modalScroll.scrollTop = 0;
+      modalScroll.scrollLeft = 0;
+    }
     document.body.classList.add("profile-modal-open");
     closeButton?.focus();
   };

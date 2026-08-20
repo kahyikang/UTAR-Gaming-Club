@@ -84,17 +84,19 @@ body.profile-modal-open {
 }
 
 .roster-card-visual img {
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 16%;
-  transition: transform 260ms ease, filter 260ms ease;
+  transition: filter 260ms ease;
 }
 
 .roster-card:hover .roster-card-visual img,
 .roster-card:focus-visible .roster-card-visual img {
   filter: brightness(1.05) saturate(1.08);
-  transform: scale(1.035);
 }
 
 .roster-card-caption {
@@ -213,14 +215,22 @@ body.profile-modal-open {
 .profile-dialog {
   position: relative;
   z-index: 1;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: min(100%, 780px);
   max-height: calc(100vh - 48px);
-  grid-template-columns: minmax(230px, .78fr) minmax(280px, 1fr);
-  grid-template-rows: 320px auto;
-  overflow: auto;
+  overflow: hidden;
   background: var(--paper);
   box-shadow: 0 30px 80px rgba(14, 7, 30, .38);
+}
+
+.profile-dialog-scroll {
+  display: grid;
+  grid-template-columns: minmax(230px, .78fr) minmax(280px, 1fr);
+  grid-template-rows: 320px auto;
+  min-height: 0;
+  overflow-y: auto;
+  flex: 1 1 auto;
 }
 
 .profile-dialog-media {
@@ -250,6 +260,7 @@ body.profile-modal-open {
   grid-column: 2;
   grid-row: 1;
   min-height: 0;
+  min-width: 0;
   overflow: auto;
   padding: 24px 30px 20px;
 }
@@ -257,11 +268,14 @@ body.profile-modal-open {
 .profile-dialog-content h2 {
   margin-bottom: 10px;
   font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  overflow-wrap: anywhere;
 }
 
 .profile-dialog-content>p:not(.eyebrow) {
   margin-bottom: 0;
   font-size: 1.05rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .profile-detail-grid {
@@ -272,6 +286,7 @@ body.profile-modal-open {
 }
 
 .profile-detail-grid div {
+  min-width: 0;
   padding: 7px 0;
   border-top: 1px solid var(--line);
 }
@@ -289,9 +304,12 @@ body.profile-modal-open {
   color: var(--ink);
   font-size: .9rem;
   font-weight: 850;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .profile-dialog-block {
+  min-width: 0;
   padding-top: 22px;
   border-top: 1px solid var(--line);
 }
@@ -307,6 +325,8 @@ body.profile-modal-open {
 .profile-dialog-block>p:not(.eyebrow) {
   margin-bottom: 0;
   color: var(--ink-soft);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .profile-achievements {
@@ -319,9 +339,12 @@ body.profile-modal-open {
 
 .profile-achievements li {
   position: relative;
+  min-width: 0;
   padding-left: 16px;
   color: var(--ink-soft);
   font-size: .92rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .profile-achievements li::before {
@@ -340,6 +363,7 @@ body.profile-modal-open {
   grid-row: 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 40px;
+  min-width: 0;
   padding: 24px 38px 38px;
   border-top: 1px solid var(--line);
 }
@@ -390,6 +414,12 @@ body.profile-modal-open {
   .roster-grid-coach .roster-card {
     grid-column: 1;
   }
+
+  .profile-dialog-media {
+    position: relative;
+    top: auto;
+    z-index: 0;
+  }
 }
 
 @media (max-width:680px) {
@@ -402,17 +432,28 @@ body.profile-modal-open {
   }
 
   .roster-card-caption {
-    padding: 60px 14px 15px;
+    display: flex;
+    min-height: 112px;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 7px;
+    padding: 44px 14px 15px;
     opacity: 1;
     transform: none;
   }
 
   .roster-card-caption strong {
+    display: block;
     font-size: 1.02rem;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
   }
 
   .roster-card-role {
+    display: block;
     font-size: .6rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
   }
 
   .roster-grid-coach {
@@ -422,18 +463,32 @@ body.profile-modal-open {
 
   .profile-modal {
     padding: 12px;
+    align-items: start;
+    overflow-y: auto;
   }
 
   .profile-dialog {
     width: 100%;
     max-height: calc(100svh - 24px);
-    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
+
+  .profile-dialog-scroll {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;
+    min-width: 0;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     overflow-y: auto;
   }
 
   .profile-dialog-media {
     position: relative;
+    flex: 0 0 210px;
+    width: 100%;
     grid-column: 1;
     grid-row: 1;
     height: 210px;
@@ -442,18 +497,39 @@ body.profile-modal-open {
   }
 
   .profile-dialog-content {
+    display: block;
+    flex: 0 0 auto;
     grid-column: 1;
     grid-row: 2;
     min-height: 0;
+    width: 100%;
     overflow: visible;
     padding: 24px 18px 18px;
   }
 
+  .profile-dialog-content .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .profile-dialog-content h2 {
+    margin: 0 0 14px;
+    font-size: clamp(1.65rem, 8vw, 2.1rem);
+    line-height: 1.08;
+  }
+
+  .profile-dialog-content .profile-detail-grid {
+    margin-top: 0;
+  }
+
   .profile-dialog-lower {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
     grid-column: 1;
     grid-row: 3;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 22px;
+    width: 100%;
     padding: 0 22px 28px;
     border-top: 0;
   }
@@ -462,8 +538,17 @@ body.profile-modal-open {
     margin-top: 0;
   }
 
+  .profile-dialog-lower .profile-dialog-block:first-child {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .profile-dialog-lower .profile-dialog-block .eyebrow {
+    margin-bottom: 8px;
+  }
+
   .profile-detail-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0;
   }
 }

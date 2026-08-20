@@ -11,6 +11,7 @@ if (mobileLegendsProfileModal && mobileLegendsProfileTriggers.length) {
   const modalAbout = mobileLegendsProfileModal.querySelector("[data-profile-modal-about]");
   const modalAchievements = mobileLegendsProfileModal.querySelector("[data-profile-modal-achievements]");
   const closeButton = mobileLegendsProfileModal.querySelector(".profile-modal-close");
+  const modalScroll = mobileLegendsProfileModal.querySelector(".profile-dialog-scroll");
   let lastTrigger = null;
 
   const closeProfile = () => {
@@ -37,6 +38,10 @@ if (mobileLegendsProfileModal && mobileLegendsProfileTriggers.length) {
       return item;
     }));
     mobileLegendsProfileModal.hidden = false;
+    if (modalScroll) {
+      modalScroll.scrollTop = 0;
+      modalScroll.scrollLeft = 0;
+    }
     document.body.classList.add("profile-modal-open");
     closeButton?.focus();
   };

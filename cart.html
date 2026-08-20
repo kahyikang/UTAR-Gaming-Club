@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart | Utar Gaming</title>
     <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/cart.css?v=20260819-cart" />
+    <link rel="stylesheet" href="css/cart.css?v=20260820-mobile-modal-1" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/features.css" />
     <link rel="stylesheet" href="css/theme.css?v=20260819-2" />
@@ -144,12 +144,14 @@
         <div class="cart-confirm-backdrop" data-clear-cancel></div>
         <section class="cart-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-cart-heading">
           <button class="cart-confirm-close" type="button" data-clear-cancel aria-label="Close clear cart confirmation" title="Close">&#215;</button>
-          <p class="eyebrow">Cart update</p>
-          <h2 id="clear-cart-heading">Clear all selected items?</h2>
-          <p>This will remove every item from your cart. You can add them again from the shop.</p>
-          <div class="cart-confirm-actions">
-            <button class="cart-confirm-cancel" type="button" data-clear-cancel>Keep items</button>
-            <button class="button button-primary" type="button" data-clear-confirm>Clear cart</button>
+          <div class="cart-confirm-scroll">
+            <p class="eyebrow">Cart update</p>
+            <h2 id="clear-cart-heading">Clear all selected items?</h2>
+            <p>This will remove every item from your cart. You can add them again from the shop.</p>
+            <div class="cart-confirm-actions">
+              <button class="cart-confirm-cancel" type="button" data-clear-cancel>Keep items</button>
+              <button class="button button-primary" type="button" data-clear-confirm>Clear cart</button>
+            </div>
           </div>
         </section>
       </div>

@@ -11,6 +11,7 @@ if (robloxProfileModal && robloxProfileTriggers.length) {
   const modalAbout = robloxProfileModal.querySelector("[data-profile-modal-about]");
   const modalAchievements = robloxProfileModal.querySelector("[data-profile-modal-achievements]");
   const closeButton = robloxProfileModal.querySelector(".profile-modal-close");
+  const modalScroll = robloxProfileModal.querySelector(".profile-dialog-scroll");
   let lastTrigger = null;
 
   const closeProfile = () => {
@@ -37,6 +38,10 @@ if (robloxProfileModal && robloxProfileTriggers.length) {
       return item;
     }));
     robloxProfileModal.hidden = false;
+    if (modalScroll) {
+      modalScroll.scrollTop = 0;
+      modalScroll.scrollLeft = 0;
+    }
     document.body.classList.add("profile-modal-open");
     closeButton?.focus();
   };

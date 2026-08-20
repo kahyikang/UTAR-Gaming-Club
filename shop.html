@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merchandise Shop | Utar Gaming</title>
     <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/shop.css?v=20260820-shop-background-1" />
+    <link rel="stylesheet" href="css/shop.css?v=20260820-mobile-modal-1" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/features.css" />
     <link rel="stylesheet" href="css/theme.css?v=20260819-2" />
@@ -163,35 +163,37 @@
         <div class="shop-modal-backdrop" data-modal-close></div>
         <section class="shop-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="product-modal-name">
           <button class="shop-modal-close" type="button" data-modal-close aria-label="Close product details" title="Close">&#215;</button>
-          <div class="shop-modal-gallery">
-            <button class="gallery-nav gallery-nav-prev" type="button" data-gallery-prev aria-label="Previous product image" title="Previous image">&#8592;</button>
-            <div class="shop-modal-image-wrap"><img class="shop-modal-image" data-modal-image src="" alt="" /></div>
-            <button class="gallery-nav gallery-nav-next" type="button" data-gallery-next aria-label="Next product image" title="Next image">&#8594;</button>
-            <p class="shop-modal-gallery-count" data-gallery-count aria-live="polite"></p>
-          </div>
-          <div class="shop-modal-details">
-            <h2 id="product-modal-name" data-modal-name></h2>
-            <p class="shop-modal-description" data-modal-description></p>
-            <p class="shop-modal-price" data-modal-price></p>
-            <div class="shop-options-row">
-              <div class="shop-size-field" data-modal-size-field hidden>
-                <label for="product-size">Size</label>
-                <select id="product-size" data-modal-size>
-                  <option value="XS">XS</option>
-                  <option value="S">S</option>
-                  <option value="M" selected>M</option>
-                  <option value="L">L</option>
+          <div class="shop-modal-scroll">
+            <div class="shop-modal-gallery">
+              <button class="gallery-nav gallery-nav-prev" type="button" data-gallery-prev aria-label="Previous product image" title="Previous image">&#8592;</button>
+              <div class="shop-modal-image-wrap"><img class="shop-modal-image" data-modal-image src="" alt="" /></div>
+              <button class="gallery-nav gallery-nav-next" type="button" data-gallery-next aria-label="Next product image" title="Next image">&#8594;</button>
+              <p class="shop-modal-gallery-count" data-gallery-count aria-live="polite"></p>
+            </div>
+            <div class="shop-modal-details">
+              <h2 id="product-modal-name" data-modal-name></h2>
+              <p class="shop-modal-description" data-modal-description></p>
+              <p class="shop-modal-price" data-modal-price></p>
+              <div class="shop-options-row">
+                <div class="shop-size-field" data-modal-size-field hidden>
+                  <label for="product-size">Size</label>
+                  <select id="product-size" data-modal-size>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M" selected>M</option>
+                    <option value="L">L</option>
                   <option value="XL">XL</option>
                   <option value="2XL">2XL</option>
                 </select>
+                </div>
+                <div class="shop-quantity-field">
+                  <label for="product-quantity">Quantity</label>
+                  <input id="product-quantity" data-modal-quantity type="number" min="1" max="99" value="1" inputmode="numeric" />
+                </div>
               </div>
-              <div class="shop-quantity-field">
-                <label for="product-quantity">Quantity</label>
-                <input id="product-quantity" data-modal-quantity type="number" min="1" max="99" value="1" inputmode="numeric" />
-              </div>
+              <button class="button button-primary shop-modal-add" type="button" data-modal-add>Add to cart</button>
+              <p class="shop-modal-status" data-modal-status aria-live="polite"></p>
             </div>
-            <button class="button button-primary shop-modal-add" type="button" data-modal-add>Add to cart</button>
-            <p class="shop-modal-status" data-modal-status aria-live="polite"></p>
           </div>
         </section>
       </div>

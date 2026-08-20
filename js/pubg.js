@@ -11,6 +11,7 @@ if (pubgProfileModal && pubgProfileTriggers.length) {
   const modalAbout = pubgProfileModal.querySelector("[data-profile-modal-about]");
   const modalAchievements = pubgProfileModal.querySelector("[data-profile-modal-achievements]");
   const closeButton = pubgProfileModal.querySelector(".profile-modal-close");
+  const modalScroll = pubgProfileModal.querySelector(".profile-dialog-scroll");
   let lastTrigger = null;
 
   const closeProfile = () => {
@@ -37,6 +38,10 @@ if (pubgProfileModal && pubgProfileTriggers.length) {
       return item;
     }));
     pubgProfileModal.hidden = false;
+    if (modalScroll) {
+      modalScroll.scrollTop = 0;
+      modalScroll.scrollLeft = 0;
+    }
     document.body.classList.add("profile-modal-open");
     closeButton?.focus();
   };

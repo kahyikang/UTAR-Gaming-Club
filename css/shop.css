@@ -303,13 +303,21 @@ body.shop-modal-open {
 .shop-modal-dialog {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     width: min(100%, 960px);
     max-height: min(90vh, 760px);
-    overflow: auto;
     background: var(--theme-lavender);
     box-shadow: 0 30px 90px rgba(7, 8, 28, .35);
+}
+
+.shop-modal-scroll {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+    min-height: 0;
+    overflow-y: auto;
+    flex: 1 1 auto;
 }
 
 .shop-modal-close {
@@ -641,12 +649,20 @@ body.shop-modal-open {
     }
 
     .shop-modal-dialog {
+        width: 100%;
+        max-height: calc(100svh - 20px);
+    }
+
+    .shop-modal-scroll {
         grid-template-columns: 1fr;
-        max-height: calc(100vh - 20px);
+        min-width: 0;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
     }
 
     .shop-modal-gallery,
     .shop-modal-image-wrap {
+        min-width: 0;
         min-height: 280px;
     }
 
