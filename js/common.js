@@ -32,6 +32,13 @@ document.querySelectorAll("[data-page-link]").forEach((link) => link.classList.t
 const syncHeader = () => commonHeader?.classList.toggle("scrolled", window.scrollY > 12);
 syncHeader(); window.addEventListener("scroll", syncHeader, { passive: true });
 
+const muteAllVideos = () => document.querySelectorAll("video").forEach((video) => {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.setAttribute("muted", "");
+});
+muteAllVideos();
+
 const socialLinks = [
   { name: "Facebook", file: "facebook.png", href: "https://www.facebook.com/", external: true },
   { name: "Discord", file: "discord.png", href: "https://discord.com/", external: true },

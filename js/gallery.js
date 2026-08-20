@@ -198,6 +198,9 @@
     modalVideo.src = videoSrc;
     modalVideo.removeAttribute("hidden");
     modalVideo.autoplay = true;
+    modalVideo.muted = true;
+    modalVideo.defaultMuted = true;
+    modalVideo.setAttribute("muted", "");
     const playRequest = modalVideo.play();
     playRequest?.catch(() => {
       // Some browsers wait until the media element has finished loading.
