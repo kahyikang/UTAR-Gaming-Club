@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const duration = 1250;
+      const duration = 8000;
       const startTime = performance.now();
 
       const tick = (now) => {
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.addEventListener("mousemove", (event) => {
 
-      if (window.innerWidth <= 900) {
+      if (window.innerWidth <= 900 || reducedMotion.matches) {
         return;
       }
 
@@ -137,12 +137,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
     card.addEventListener("mouseleave", () => {
 
-      card.style.transform =
-        "perspective(900px) rotateX(0deg) rotateY(0deg)";
+      card.style.removeProperty("transform");
 
     });
 
   });
+
+  const countdown = document.querySelector("[data-event-countdown]");
+
+  if (countdown) {
+    const eventStart = new Date(countdown.dataset.eventCountdown).getTime();
+    const eventEnd = new Date(
+      countdown.dataset.eventEnd || countdown.dataset.eventCountdown
+    ).getTime();
+    const countdownLabel = countdown
+      .closest(".event-countdown-row")
+      ?.querySelector("span");
+
+    const pad = (value) => String(value).padStart(2, "0");
+
+    const updateCountdown = () => {
+      const now = Date.now();
+      const remaining = eventStart - now;
+
+      if (now >= eventEnd) {
+        if (countdownLabel) countdownLabel.textContent = "Status";
+        countdown.textContent = "Event completed";
+        return;
+      }
+
+      if (now >= eventStart) {
+        if (countdownLabel) countdownLabel.textContent = "Status";
+        countdown.textContent = "Event is underway";
+        return;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      if (countdownLabel) countdownLabel.textContent = "Starts in";
+      countdown.textContent =
+        `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+    };
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+  }
 
   document.querySelectorAll(
     'a[href^="#"]'

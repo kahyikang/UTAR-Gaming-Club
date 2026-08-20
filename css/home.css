@@ -1571,16 +1571,79 @@
 
 .announcement-bar {
 
+  position: relative;
+
+  overflow: hidden;
+
   background:
-    var(--red);
+    linear-gradient(
+      105deg,
+      var(--theme-cyan-deep),
+      var(--theme-purple) 52%,
+      var(--theme-cyan-deep)
+    );
+
+  background-size: 200% 100%;
+
+  animation:
+    announcement-flow
+    12s
+    ease-in-out
+    infinite;
 
   color:
     var(--white);
 
 }
 
+@keyframes announcement-flow {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+}
+
+.announcement-bar::after {
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -18%;
+  width: 20%;
+
+  background: rgba(255, 255, 255, .16);
+  content: "";
+  transform: skewX(-22deg);
+  animation: announcement-sheen 7s ease-in-out infinite;
+  pointer-events: none;
+
+}
+
+@keyframes announcement-sheen {
+
+  0%,
+  30% {
+    left: -18%;
+  }
+
+  70%,
+  100% {
+    left: 112%;
+  }
+
+}
+
 
 .announcement-inner {
+
+  position: relative;
+  z-index: 1;
 
   display:
     grid;
@@ -1604,6 +1667,10 @@
 
 .announcement-label {
 
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
   font-size:
     .7rem;
 
@@ -1616,6 +1683,238 @@
   text-transform:
     uppercase;
 
+}
+
+.announcement-label::before {
+
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, .13), 0 0 16px rgba(255, 255, 255, .72);
+  content: "";
+  animation: announcement-pulse 1.9s ease-in-out infinite;
+
+}
+
+@keyframes announcement-pulse {
+
+  0%,
+  100% {
+    opacity: .62;
+    transform: scale(.88);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .announcement-bar,
+  .announcement-bar::after,
+  .announcement-label::before {
+    animation: none;
+
+  }
+
+}
+
+/* Below-hero homepage polish */
+
+.section-tint {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-tint::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(34vw, 420px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), .38));
+  content: "";
+  pointer-events: none;
+}
+
+.home-tournament {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.home-tournament::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 0 42%, rgba(0, 240, 255, .08) 42.2%, transparent 42.5%),
+    linear-gradient(295deg, transparent 0 64%, rgba(106, 13, 173, .18) 64.2%, transparent 64.5%);
+  content: "";
+  pointer-events: none;
+}
+
+.tournament-copy,
+.home-tournament .event-stat-list {
+  position: relative;
+  z-index: 1;
+}
+
+.tournament-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--theme-cyan) !important;
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.tournament-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--theme-cyan);
+  box-shadow: 0 0 0 5px rgba(0, 240, 255, .12), 0 0 14px rgba(0, 240, 255, .7);
+  animation: tournament-status-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes tournament-status-pulse {
+  0%,
+  100% {
+    opacity: .6;
+    transform: scale(.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.home-tournament .event-stat-list {
+  padding: 6px 22px;
+  border: 1px solid rgba(249, 247, 255, .18);
+  background: linear-gradient(145deg, rgba(47, 29, 94, .82), rgba(26, 14, 56, .72));
+  box-shadow: 0 22px 50px rgba(0, 0, 0, .22);
+}
+
+.home-tournament .event-stat-list div {
+  position: relative;
+  padding: 18px 0;
+  transition: padding 180ms ease, background 180ms ease;
+}
+
+.home-tournament .event-stat-list div::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -22px;
+  width: 3px;
+  background: var(--theme-cyan);
+  content: "";
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.home-tournament .event-stat-list div:hover,
+.home-tournament .event-stat-list div:focus-within {
+  padding-left: 10px;
+  background: rgba(0, 240, 255, .06);
+}
+
+.home-tournament .event-stat-list div:hover::before,
+.home-tournament .event-stat-list div:focus-within::before {
+  transform: scaleY(1);
+}
+
+.event-countdown-row {
+  border-top: 1px solid rgba(249, 247, 255, .12);
+}
+
+.event-countdown-row strong {
+  color: var(--theme-cyan) !important;
+}
+
+.join-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.join-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.join-panel::after {
+  position: absolute;
+  top: 0;
+  right: -30px;
+  bottom: 0;
+  width: 36%;
+  background: linear-gradient(
+    135deg,
+    transparent 0 38%,
+    rgba(106, 13, 173, .06) 38.5% 39.5%,
+    transparent 40% 48%,
+    rgba(58, 168, 191, .08) 48.5% 49.5%,
+    transparent 50%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.join-copy,
+.join-actions {
+  position: relative;
+  z-index: 1;
+}
+
+.join-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.join-actions .text-link {
+  margin-top: 0;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.join-actions .text-link:hover,
+.join-actions .text-link:focus-visible {
+  transform: translateX(4px);
+}
+
+@media (max-width: 680px) {
+  .join-actions {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .join-actions .text-link {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-tournament .event-stat-list div,
+  .home-tournament .event-stat-list div::before,
+  .join-actions .text-link {
+    transition: none;
+  }
+
+  .tournament-status i {
+    animation: none;
+  }
 }
 
 
@@ -1643,6 +1942,20 @@
 
 }
 
+.announcement-inner a {
+
+  transition: transform 180ms ease, color 180ms ease;
+
+}
+
+.announcement-inner a:hover,
+.announcement-inner a:focus-visible {
+
+  color: var(--white);
+  transform: translateX(4px);
+
+}
+
 
 .announcement-inner a span,
 .text-link span {
@@ -1666,6 +1979,124 @@
 
   align-items:
     center;
+
+}
+
+.feature-card[data-tilt] {
+
+  transform-style: preserve-3d;
+  will-change: transform;
+
+}
+
+.feature-card .feature-hint {
+
+  position: relative;
+  z-index: 1;
+
+}
+
+/* Homepage feature cards use the club's photography and reveal their copy on hover. */
+body[data-page="index.html"] .feature-card {
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+
+}
+
+body[data-page="index.html"] .feature-card-red {
+
+  background-image: url("../assets/hero-esports-club.png");
+  background-position: center 38%;
+
+}
+
+body[data-page="index.html"] .feature-card-blue {
+
+  background-image: url("../assets/gaming-team.jpg.png");
+  background-position: center 42%;
+
+}
+
+body[data-page="index.html"] .feature-card-gold {
+
+  background-image: url("../assets/win-moment.jpg");
+  background-position: center 44%;
+
+}
+
+body[data-page="index.html"] .feature-card::before {
+
+  inset: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 8, 24, .18) 0%,
+      rgba(10, 8, 24, .34) 38%,
+      rgba(10, 8, 24, .94) 100%
+    );
+  transform: none;
+  transition: background 260ms ease;
+  z-index: 0;
+
+}
+
+body[data-page="index.html"] .feature-card:hover::before,
+body[data-page="index.html"] .feature-card:focus-visible::before {
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 8, 24, .12) 0%,
+      rgba(10, 8, 24, .26) 38%,
+      rgba(10, 8, 24, .88) 100%
+    );
+  transform: none;
+
+}
+
+body[data-page="index.html"] .feature-card > p {
+
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    max-height 360ms ease,
+    margin-bottom 360ms ease,
+    opacity 240ms ease,
+    transform 360ms ease;
+
+}
+
+body[data-page="index.html"] .feature-card:hover > p,
+body[data-page="index.html"] .feature-card:focus-visible > p {
+
+  max-height: 5rem;
+  margin-bottom: 12px;
+  opacity: 1;
+  transform: none;
+
+}
+
+@media (hover: none), (pointer: coarse) {
+
+  body[data-page="index.html"] .feature-card > p {
+
+    max-height: 5rem;
+    margin-bottom: 12px;
+    opacity: 1;
+    transform: none;
+
+  }
 
 }
 
