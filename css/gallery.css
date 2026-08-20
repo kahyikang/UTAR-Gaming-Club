@@ -96,7 +96,7 @@ body.highlight-modal-open { overflow:hidden; }
 .highlight-modal-panel .bookmark-btn.is-saved { border-color:var(--gold); background:var(--gold); color:var(--ink); }
 
 @media (max-width:680px) {
-    .highlight-modal { align-items:flex-start; overflow-y:auto; padding:10px; }
+    .highlight-modal { align-items:center; overflow-y:auto; padding:10px; }
     .highlight-modal-panel { width:100%; max-height:calc(100svh - 20px); padding-bottom:24px; }
     .highlight-modal-scroll { min-width:0; overflow-x:hidden; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
     .highlight-modal-scroll > small,
