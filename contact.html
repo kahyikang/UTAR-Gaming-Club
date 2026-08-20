@@ -24,7 +24,7 @@
 
   <link
     rel="stylesheet"
-    href="css/contact.css?v=20260820-topics"
+    href="css/contact.css?v=20260820-contact-video"
   >
 
   <link
@@ -288,6 +288,22 @@
     <section class="contact-hero">
 
 
+      <div class="contact-hero-video" aria-hidden="true">
+
+        <iframe
+          src="https://www.youtube.com/embed/RMGjoTaqAQQ?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=RMGjoTaqAQQ&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
+          title="UTAR Gaming background video"
+          tabindex="-1"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+
+      <div class="contact-hero-scrim" aria-hidden="true"></div>
+
+
       <div class="contact-hero-grid">
 
 
@@ -358,28 +374,6 @@
         </div>
 
 
-        <div class="contact-hero-side">
-
-
-          <div class="hero-contact-number">
-            01
-          </div>
-
-
-          <p>
-            START A CONVERSATION
-          </p>
-
-
-          <span>
-            YOUR NEXT GAME
-            COULD START HERE.
-          </span>
-
-
-        </div>
-
-
       </div>
 
 
@@ -424,7 +418,7 @@
           <div class="contact-details">
 
 
-            <div class="contact-detail-item">
+            <div class="contact-detail-item contact-detail-link">
 
 
               <div class="contact-detail-number">
@@ -446,11 +440,22 @@
 
               </div>
 
+              <span class="contact-detail-action">
+                EMAIL US
+                <span aria-hidden="true">&#8594;</span>
+              </span>
+
 
             </div>
 
 
-            <div class="contact-detail-item">
+            <div
+              class="contact-detail-item contact-detail-button"
+              role="button"
+              tabindex="0"
+              data-copy-contact
+              data-copy-value="UTAR Gaming E-Sports Club"
+            >
 
 
               <div class="contact-detail-number">
@@ -470,11 +475,21 @@
 
               </div>
 
+              <span class="contact-detail-action" data-copy-label>
+                COPY NAME
+              </span>
+
 
             </div>
 
 
-            <div class="contact-detail-item">
+            <div
+              class="contact-detail-item contact-detail-button"
+              role="button"
+              tabindex="0"
+              data-copy-contact
+              data-copy-value="@utargaming"
+            >
 
 
               <div class="contact-detail-number">
@@ -493,6 +508,10 @@
                 </strong>
 
               </div>
+
+              <span class="contact-detail-action" data-copy-label>
+                COPY HANDLE
+              </span>
 
 
             </div>
@@ -533,33 +552,7 @@
           </div>
 
 
-          <div class="contact-social-plugin">
-
-            <p class="eyebrow">
-              SOCIAL MEDIA PLUGIN
-            </p>
-
-            <h3>
-              Watch UTAR Gaming
-            </h3>
-
-            <p>
-              Watch our esports content, tournament highlights and gaming activities.
-            </p>
-
-            <div class="contact-youtube-wrapper">
-
-              <iframe
-                src="https://www.youtube.com/embed/RMGjoTaqAQQ"
-                title="UTAR Gaming YouTube video"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-
-            </div>
-
-          </div>
+          <p class="contact-copy-status" data-contact-copy-status aria-live="polite"></p>
 
 
         </div>
@@ -814,7 +807,7 @@
     </section>
 
 
-    <section class="contact-reasons-section">
+    <section class="contact-reasons-section" hidden>
 
 
       <div class="site-shell">
@@ -976,7 +969,7 @@
 
             <a href="contact.html">
 
-              START A CONVERSATION
+              CONTACT THE CLUB
 
               <span>
                 &#8594;
@@ -997,7 +990,7 @@
     </section>
 
 
-    <section class="section contact-process-section">
+    <section class="section contact-process-section" hidden>
 
 
       <div class="site-shell">
@@ -1085,7 +1078,7 @@
     </section>
 
 
-    <section class="contact-final-section">
+    <section class="contact-final-section" hidden>
 
 
       <div class="site-shell contact-final-inner">
@@ -1190,7 +1183,7 @@
 
 
   <script
-    src="js/contact.js?v=20260820-topics"
+    src="js/contact.js?v=20260820-contact-only"
     defer
   ></script>
 

@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const STORAGE_KEY = "utarGamingContacts";
   const SESSION_KEY = "utarGamingContactSession";
   const contactForm = document.querySelector("[data-contact-form]");
-  const socialPlugin = document.querySelector(".contact-social-plugin");
 
   if (!contactForm) return;
 
@@ -17,7 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const teamField = contactForm.querySelector('[data-topic-field="team"]');
   const gameSelect = contactForm.querySelector('[name="game"]');
   const teamInput = contactForm.querySelector('[name="team"]');
+  const copyButtons = document.querySelectorAll("[data-copy-contact]");
+  const copyStatus = document.querySelector("[data-contact-copy-status]");
   let messageTimer;
+  let copyTimer;
 
   const topicOptions = {
     "Competition registration": {
@@ -83,6 +85,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
   topicSelect?.addEventListener("change", updateTopicFields);
   updateTopicFields();
+
+  async function copyContactValue(button) {
+    const value = button.dataset.copyValue || "";
+    const label = button.querySelector("[data-copy-label]");
+    if (!value) return;
+
+    let copied = false;
+
+    try {
+      await navigator.clipboard.writeText(value);
+      copied = true;
+    } catch (error) {
+      try {
+        const fallback = document.createElement("textarea");
+        fallback.value = value;
+        fallback.setAttribute("readonly", "");
+        fallback.style.position = "fixed";
+        fallback.style.opacity = "0";
+        document.body.appendChild(fallback);
+        fallback.select();
+        copied = document.execCommand("copy");
+        fallback.remove();
+      } catch (fallbackError) {
+        console.error("Unable to copy contact detail:", fallbackError);
+      }
+    }
+
+    if (!copied) {
+      if (copyStatus) copyStatus.textContent = "Copy failed. Please select the text manually.";
+      return;
+    }
+
+    if (label) {
+      const previousLabel = label.textContent.trim();
+      label.textContent = "COPIED";
+      window.clearTimeout(button.copyTimer);
+      button.copyTimer = window.setTimeout(() => {
+        label.textContent = previousLabel;
+      }, 1800);
+    }
+
+    if (copyStatus) {
+      window.clearTimeout(copyTimer);
+      copyStatus.textContent = `${value} copied to clipboard.`;
+      copyTimer = window.setTimeout(() => {
+        copyStatus.textContent = "";
+      }, 2200);
+    }
+  }
+
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      void copyContactValue(button);
+    });
+
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        void copyContactValue(button);
+      }
+    });
+  });
 
   function getSubmissions() {
     try {
@@ -160,26 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  async function loadSocialMediaData() {
-    if (!socialPlugin) return;
-    try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/users");
-      if (!response.ok) throw new Error("Unable to load social media data.");
-      const users = await response.json();
-      if (!users[0]) return;
-      const apiStatus = document.createElement("p");
-      apiStatus.className = "api-status";
-      apiStatus.textContent = "Social media plugin connected successfully.";
-      socialPlugin.appendChild(apiStatus);
-    } catch (error) {
-      console.error("Social media API error:", error);
-    }
-  }
-
   if (!getCookie("utarGamingVisitor")) setCookie("utarGamingVisitor", "true", 30);
   const previousSession = getSessionData();
   if (previousSession) contactForm.dataset.previousSession = "true";
-  void loadSocialMediaData();
 
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
