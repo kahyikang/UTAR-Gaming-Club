@@ -140,29 +140,29 @@
           <div data-view-panel="players" hidden>
             <p class="storage-note">Standout individual plays &mdash; clutches, outplays, and skill highlights from our players.</p>
             <div class="media-grid player-grid" data-player-grid>
-              <article class="media-tile" data-category="pubg" data-player="" data-video="assets/gallery/pubg-highlight.mp4">
-                <img src="assets/gallery/mira-highlight.png" alt="Mira PUBG player highlight" onerror="this.remove()" />
+              <article class="media-tile" data-category="pubg" data-player="" data-youtube-id="Fh1NTv-z_3A">
+      <img src="https://img.youtube.com/vi/Fh1NTv-z_3A/hqdefault.jpg" alt="Mira PUBG player highlight" onerror="this.remove()" />
                 <span class="video-badge" aria-hidden="true">&#9654;</span>
                 <span>Player highlight &middot; PUBG</span>
                 <h3>Mira's highlight</h3>
                 <p class="media-tile-desc">Sharp aim and awesome clutch PUBG moments</p>
-                <button class="bookmark-btn" type="button" data-save data-id="pubg-player-highlight" data-title="[Player name] highlight reel" data-game="PUBG">&#9734; Save</button>
+                 <button class="bookmark-btn" type="button" data-save data-id="pubg-player-highlight" data-title="Mira's highlight" data-game="PUBG">&#9734; Save</button>
               </article>
-              <article class="media-tile" data-category="mobile-legends" data-player="" data-video="assets/gallery/mlbb-highlight.mp4">
-                <img src="assets/gallery/mlbb-player-highlight.jpg" alt="Mobile Legends player highlight reel" onerror="this.remove()" />
+              <article class="media-tile" data-category="mobile-legends" data-player="" data-youtube-id="v4TGtrQaq4M">
+      <img src="https://img.youtube.com/vi/v4TGtrQaq4M/hqdefault.jpg" alt="Mobile Legends player highlight reel" onerror="this.remove()" />
                 <span class="video-badge" aria-hidden="true">&#9654;</span>
                 <span>Player highlight &middot; Mobile Legends</span>
                 <h3>Atlas Legendary</h3>
                 <p class="media-tile-desc">A highlight montage packed with satisfying kills and clutch outplays from our MLBB players.</p>
-                <button class="bookmark-btn" type="button" data-save data-id="mlbb-player-highlight" data-title="[Player name] highlight reel" data-game="Mobile Legends">&#9734; Save</button>
+                 <button class="bookmark-btn" type="button" data-save data-id="mlbb-player-highlight" data-title="Atlas Legendary" data-game="Mobile Legends">&#9734; Save</button>
               </article>
-              <article class="media-tile" data-category="brawl-stars" data-player="" data-video="assets/gallery/brawl-stars-highlight.mp4">
-                <img src="assets/brawl-stars-logo.png" alt="Brawl Stars player highlight reel" onerror="this.remove()" />
+              <article class="media-tile" data-category="brawl-stars" data-player="" data-youtube-id="pkb0WNs1Up8">
+      <img src="https://img.youtube.com/vi/pkb0WNs1Up8/hqdefault.jpg" alt="Brawl Stars player highlight reel" onerror="this.remove()" />
                 <span class="video-badge" aria-hidden="true">&#9654;</span>
                 <span>Player highlight &middot; Brawl Stars</span>
                 <h3>Juno | Silk Blood Counter Kill</h3>
                 <p class="media-tile-desc">Juno Silk Blood pulls off an insane counter kill under pressure🔥</p>
-                <button class="bookmark-btn" type="button" data-save data-id="brawl-player-highlight" data-title="[Player name] highlight reel" data-game="Brawl Stars">&#9734; Save</button>
+                 <button class="bookmark-btn" type="button" data-save data-id="brawl-player-highlight" data-title="Juno | Silk Blood Counter Kill" data-game="Brawl Stars">&#9734; Save</button>
               </article>
             </div>
           </div>
@@ -191,9 +191,10 @@
       <div class="highlight-modal-panel" role="dialog" aria-modal="true" aria-labelledby="highlightModalTitle">
         <button class="news-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
         <div class="highlight-modal-scroll">
-          <img data-modal-image alt="" hidden />
-          <video data-modal-video controls playsinline hidden></video>
-          <div class="highlight-modal-placeholder" data-modal-placeholder hidden></div>
+           <img data-modal-image alt="" hidden />
+           <video data-modal-video controls playsinline hidden></video>
+           <iframe data-modal-youtube title="" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen hidden></iframe>
+           <div class="highlight-modal-placeholder" data-modal-placeholder hidden></div>
           <small data-modal-game></small>
           <h3 id="highlightModalTitle" data-modal-title></h3>
           <p data-modal-desc></p>
@@ -203,6 +204,6 @@
     </div>
 
     <script src="js/common.js?v=20260820-cookies" defer></script>
-    <script src="js/gallery.js?v=20260819-merge" defer></script>
+    <script src="js/gallery.js?v=20260820-youtube-player-highlights" defer></script>
   </body>
 </html>
