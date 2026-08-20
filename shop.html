@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merchandise Shop | Utar Gaming</title>
     <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/shop.css?v=20260819-merch" />
+    <link rel="stylesheet" href="css/shop.css?v=20260820-shop-video" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/features.css" />
     <link rel="stylesheet" href="css/theme.css?v=20260819-2" />
@@ -47,8 +47,14 @@
     </header>
 
     <main>
-      <section class="page-hero">
-        <div class="site-shell">
+      <section class="page-hero shop-page-hero">
+        <div class="shop-page-hero-video" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="https://shop.vatic.gg/cdn/shop/videos/c/vp/73006660dfa044b8aaeb561d711b2eea/73006660dfa044b8aaeb561d711b2eea.HD-1080p-7.2Mbps-82230787.mp4?v=0" type="video/mp4" />
+          </video>
+        </div>
+        <div class="shop-page-hero-scrim" aria-hidden="true"></div>
+        <div class="site-shell shop-page-hero-content">
           <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Shop</span></nav>
           <p class="eyebrow">Club collection</p>
           <h1>Gear up for the next match.</h1>
@@ -60,20 +66,19 @@
         <div class="site-shell">
           <div class="section-heading">
             <div><p class="eyebrow">UTAR Gaming shop</p><h2>Wear the colours.</h2></div>
-          </div>
-
-          <div class="shop-filter-row">
-            <label for="product-filter">Filter</label>
-            <select id="product-filter" data-product-filter>
-              <option value="all">All merchandise</option>
-              <option value="t-shirt">T-shirt</option>
-              <option value="jacket">Jacket</option>
-              <option value="hoodie">Hoodie</option>
-              <option value="sweatshirt">Sweatshirt</option>
-              <option value="tote">Tote bag</option>
-              <option value="pant">Pant</option>
-              <option value="accessories">Accessories</option>
-            </select>
+            <div class="shop-filter-row">
+              <label for="product-filter">Filter</label>
+              <select id="product-filter" data-product-filter>
+                <option value="all">All merchandise</option>
+                <option value="t-shirt">T-shirt</option>
+                <option value="jacket">Jacket</option>
+                <option value="hoodie">Hoodie</option>
+                <option value="sweatshirt">Sweatshirt</option>
+                <option value="tote">Tote bag</option>
+                <option value="pant">Pant</option>
+                <option value="accessories">Accessories</option>
+              </select>
+            </div>
           </div>
           <p class="sr-only" data-filter-status aria-live="polite"></p>
 
