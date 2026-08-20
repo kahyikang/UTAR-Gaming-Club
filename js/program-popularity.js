@@ -154,15 +154,34 @@
 
   const popularitySection = ranking.closest(".team-popularity");
   if ("IntersectionObserver" in window && popularitySection) {
+    let sectionIsVisible = false;
+    let userHasScrolled = window.scrollY > 0;
+    const startAfterScroll = () => {
+      userHasScrolled = true;
+      if (!sectionIsVisible) return;
+      animateScores();
+      window.removeEventListener("scroll", startAfterScroll);
+    };
+
+    window.addEventListener("scroll", startAfterScroll, { passive: true });
+
     const scoreObserver = new IntersectionObserver(
       (entries, observer) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
+        sectionIsVisible = entries.some((entry) => entry.isIntersecting);
+        if (!sectionIsVisible || !userHasScrolled) return;
         animateScores();
+        window.removeEventListener("scroll", startAfterScroll);
         observer.disconnect();
       },
       { threshold: 0.35 }
     );
     scoreObserver.observe(popularitySection);
+
+    if (userHasScrolled && popularitySection.getBoundingClientRect().top < window.innerHeight) {
+      animateScores();
+      window.removeEventListener("scroll", startAfterScroll);
+      scoreObserver.disconnect();
+    }
   } else {
     animateScores();
   }
