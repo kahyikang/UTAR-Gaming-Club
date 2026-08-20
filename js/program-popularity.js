@@ -22,6 +22,7 @@
   }));
   let votes = readVotes();
   let scoresHaveAnimated = false;
+  let scoreAnimationToken = 0;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function readVotes() {
@@ -80,6 +81,7 @@
   }
 
   function render({ startScoresAtZero = false } = {}) {
+    scoreAnimationToken += 1;
     const rankedTeams = getRankedTeams();
     ranking.replaceChildren(
       ...rankedTeams.map((team, index) =>
@@ -88,31 +90,89 @@
     );
   }
 
+  function reorderRanking(rankedTeams) {
+    const items = new Map(
+      [...ranking.children].map((item) => [item.dataset.teamId, item])
+    );
+
+    rankedTeams.forEach((team, index) => {
+      const item = items.get(team.id);
+      if (!item) return;
+
+      const position = index + 1;
+      const positionElement = item.querySelector(".team-ranking-position");
+      positionElement.textContent = position;
+      positionElement.setAttribute("aria-label", `Rank ${position}`);
+      ranking.append(item);
+    });
+  }
+
   function animateScores() {
     if (scoresHaveAnimated) return;
     scoresHaveAnimated = true;
 
     const scoreElements = [...ranking.querySelectorAll("[data-team-score]")];
     if (reducedMotion.matches) {
-      scoreElements.forEach((element) => {
-        element.textContent = votes[element.dataset.teamScore];
-      });
+      render();
       return;
     }
 
     const duration = 3000;
     const startTime = performance.now();
+    const animationToken = ++scoreAnimationToken;
+    const targets = Object.fromEntries(
+      teams.map((team) => [team.id, votes[team.id] || 0])
+    );
+    const randomTieOrder = Object.fromEntries(
+      [...teams]
+        .sort(() => Math.random() - 0.5)
+        .map((team, index) => [team.id, index])
+    );
+    const timing = Object.fromEntries(
+      teams.map((team) => [
+        team.id,
+        {
+          delay: Math.random() * 420,
+          finishAt: 2200 + Math.random() * 700
+        }
+      ])
+    );
 
     const tick = (now) => {
+      if (animationToken !== scoreAnimationToken) return;
+
       const progress = Math.min((now - startTime) / duration, 1);
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const displayedScores = {};
 
       scoreElements.forEach((element) => {
-        const target = votes[element.dataset.teamScore] || 0;
-        element.textContent = Math.round(target * easedProgress);
+        const teamId = element.dataset.teamScore;
+        const teamTiming = timing[teamId];
+        const teamProgress = Math.min(
+          Math.max(
+            (now - startTime - teamTiming.delay) /
+              (teamTiming.finishAt - teamTiming.delay),
+            0
+          ),
+          1
+        );
+        const easedProgress = 1 - Math.pow(1 - teamProgress, 3);
+        displayedScores[teamId] = Math.round(targets[teamId] * easedProgress);
+        element.textContent = displayedScores[teamId];
       });
 
-      if (progress < 1) window.requestAnimationFrame(tick);
+      const rankedDuringAnimation = [...teams].sort((first, second) => {
+        const scoreDifference = displayedScores[second.id] - displayedScores[first.id];
+        return scoreDifference || randomTieOrder[first.id] - randomTieOrder[second.id];
+      });
+      reorderRanking(rankedDuringAnimation);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(tick);
+        return;
+      }
+
+      scoreAnimationToken += 1;
+      render();
     };
 
     window.requestAnimationFrame(tick);
