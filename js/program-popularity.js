@@ -4,13 +4,20 @@
 
   if (!ranking || !teamCards.length) return;
 
-  const storageKey = "utar_gaming_team_popularity";
+  const storageKey = "utar_gaming_team_popularity_v2";
   const initialPopularity = {
-    "utar-reapers": 128,
-    "utar-lynx": 104,
-    "utar-brawlers": 86,
-    "utar-war-clan": 67,
-    "utar-creators": 51
+    "utar-reapers": 1720,
+    "utar-lynx": 1722,
+    "utar-brawlers": 1510,
+    "utar-war-clan": 931,
+    "utar-creators": 889
+  };
+  const startingPopularity = {
+    "utar-reapers": 1240,
+    "utar-lynx": 1050,
+    "utar-brawlers": 920,
+    "utar-war-clan": 840,
+    "utar-creators": 800
   };
   const teams = teamCards.map((card, index) => ({
     id: card.dataset.teamId,
@@ -58,6 +65,10 @@
     });
   }
 
+  function getStartingScore(teamId, target) {
+    return Math.min(startingPopularity[teamId] ?? 0, target);
+  }
+
   function createRankingItem(team, position, displayScore = votes[team.id]) {
     const item = document.createElement("li");
     item.className = "team-ranking-item";
@@ -80,12 +91,16 @@
     return item;
   }
 
-  function render({ startScoresAtZero = false } = {}) {
+  function render({ startScoresAtBaseline = false } = {}) {
     scoreAnimationToken += 1;
     const rankedTeams = getRankedTeams();
     ranking.replaceChildren(
       ...rankedTeams.map((team, index) =>
-        createRankingItem(team, index + 1, startScoresAtZero ? 0 : votes[team.id])
+        createRankingItem(
+          team,
+          index + 1,
+          startScoresAtBaseline ? getStartingScore(team.id, votes[team.id]) : votes[team.id]
+        )
       )
     );
   }
@@ -123,6 +138,9 @@
     const targets = Object.fromEntries(
       teams.map((team) => [team.id, votes[team.id] || 0])
     );
+    const startingScores = Object.fromEntries(
+      teams.map((team) => [team.id, getStartingScore(team.id, targets[team.id])])
+    );
     const randomTieOrder = Object.fromEntries(
       [...teams]
         .sort(() => Math.random() - 0.5)
@@ -156,7 +174,10 @@
           1
         );
         const easedProgress = 1 - Math.pow(1 - teamProgress, 3);
-        displayedScores[teamId] = Math.round(targets[teamId] * easedProgress);
+        displayedScores[teamId] = Math.round(
+          startingScores[teamId] +
+            (targets[teamId] - startingScores[teamId]) * easedProgress
+        );
         element.textContent = displayedScores[teamId];
       });
 
@@ -210,7 +231,7 @@
     render();
   });
 
-  render({ startScoresAtZero: true });
+  render({ startScoresAtBaseline: true });
 
   const popularitySection = ranking.closest(".team-popularity");
   if ("IntersectionObserver" in window && popularitySection) {
