@@ -1,0 +1,201 @@
+/* Programs page visual layer. The shared layout and card behavior remain in programs.css. */
+
+.programs-page {
+  background:
+    radial-gradient(circle at 12% 28%, rgba(0, 240, 255, .08), transparent 24%),
+    var(--theme-deep);
+}
+
+.programs-page .programs-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(540px, 63vw, 720px);
+  align-items: flex-end;
+  overflow: hidden;
+  padding: clamp(100px, 12vw, 150px) 0 82px;
+  background:
+    linear-gradient(90deg, rgba(26, 14, 56, .97) 0%, rgba(26, 14, 56, .86) 34%, rgba(26, 14, 56, .47) 65%, rgba(26, 14, 56, .7) 100%),
+    url("../assets/hero-esports-club.png") center center / cover no-repeat;
+}
+
+.programs-page .programs-hero::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, transparent 0 58%, rgba(106, 13, 173, .24) 58% 59%, transparent 59% 100%),
+    linear-gradient(0deg, rgba(26, 14, 56, .7), transparent 32%);
+  content: "";
+  pointer-events: none;
+}
+
+.programs-page .programs-hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--theme-cyan), var(--theme-purple) 56%, transparent);
+  content: "";
+}
+
+.programs-page .programs-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.programs-page .programs-hero h1 {
+  max-width: 780px;
+  color: var(--white);
+  font-size: clamp(3rem, 6.2vw, 6.2rem);
+  line-height: .96;
+  text-wrap: balance;
+}
+
+.programs-page .programs-hero-inner > p:not(.eyebrow) {
+  max-width: 620px;
+  color: rgba(255, 255, 255, .78);
+  font-size: 1.08rem;
+}
+
+.programs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.programs-hero-actions .button {
+  width: auto;
+}
+
+.programs-hero-note {
+  color: rgba(255, 255, 255, .7);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.programs-page .programs-showcase {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(106, 13, 173, .1), transparent 34%),
+    repeating-linear-gradient(135deg, rgba(26, 14, 56, .035) 0 1px, transparent 1px 18px),
+    #f5f2fb;
+  color: var(--ink);
+}
+
+.programs-page .programs-showcase::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(42vw, 560px);
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, .06));
+  content: "";
+  pointer-events: none;
+}
+
+.programs-page .programs-showcase > .site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.programs-page .programs-showcase .section-heading {
+  margin-bottom: 34px;
+}
+
+.programs-page .programs-showcase .section-heading h2 {
+  color: var(--ink);
+}
+
+.programs-page .programs-showcase .eyebrow {
+  color: var(--theme-cyan);
+}
+
+.programs-page .program-grid {
+  gap: 20px;
+}
+
+.programs-page .program-card {
+  min-height: 460px;
+  border-color: rgba(0, 240, 255, .24);
+  background:
+    linear-gradient(180deg, rgba(47, 29, 94, .8), rgba(26, 14, 56, .98)),
+    var(--theme-deep);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+}
+
+.programs-page .program-card::before {
+  inset: 34px 28px 128px;
+  opacity: .7;
+}
+
+.programs-page .program-card::after {
+  background: linear-gradient(180deg, rgba(26, 14, 56, .02) 14%, rgba(26, 14, 56, .42) 54%, rgba(26, 14, 56, .99) 84%);
+}
+
+.programs-page .program-card:hover,
+.programs-page .program-card:focus-visible {
+  border-color: var(--theme-cyan);
+  box-shadow: 0 0 0 1px rgba(0, 240, 255, .18), 0 24px 58px rgba(0, 0, 0, .36);
+}
+
+.programs-page .program-card h3 {
+  font-size: clamp(1.7rem, 2.7vw, 2.4rem);
+  letter-spacing: .01em;
+}
+
+.programs-page .program-card p {
+  color: rgba(255, 255, 255, .74);
+}
+
+@media (max-width: 680px) {
+  .programs-page .programs-hero {
+    min-height: 580px;
+    padding: 100px 0 68px;
+    background-position: 62% center;
+  }
+
+  .programs-page .programs-hero::before {
+    background:
+      linear-gradient(180deg, rgba(26, 14, 56, .72) 0%, rgba(26, 14, 56, .78) 42%, rgba(26, 14, 56, .98) 100%),
+      linear-gradient(135deg, transparent 0 58%, rgba(106, 13, 173, .2) 58% 59%, transparent 59% 100%);
+  }
+
+  .programs-page .programs-hero h1 {
+    max-width: 560px;
+    font-size: clamp(2.65rem, 14vw, 4.2rem);
+  }
+
+  .programs-page .programs-hero-inner > p:not(.eyebrow) {
+    font-size: .98rem;
+  }
+
+  .programs-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .programs-hero-actions .button {
+    width: 100%;
+  }
+
+  .programs-hero-note {
+    line-height: 1.5;
+  }
+
+  .programs-page .program-card {
+    min-height: 410px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .programs-page .program-card,
+  .programs-page .program-card::before,
+  .programs-page .program-card p {
+    transition: none;
+  }
+}

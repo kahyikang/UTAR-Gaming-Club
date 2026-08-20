@@ -24,7 +24,7 @@
 
   <link
     rel="stylesheet"
-    href="css/contact.css?v=20260819-merge"
+    href="css/contact.css?v=20260820-topics"
   >
 
   <link
@@ -640,33 +640,47 @@
             <label>
 
               <span>
-                WHAT CAN WE HELP WITH? *
+                WHAT WOULD YOU LIKE TO DO? *
               </span>
 
 
               <select
                 name="topic"
+                data-topic-select
+                aria-describedby="topic-guidance"
                 required
               >
 
                 <option value="">
-                  Select an option
+                  Select a request type
                 </option>
 
-                <option value="Membership">
-                  Membership
+                <option value="Competition registration">
+                  Register for a competition
+                </option>
+
+                <option value="Club membership">
+                  Join the club
                 </option>
 
                 <option value="Team tryouts">
-                  Team tryouts
+                  Apply for team tryouts
                 </option>
 
-                <option value="Event registration">
-                  Event registration
+                <option value="Event or training enquiry">
+                  Ask about events or training
+                </option>
+
+                <option value="Merchandise enquiry">
+                  Ask about merchandise
+                </option>
+
+                <option value="Media and collaboration">
+                  Media or content collaboration
                 </option>
 
                 <option value="Partnership">
-                  Partnership
+                  Partnership or sponsorship
                 </option>
 
                 <option value="General enquiry">
@@ -679,7 +693,77 @@
 
               </select>
 
+              <small class="form-field-hint" id="topic-guidance" data-topic-guidance>
+                Choose the reason that best matches your message.
+              </small>
+
             </label>
+
+
+            <div class="contact-topic-details" data-topic-details hidden>
+
+              <div class="form-row">
+
+                <label data-topic-field="game" hidden>
+
+                  <span>
+                    GAME / PROGRAM
+                  </span>
+
+                  <select name="game">
+
+                    <option value="">
+                      Select a game
+                    </option>
+
+                    <option value="PUBG">
+                      PUBG
+                    </option>
+
+                    <option value="Mobile Legends">
+                      Mobile Legends
+                    </option>
+
+                    <option value="Brawl Stars">
+                      Brawl Stars
+                    </option>
+
+                    <option value="Clash of Clans">
+                      Clash of Clans
+                    </option>
+
+                    <option value="Roblox">
+                      Roblox
+                    </option>
+
+                    <option value="Other">
+                      Other
+                    </option>
+
+                  </select>
+
+                </label>
+
+
+                <label data-topic-field="team" hidden>
+
+                  <span>
+                    TEAM / GROUP NAME
+                  </span>
+
+                  <input
+                    type="text"
+                    name="team"
+                    placeholder="Enter a team or group name"
+                  >
+
+                </label>
+
+              </div>
+
+              <p class="form-field-hint" data-topic-details-copy></p>
+
+            </div>
 
 
             <label>
@@ -1106,7 +1190,7 @@
 
 
   <script
-    src="js/contact.js?v=20260819-merge"
+    src="js/contact.js?v=20260820-topics"
     defer
   ></script>
 

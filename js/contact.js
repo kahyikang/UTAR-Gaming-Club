@@ -9,7 +9,80 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!contactForm) return;
 
   const note = contactForm.querySelector("[data-form-note]");
+  const topicSelect = contactForm.querySelector("[data-topic-select]");
+  const topicDetails = contactForm.querySelector("[data-topic-details]");
+  const topicGuidance = contactForm.querySelector("[data-topic-guidance]");
+  const topicDetailsCopy = contactForm.querySelector("[data-topic-details-copy]");
+  const gameField = contactForm.querySelector('[data-topic-field="game"]');
+  const teamField = contactForm.querySelector('[data-topic-field="team"]');
+  const gameSelect = contactForm.querySelector('[name="game"]');
+  const teamInput = contactForm.querySelector('[name="team"]');
   let messageTimer;
+
+  const topicOptions = {
+    "Competition registration": {
+      guidance: "Register a team or ask about joining an upcoming competition.",
+      details: "Select the game you want to enter. Add a team name if you already have one.",
+      showGame: true,
+      showTeam: true,
+      requiredGame: true,
+    },
+    "Club membership": {
+      guidance: "Ask about joining UTAR Gaming and becoming part of the club community.",
+      details: "Choose the game you are most interested in, or leave it open if you want to explore.",
+      showGame: true,
+      showTeam: false,
+    },
+    "Team tryouts": {
+      guidance: "Ask about tryouts, team openings, training, or player recruitment.",
+      details: "Select the game you want to try out for so the committee can direct your request.",
+      showGame: true,
+      showTeam: false,
+      requiredGame: true,
+    },
+    "Event or training enquiry": {
+      guidance: "Ask about tournaments, training sessions, workshops, or club meetings.",
+    },
+    "Merchandise enquiry": {
+      guidance: "Ask about shop items, sizing, orders, pickup, or merchandise availability.",
+    },
+    "Media and collaboration": {
+      guidance: "Contact us about interviews, content, coverage, or creative collaborations.",
+    },
+    Partnership: {
+      guidance: "Discuss sponsorship, event support, or a partnership with UTAR Gaming.",
+    },
+    "General enquiry": {
+      guidance: "Send a general question to the UTAR Gaming committee.",
+    },
+    Other: {
+      guidance: "Tell us what you need and we will direct your message to the right person.",
+    },
+  };
+
+  function updateTopicFields() {
+    if (!topicSelect) return;
+
+    const selectedTopic = topicOptions[topicSelect.value];
+    const hasDetails = Boolean(selectedTopic?.showGame || selectedTopic?.showTeam);
+
+    if (topicDetails) topicDetails.hidden = !hasDetails;
+    if (gameField) gameField.hidden = !selectedTopic?.showGame;
+    if (teamField) teamField.hidden = !selectedTopic?.showTeam;
+    if (gameSelect) gameSelect.required = Boolean(selectedTopic?.requiredGame);
+    if (topicGuidance) {
+      topicGuidance.textContent = selectedTopic?.guidance || "Choose the reason that best matches your message.";
+    }
+    if (topicDetailsCopy) topicDetailsCopy.textContent = selectedTopic?.details || "";
+
+    if (!hasDetails) {
+      if (gameSelect) gameSelect.value = "";
+      if (teamInput) teamInput.value = "";
+    }
+  }
+
+  topicSelect?.addEventListener("change", updateTopicFields);
+  updateTopicFields();
 
   function getSubmissions() {
     try {
@@ -72,6 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
           name: submission.name,
           email: submission.email,
           topic: submission.topic,
+          game: submission.game,
+          team: submission.team,
           message: submission.message,
           date: submission.date,
         }),
@@ -112,6 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = contactForm.querySelector('[name="name"]')?.value.trim() || "";
     const email = contactForm.querySelector('[name="email"]')?.value.trim() || "";
     const topic = contactForm.querySelector('[name="topic"]')?.value || "";
+    const game = contactForm.querySelector('[name="game"]')?.value || "";
+    const team = contactForm.querySelector('[name="team"]')?.value.trim() || "";
     const message = contactForm.querySelector('[name="message"]')?.value.trim() || "";
 
     if (!name || !email || !topic || !message) {
@@ -124,11 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if (topicOptions[topic]?.requiredGame && !game) {
+      showMessage("Please select the game related to your request.", "error");
+      return;
+    }
+
     const submission = {
       id: Date.now(),
       name: name,
       email: email,
       topic: topic,
+      game: game,
+      team: team,
       message: message,
       date: new Date().toLocaleString(),
     };
@@ -145,6 +229,8 @@ document.addEventListener("DOMContentLoaded", () => {
       name: submission.name,
       email: submission.email,
       topic: submission.topic,
+      game: submission.game,
+      team: submission.team,
       submittedAt: submission.date,
     });
     setCookie("utarGamingLastContact", String(submission.id), 30);
@@ -152,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showMessage("Message sent successfully! Thank you for contacting UTAR Gaming.", "success");
     contactForm.reset();
+    updateTopicFields();
   });
 
   function showMessage(message, type) {
