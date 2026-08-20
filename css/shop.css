@@ -668,8 +668,8 @@ body.shop-modal-open {
 
 @media (max-width: 720px) {
     .shop-modal {
-        align-items: start;
-        overflow-y: auto;
+        place-items: center;
+        overflow: hidden;
         padding: 10px;
     }
 
