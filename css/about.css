@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
 }
 
+body[data-page="about.html"] {
+  background: #0e081e;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -728,6 +732,7 @@ main > section.story-reveal.is-arriving {
   padding: 0;
 
   background: #0e081e;
+  border-top: 0;
 }
 
 .story-image {

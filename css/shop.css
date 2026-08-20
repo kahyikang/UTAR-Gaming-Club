@@ -37,6 +37,69 @@
     z-index: 2;
 }
 
+.shop-sale-banner {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    background: var(--ink);
+    border-top: 1px solid rgba(var(--accent-rgb), .32);
+    border-bottom: 1px solid rgba(var(--accent-rgb), .32);
+    color: var(--white);
+}
+
+.shop-sale-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.shop-sale-track {
+    display: flex;
+    width: max-content;
+    animation: shop-sale-marquee 24s linear infinite;
+    will-change: transform;
+}
+
+.shop-sale-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 22px;
+    min-height: 48px;
+    padding: 0 22px;
+}
+
+.shop-sale-group span {
+    color: var(--theme-cyan);
+    font-size: .68rem;
+    font-weight: 900;
+    letter-spacing: .18em;
+    white-space: nowrap;
+}
+
+.shop-sale-group i {
+    width: 5px;
+    height: 5px;
+    flex: 0 0 5px;
+    background: var(--purple);
+    border-radius: 50%;
+}
+
+@keyframes shop-sale-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shop-sale-track {
+        animation: none;
+    }
+}
+
 .shop-section {
     position: relative;
     overflow: hidden;

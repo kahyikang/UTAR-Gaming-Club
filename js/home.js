@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const duration = 8000;
+      const duration = 3000;
       const startTime = performance.now();
 
       const tick = (now) => {
