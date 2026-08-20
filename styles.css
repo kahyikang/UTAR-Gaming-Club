@@ -1,0 +1,11 @@
+/* Compatibility entry point. Pages load the split stylesheets directly. */
+@import url("css/general.css");
+@import url("css/home.css");
+@import url("css/profiles.css");
+@import url("css/programs.css");
+@import url("css/events.css");
+@import url("css/media.css");
+@import url("css/shop.css");
+@import url("css/contact.css");
+@import url("css/responsive.css");
+@import url("css/features.css");
