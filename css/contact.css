@@ -260,28 +260,6 @@
 }
 
 
-.contact-hero-label {
-
-  margin-top: 20px;
-
-  font-size: .75rem;
-
-  font-weight: 900;
-
-  letter-spacing: .15em;
-
-}
-
-
-.contact-hero-label span {
-
-  color: rgba(249, 247, 255,.45);
-
-  margin-left: 10px;
-
-}
-
-
 .contact-hero-side {
 
   border-left: 1px solid rgba(249, 247, 255,.14);
