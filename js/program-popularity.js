@@ -141,11 +141,6 @@
     const startingScores = Object.fromEntries(
       teams.map((team) => [team.id, getStartingScore(team.id, targets[team.id])])
     );
-    const randomTieOrder = Object.fromEntries(
-      [...teams]
-        .sort(() => Math.random() - 0.5)
-        .map((team, index) => [team.id, index])
-    );
     const timing = Object.fromEntries(
       teams.map((team) => [
         team.id,
@@ -155,6 +150,20 @@
         }
       ])
     );
+    let visibleOrder = [...teams];
+    let nextShuffleAt = 0;
+
+    const shuffleTeams = (teamList) => {
+      const shuffled = [...teamList];
+      for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        [shuffled[index], shuffled[randomIndex]] = [
+          shuffled[randomIndex],
+          shuffled[index]
+        ];
+      }
+      return shuffled;
+    };
 
     const tick = (now) => {
       if (animationToken !== scoreAnimationToken) return;
@@ -181,11 +190,11 @@
         element.textContent = displayedScores[teamId];
       });
 
-      const rankedDuringAnimation = [...teams].sort((first, second) => {
-        const scoreDifference = displayedScores[second.id] - displayedScores[first.id];
-        return scoreDifference || randomTieOrder[first.id] - randomTieOrder[second.id];
-      });
-      reorderRanking(rankedDuringAnimation);
+      if (progress < 0.94 && now >= nextShuffleAt) {
+        visibleOrder = shuffleTeams(visibleOrder);
+        nextShuffleAt = now + 220 + Math.random() * 420;
+      }
+      reorderRanking(visibleOrder);
 
       if (progress < 1) {
         window.requestAnimationFrame(tick);
