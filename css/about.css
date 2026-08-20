@@ -438,6 +438,54 @@ img {
   background: #0e081e;
 }
 
+main > section.story-reveal {
+  opacity: 0;
+  transform: translateY(34px) scale(0.985);
+  transition:
+    opacity 700ms ease,
+    transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+main > section.story-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+main > section.story-reveal.is-arriving {
+  animation: story-section-arrival 1050ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes story-section-arrival {
+  0% {
+    opacity: 0.72;
+    transform: translateY(22px) scale(0.992);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.002);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > section.story-reveal,
+  main > section.story-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  main > section.story-reveal.is-arriving {
+    animation: none;
+  }
+}
+
 .about-hero-background {
   position: absolute;
   inset: 0;
