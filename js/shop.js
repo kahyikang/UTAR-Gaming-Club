@@ -25,6 +25,9 @@ let activeProduct = null;
 let activeImageIndex = 0;
 let lastFocusedElement = null;
 let toastTimer = null;
+let galleryTimer = null;
+
+const galleryAutoplayMs = 3000;
 
 const productDescriptions = {
     "Black Smiley Sweatshirt": "Everyday black sweatshirt featuring the Smiley collection design.",
@@ -96,6 +99,7 @@ const renderGallery = () => {
 const openProductModal = (product, trigger) => {
     if (!modal || !product) return;
 
+    stopGalleryAutoplay();
     activeProduct = product;
     activeImageIndex = 0;
     lastFocusedElement = trigger || document.activeElement;
@@ -108,12 +112,14 @@ const openProductModal = (product, trigger) => {
     renderGallery();
     modal.hidden = false;
     document.body.classList.add("shop-modal-open");
+    startGalleryAutoplay();
     document.querySelector("[data-modal-close]")?.focus({ preventScroll: true });
 };
 
 const closeProductModal = () => {
     if (!modal || modal.hidden) return;
 
+    stopGalleryAutoplay();
     modal.hidden = true;
     activeProduct = null;
     document.body.classList.remove("shop-modal-open");
@@ -127,6 +133,25 @@ const moveGallery = (direction) => {
     const total = activeProduct.images.length;
     activeImageIndex = (activeImageIndex + direction + total) % total;
     renderGallery();
+};
+
+const stopGalleryAutoplay = () => {
+    if (galleryTimer === null) return;
+    window.clearInterval(galleryTimer);
+    galleryTimer = null;
+};
+
+const startGalleryAutoplay = () => {
+    stopGalleryAutoplay();
+    if (!activeProduct || activeProduct.images.length < 2) return;
+
+    galleryTimer = window.setInterval(() => {
+        if (!modal || modal.hidden || !activeProduct) {
+            stopGalleryAutoplay();
+            return;
+        }
+        moveGallery(1);
+    }, galleryAutoplayMs);
 };
 
 const showCartToast = (name) => {

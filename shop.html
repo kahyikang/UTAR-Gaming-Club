@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merchandise Shop | Utar Gaming</title>
     <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/shop.css?v=20260820-shop-video" />
+    <link rel="stylesheet" href="css/shop.css?v=20260820-shop-background-1" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/features.css" />
     <link rel="stylesheet" href="css/theme.css?v=20260819-2" />
     <link rel="icon" type="image/jpeg" href="assets/utar-gaming-logo.jpeg?v=20260819-logo" />
   </head>
-  <body data-page="shop.html">
+  <body class="shop-page" data-page="shop.html">
     <header class="site-header" data-header>
       <div class="site-shell header-inner">
         <a class="brand" href="index.html" aria-label="Utar Gaming home">
@@ -173,20 +173,22 @@
             <h2 id="product-modal-name" data-modal-name></h2>
             <p class="shop-modal-description" data-modal-description></p>
             <p class="shop-modal-price" data-modal-price></p>
-            <div class="shop-size-field" data-modal-size-field hidden>
-              <label for="product-size">Size</label>
-              <select id="product-size" data-modal-size>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M" selected>M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="2XL">2XL</option>
-              </select>
-            </div>
-            <div class="shop-quantity-field">
-              <label for="product-quantity">Quantity</label>
-              <input id="product-quantity" data-modal-quantity type="number" min="1" max="99" value="1" inputmode="numeric" />
+            <div class="shop-options-row">
+              <div class="shop-size-field" data-modal-size-field hidden>
+                <label for="product-size">Size</label>
+                <select id="product-size" data-modal-size>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="2XL">2XL</option>
+                </select>
+              </div>
+              <div class="shop-quantity-field">
+                <label for="product-quantity">Quantity</label>
+                <input id="product-quantity" data-modal-quantity type="number" min="1" max="99" value="1" inputmode="numeric" />
+              </div>
             </div>
             <button class="button button-primary shop-modal-add" type="button" data-modal-add>Add to cart</button>
             <p class="shop-modal-status" data-modal-status aria-live="polite"></p>
