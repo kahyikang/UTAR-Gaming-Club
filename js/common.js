@@ -90,3 +90,47 @@ document.querySelectorAll(".footer-inner").forEach((footerInner) => {
   if (copyright) copyright.before(socialGroup);
   else footerInner.append(socialGroup);
 });
+
+const COOKIE_CONSENT_NAME = "utar_gaming_cookie_consent";
+const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
+
+const readCookie = (name) => document.cookie
+  .split(";")
+  .map((cookie) => cookie.trim())
+  .find((cookie) => cookie.startsWith(`${name}=`))
+  ?.slice(name.length + 1) || "";
+
+const setCookie = (name, value, maxAge) => {
+  document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/; SameSite=Lax`;
+};
+
+const createCookieBanner = () => {
+  if (readCookie(COOKIE_CONSENT_NAME)) return;
+
+  const banner = document.createElement("section");
+  banner.className = "cookie-banner";
+  banner.dataset.cookieBanner = "";
+  banner.setAttribute("role", "dialog");
+  banner.setAttribute("aria-label", "Cookie preferences");
+  banner.innerHTML = `
+    <div class="cookie-banner-copy">
+      <strong>Cookies on this website</strong>
+      <p>We use cookies to remember your preferences and keep club features working smoothly.</p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-banner-decline" type="button" data-cookie-decline>Continue without accepting</button>
+      <button class="button button-primary cookie-banner-accept" type="button" data-cookie-accept>Accept cookies</button>
+    </div>
+  `;
+
+  const closeBanner = (value) => {
+    setCookie(COOKIE_CONSENT_NAME, value, COOKIE_CONSENT_MAX_AGE);
+    banner.remove();
+  };
+
+  banner.querySelector("[data-cookie-accept]")?.addEventListener("click", () => closeBanner("accepted"));
+  banner.querySelector("[data-cookie-decline]")?.addEventListener("click", () => closeBanner("declined"));
+  document.body.append(banner);
+};
+
+createCookieBanner();
