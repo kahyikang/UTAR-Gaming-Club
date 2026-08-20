@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../css/features.css" />
   <link rel="stylesheet" href="../css/theme.css?v=20260819-2" />
   <link rel="stylesheet" href="../css/programs-page.css?v=20260820-logo-hover-1" />
+  <link rel="stylesheet" href="../css/program-popularity.css?v=20260820-team-ranking" />
   <link rel="icon" type="image/jpeg" href="../assets/utar-gaming-logo.jpeg?v=20260819-logo" />
 </head>
 
@@ -56,7 +57,8 @@
             <h2>Choose your battlefield.</h2>
           </div>
         </div>
-        <div class="program-grid"><a class="program-card" href="pubg.html">
+        <div class="program-grid"><a class="program-card" href="pubg.html" data-team-id="utar-reapers"
+            data-team-name="Utar Reapers" data-team-game="PUBG" data-team-logo="../assets/pubg-logo.png">
             <div class="program-card-top"><span class="game-tag">Battle royale</span><span
                 class="status-tag">Squad</span></div>
             <h3>PUBG</h3>
@@ -66,7 +68,9 @@
               <li><strong>Team profile</strong><span>4-player squad</span></li>
               <li><strong>Player profiles</strong><span>Open the roster</span></li>
             </ul>
-          </a><a class="program-card" href="mobile-legends.html">
+          </a><a class="program-card" href="mobile-legends.html" data-team-id="utar-lynx"
+            data-team-name="Utar Lynx" data-team-game="Mobile Legends"
+            data-team-logo="../assets/mobile-legends-logo.png">
             <div class="program-card-top"><span class="game-tag">MOBA</span><span class="status-tag">5v5</span></div>
             <h3>Mobile Legends</h3>
             <p>Draft practice, rotation timing, role mastery, and mobile-focused competition.</p>
@@ -75,7 +79,8 @@
               <li><strong>Team profile</strong><span>Starting five</span></li>
               <li><strong>Player profiles</strong><span>Open the roster</span></li>
             </ul>
-          </a><a class="program-card" href="brawl-stars.html">
+          </a><a class="program-card" href="brawl-stars.html" data-team-id="utar-brawlers"
+            data-team-name="Utar Brawlers" data-team-game="Brawl Stars" data-team-logo="../assets/brawl-stars-logo.png">
             <div class="program-card-top"><span class="game-tag">Action</span><span class="status-tag">Player
                 focus</span></div>
             <h3>Brawl Stars</h3>
@@ -85,7 +90,9 @@
               <li><strong>Player profiles</strong><span>Individual competitors</span></li>
               <li><strong>Recruitment</strong><span>Open to members</span></li>
             </ul>
-          </a><a class="program-card" href="clash-of-clans.html">
+          </a><a class="program-card" href="clash-of-clans.html" data-team-id="utar-war-clan"
+            data-team-name="Utar War Clan" data-team-game="Clash of Clans"
+            data-team-logo="../assets/clash-of-clans-logo.png">
             <div class="program-card-top"><span class="game-tag">Strategy</span><span class="status-tag">Player
                 focus</span></div>
             <h3>Clash of Clans</h3>
@@ -95,7 +102,8 @@
               <li><strong>Player profiles</strong><span>Village specialists</span></li>
               <li><strong>Focus</strong><span>Wars and strategy</span></li>
             </ul>
-          </a><a class="program-card" href="roblox.html">
+          </a><a class="program-card" href="roblox.html" data-team-id="utar-creators"
+            data-team-name="Utar Creators" data-team-game="Roblox" data-team-logo="../assets/roblox-logo.png">
             <div class="program-card-top"><span class="game-tag">Multi-game</span><span class="status-tag">Team /
                 player</span></div>
             <h3>Roblox</h3>
@@ -106,6 +114,16 @@
               <li><strong>Player profiles</strong><span>Open the roster</span></li>
             </ul>
           </a></div>
+        <section class="team-popularity" aria-labelledby="team-popularity-title">
+          <div class="team-popularity-heading">
+            <div>
+              <p class="eyebrow">Community pulse</p>
+              <h2 id="team-popularity-title">Team popularity</h2>
+            </div>
+          </div>
+          <ol class="team-ranking" data-team-ranking></ol>
+          <p class="sr-only" data-team-ranking-status aria-live="polite"></p>
+        </section>
       </div>
     </section>
   </main>
@@ -118,6 +136,7 @@
     </div>
   </footer>
   <script src="../js/common.js?v=20260820-cookies" defer></script>
+  <script src="../js/program-popularity.js?v=20260820-team-ranking" defer></script>
 </body>
 
 </html>

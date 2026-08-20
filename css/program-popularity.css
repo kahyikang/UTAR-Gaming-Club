@@ -1,0 +1,207 @@
+.team-popularity {
+  margin-top: clamp(54px, 8vw, 86px);
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid rgba(106, 13, 173, .2);
+  background: rgba(255, 255, 255, .74);
+  box-shadow: 0 18px 45px rgba(26, 14, 56, .1);
+}
+
+.team-popularity-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.team-popularity-heading .eyebrow {
+  margin-bottom: 10px;
+}
+
+.team-popularity-heading h2 {
+  margin-bottom: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.team-popularity-heading > p {
+  max-width: 360px;
+  margin-bottom: 4px;
+  font-size: .95rem;
+}
+
+.team-ranking {
+  display: grid;
+  gap: 10px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-ranking-item {
+  display: grid;
+  min-height: 76px;
+  grid-template-columns: 46px 54px minmax(0, 1fr) 78px 126px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border: 1px solid rgba(106, 13, 173, .14);
+  background: rgba(255, 255, 255, .86);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.team-ranking-item:hover,
+.team-ranking-item:focus-within {
+  border-color: rgba(0, 240, 255, .72);
+  box-shadow: 0 10px 26px rgba(26, 14, 56, .1);
+  transform: translateY(-2px);
+}
+
+.team-ranking-position {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(106, 13, 173, .2);
+  color: var(--purple);
+  font-size: .85rem;
+  font-weight: 950;
+}
+
+.team-ranking-item:first-child .team-ranking-position {
+  border-color: var(--theme-cyan);
+  background: rgba(0, 240, 255, .12);
+  color: var(--ink);
+}
+
+.team-ranking-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.team-ranking-team {
+  min-width: 0;
+}
+
+.team-ranking-team strong,
+.team-ranking-team small,
+.team-ranking-score strong,
+.team-ranking-score small {
+  display: block;
+}
+
+.team-ranking-team strong {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-ranking-team small,
+.team-ranking-score small {
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.team-ranking-score {
+  text-align: right;
+}
+
+.team-ranking-score strong {
+  color: var(--ink);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.team-support-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--theme-cyan);
+  background: var(--ink);
+  color: var(--white);
+  cursor: pointer;
+  font-size: .72rem;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.team-support-button span {
+  color: var(--theme-cyan);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.team-support-button:hover,
+.team-support-button:focus-visible,
+.team-support-button.is-updated {
+  background: var(--theme-cyan);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.team-support-button:hover span,
+.team-support-button:focus-visible span,
+.team-support-button.is-updated span {
+  color: var(--ink);
+}
+
+.team-support-button:focus-visible {
+  outline: 3px solid rgba(0, 240, 255, .3);
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  .team-popularity-heading {
+    display: block;
+  }
+
+  .team-popularity-heading > p {
+    margin-top: 14px;
+  }
+
+  .team-ranking-item {
+    grid-template-columns: 36px 46px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .team-ranking-position {
+    width: 32px;
+    height: 32px;
+  }
+
+  .team-ranking-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .team-ranking-score {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+    margin-top: -4px;
+    text-align: left;
+  }
+
+  .team-support-button {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-ranking-item,
+  .team-support-button {
+    transition: none;
+  }
+}
