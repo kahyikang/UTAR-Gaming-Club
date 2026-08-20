@@ -31,3 +31,55 @@ const currentPage = window.location.pathname.split("/").pop() || "index.html";
 document.querySelectorAll("[data-page-link]").forEach((link) => link.classList.toggle("active", link.dataset.pageLink === currentPage));
 const syncHeader = () => commonHeader?.classList.toggle("scrolled", window.scrollY > 12);
 syncHeader(); window.addEventListener("scroll", syncHeader, { passive: true });
+
+const socialLinks = [
+  { name: "Facebook", file: "facebook.png", href: "https://www.facebook.com/", external: true },
+  { name: "Discord", file: "discord.png", href: "https://discord.com/", external: true },
+  { name: "Email", file: "gmail.png", href: "mailto:utargaming@gmail.com", external: false },
+  { name: "YouTube", file: "youtube.png", href: "https://www.youtube.com/", external: true },
+  { name: "Instagram", file: "instagram.png", href: "https://www.instagram.com/", external: true }
+];
+
+document.querySelectorAll(".footer-inner").forEach((footerInner) => {
+  if (footerInner.querySelector("[data-footer-socials]")) return;
+
+  const socialGroup = document.createElement("div");
+  socialGroup.className = "footer-social";
+  socialGroup.dataset.footerSocials = "";
+  socialGroup.innerHTML = `<span class="footer-social-label">Connect with us</span><div class="footer-social-links"></div><span class="footer-social-status" aria-live="polite"></span>`;
+
+  const socialLinksContainer = socialGroup.querySelector(".footer-social-links");
+  const socialStatus = socialGroup.querySelector(".footer-social-status");
+  const assetRoot = isProgramPage ? "../assets/social/" : "assets/social/";
+
+  socialLinks.forEach((social) => {
+    const link = document.createElement("a");
+    link.className = "footer-social-link";
+    link.href = social.href;
+    link.setAttribute("aria-label", social.name);
+    link.title = social.name;
+    link.dataset.socialPlatform = social.name;
+    if (social.external) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+
+    const icon = document.createElement("img");
+    icon.src = `${assetRoot}${social.file}`;
+    icon.alt = "";
+    icon.width = 22;
+    icon.height = 22;
+    icon.addEventListener("error", () => link.remove(), { once: true });
+    link.append(icon);
+
+    link.addEventListener("click", () => {
+      socialStatus.textContent = `Opening ${social.name}`;
+      window.setTimeout(() => { socialStatus.textContent = ""; }, 1800);
+    });
+    socialLinksContainer.append(link);
+  });
+
+  const copyright = footerInner.querySelector("p");
+  if (copyright) copyright.before(socialGroup);
+  else footerInner.append(socialGroup);
+});
