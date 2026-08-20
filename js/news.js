@@ -66,22 +66,31 @@
     }
     recentEmpty.setAttribute("hidden", "");
     items.slice().reverse().forEach((item) => {
-      const li = document.createElement("li");
-      li.tabIndex = 0;
-      li.setAttribute("role", "button");
-      li.setAttribute("aria-label", "Open " + item.title + " again");
-      li.textContent = item.title;
-      const time = document.createElement("span");
-      time.textContent = item.time;
-      li.appendChild(time);
-      li.addEventListener("click", () => jumpToArticle(item.id));
-      li.addEventListener("keydown", (event) => {
+      const originalCard = document.querySelector('.news-card[data-id="' + item.id + '"]');
+      if (!originalCard) return;
+
+      const card = originalCard.cloneNode(true);
+      card.classList.remove("is-jumped-to");
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", "Open " + (item.title || originalCard.dataset.title) + " again");
+
+      const readMore = card.querySelector("[data-read-more]");
+      readMore?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        openCard(originalCard, readMore);
+      });
+      card.addEventListener("click", (event) => {
+        if (event.target.closest("[data-read-more]")) return;
+        openCard(originalCard, card);
+      });
+      card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          jumpToArticle(item.id);
+          openCard(originalCard, card);
         }
       });
-      recentList.appendChild(li);
+      recentList.appendChild(card);
     });
   }
 
@@ -159,12 +168,32 @@
     if (lastFocusedButton && typeof lastFocusedButton.focus === "function") lastFocusedButton.focus();
   }
 
+  function openCard(card, trigger) {
+    openModal(card, trigger);
+    logView(card.dataset.id, card.dataset.title);
+  }
+
+  newsCards.forEach((card) => {
+    const title = card.dataset.title || card.querySelector("h3")?.textContent.trim() || "news article";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", "Open " + title);
+    card.addEventListener("click", (event) => {
+      if (event.target instanceof Element && event.target.closest("[data-read-more]")) return;
+      openCard(card, card);
+    });
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openCard(card, card);
+    });
+  });
+
   readMoreButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".news-card");
       if (!card) return;
-      openModal(card, button);
-      logView(card.dataset.id, card.dataset.title);
+      openCard(card, button);
     });
   });
 

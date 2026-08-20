@@ -74,18 +74,33 @@
     }
     savedEmpty.setAttribute("hidden", "");
     items.forEach((item) => {
-      const card = document.createElement("div");
-      card.className = "saved-card";
+      const originalTile = Array.from(saveButtons)
+        .find((button) => button.dataset.id === item.id)
+        ?.closest(".media-tile");
+      const card = originalTile
+        ? originalTile.cloneNode(true)
+        : document.createElement("article");
+      card.classList.add("saved-card");
       card.tabIndex = 0;
       card.setAttribute("role", "button");
-      card.setAttribute("aria-label", "Open " + item.title);
-      card.innerHTML =
-        '<div class="saved-card-body"><strong></strong><span></span></div><button class="saved-remove" type="button" aria-label="Remove ' +
-        item.title.replace(/"/g, "&quot;") +
-        ' from saved highlights">&times;</button>';
-      card.querySelector("strong").textContent = item.title;
-      card.querySelector("span").textContent = item.game;
-      card.querySelector(".saved-remove").addEventListener("click", (event) => {
+      card.setAttribute("aria-label", "Open " + (card.querySelector("h3")?.textContent || item.title));
+
+      if (!originalTile) {
+        card.innerHTML =
+          '<span>Saved highlight &middot; ' +
+          item.game.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+          '</span><h3></h3><p class="media-tile-desc"></p><button class="bookmark-btn" type="button" data-save></button>';
+        card.querySelector("h3").textContent = item.title;
+        card.querySelector(".media-tile-desc").textContent = "Saved highlight";
+      }
+
+      const savedButton = card.querySelector("[data-save]");
+      savedButton?.classList.add("is-saved");
+      if (savedButton) {
+        savedButton.innerHTML = "&#9733; Saved";
+        savedButton.setAttribute("aria-pressed", "true");
+      }
+      savedButton?.addEventListener("click", (event) => {
         event.stopPropagation();
         toggleSave(item.id, item.title, item.game);
       });
@@ -182,6 +197,12 @@
     else modalVideo.removeAttribute("poster");
     modalVideo.src = videoSrc;
     modalVideo.removeAttribute("hidden");
+    modalVideo.autoplay = true;
+    const playRequest = modalVideo.play();
+    playRequest?.catch(() => {
+      // Some browsers wait until the media element has finished loading.
+      modalVideo.addEventListener("canplay", () => modalVideo.play().catch(() => {}), { once: true });
+    });
   }
 
   function showModalPhoto(tileImage) {

@@ -1,3 +1,53 @@
+.page-hero.media-page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(14, 7, 30, .9) 0%, rgba(14, 7, 30, .68) 45%, rgba(14, 7, 30, .38) 100%),
+    url("../assets/win-moment.jpg") center / cover no-repeat;
+}
+
+.media-hub-grid .media-hub-card {
+  isolation: isolate;
+  background-color: var(--ink);
+}
+
+.media-hub-grid .media-hub-card::before {
+  opacity: .16;
+}
+
+.media-hub-grid .feature-card-gold {
+  background:
+    linear-gradient(180deg, rgba(14, 7, 30, .08), rgba(14, 7, 30, .92)),
+    url("../assets/media-gallery.jpg") center / cover no-repeat;
+}
+
+.media-hub-grid .feature-card-blue {
+  background:
+    linear-gradient(180deg, rgba(14, 7, 30, .08), rgba(14, 7, 30, .92)),
+    url("../assets/media-news.jpg") center / cover no-repeat;
+}
+
+.media-hub-grid .media-hub-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.media-hub-grid .media-hub-card p {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 260ms ease, opacity 220ms ease, margin-bottom 260ms ease;
+}
+
+.media-hub-grid .media-hub-card:hover p,
+.media-hub-grid .media-hub-card:focus-visible p {
+  max-height: 100px;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
 .media-hub-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
 
 @media (max-width:680px) { .media-hub-grid { grid-template-columns:1fr; } }
