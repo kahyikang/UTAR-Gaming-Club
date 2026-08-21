@@ -764,6 +764,37 @@ p {
     white-space: nowrap;
 }
 
+.footer-disclaimer {
+    border-top: 1px solid rgba(249, 247, 255, .12);
+    background: rgba(8, 5, 24, .42);
+}
+
+.footer-disclaimer-inner {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-disclaimer strong {
+    flex: 0 0 auto;
+    color: var(--theme-cyan, #00f0ff);
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.footer-disclaimer p {
+    margin: 0;
+    color: rgba(249, 247, 255, .62);
+    font-size: .7rem;
+    line-height: 1.5;
+}
+
 .cookie-banner {
     position: fixed;
     right: 0;

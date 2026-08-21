@@ -91,6 +91,22 @@ document.querySelectorAll(".footer-inner").forEach((footerInner) => {
   else footerInner.append(socialGroup);
 });
 
+document.querySelectorAll(".site-footer").forEach((footer) => {
+  if (footer.querySelector("[data-academic-disclaimer]")) return;
+
+  const disclaimer = document.createElement("div");
+  disclaimer.className = "footer-disclaimer";
+  disclaimer.dataset.academicDisclaimer = "";
+  disclaimer.setAttribute("role", "note");
+  disclaimer.innerHTML = `
+    <div class="site-shell footer-disclaimer-inner">
+      <strong>Academic use disclaimer</strong>
+      <p>All images, videos, trademarks, and other media on this website are used solely for academic and educational purposes. No commercial use is intended.</p>
+    </div>
+  `;
+  footer.append(disclaimer);
+});
+
 const COOKIE_CONSENT_NAME = "utar_gaming_cookie_consent";
 const COOKIE_CONSENT_STORAGE_NAME = "utar_gaming_cookie_consent";
 const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
