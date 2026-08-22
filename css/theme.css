@@ -138,11 +138,19 @@ body {
 
 /* Keep the profile image contained in a fixed panel at medium widths. */
 @media (min-width: 681px) and (max-width: 980px) {
+    .profile-dialog-scroll {
+        grid-template-columns: 320px minmax(0, 1fr);
+        grid-template-rows: 320px auto;
+    }
+
     .profile-dialog-media {
         position: relative;
         top: auto;
-        z-index: 0;
+        z-index: 1;
         align-self: start;
+        width: 320px;
+        min-width: 320px;
+        max-width: 320px;
         height: 320px;
         min-height: 320px;
         max-height: 320px;
