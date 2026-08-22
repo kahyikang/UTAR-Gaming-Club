@@ -4,7 +4,11 @@
 
   if (!ranking || !teamCards.length) return;
 
-  const storageKey = "utar_gaming_team_popularity_v2";
+  const storageKey = "team_popularity";
+  const legacyStorageKeys = [
+    "utar_gaming_team_popularity_v2",
+    "utar_gaming_team_popularity"
+  ];
   const initialPopularity = {
     "utar-reapers": 1720,
     "utar-lynx": 1722,
@@ -38,11 +42,24 @@
     );
 
     try {
-      const saved = JSON.parse(window.localStorage.getItem(storageKey) || "{}");
+      const currentValue = window.localStorage.getItem(storageKey);
+      const legacyKey = currentValue
+        ? null
+        : legacyStorageKeys.find((key) => window.localStorage.getItem(key));
+      const saved = JSON.parse(
+        currentValue || (legacyKey ? window.localStorage.getItem(legacyKey) : "{}")
+      );
+
       teams.forEach((team) => {
         const value = Number(saved?.[team.id]);
         if (Number.isFinite(value) && value >= 0) defaults[team.id] = Math.floor(value);
       });
+
+      if (!currentValue && legacyKey) {
+        window.localStorage.setItem(storageKey, JSON.stringify(defaults));
+      }
+
+      legacyStorageKeys.forEach((key) => window.localStorage.removeItem(key));
     } catch {
       // Keep the ranking usable if browser storage is unavailable.
     }
