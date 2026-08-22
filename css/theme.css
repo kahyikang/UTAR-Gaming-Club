@@ -135,3 +135,24 @@ body {
         background: rgba(26, 14, 56, .98);
     }
 }
+
+/* Keep the profile image contained in a fixed panel at medium widths. */
+@media (min-width: 681px) and (max-width: 980px) {
+    .profile-dialog-media {
+        position: relative;
+        top: auto;
+        z-index: 0;
+        align-self: start;
+        height: 320px;
+        min-height: 320px;
+        max-height: 320px;
+        overflow: hidden;
+    }
+
+    .profile-dialog-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+    }
+}
